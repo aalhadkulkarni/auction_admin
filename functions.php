@@ -11,7 +11,7 @@ require_once "config.php";
 function getAuctionStateFile($round, $checkIfExists = false)
 {
     $fileName = "auction_states/round" . $round . ".txt";
-    if($checkIfExists && file_exists($fileName))
+    if(!$checkIfExists || ($checkIfExists && file_exists($fileName)))
     {
         return $fileName;
     }
