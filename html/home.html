@@ -3,14 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .table-responsive
+        {
+            max-height: 300px;
+        }
+    </style>
 </head>
 <body>
 
-<form method="post" action="saveState.php">
-    <input name="round">
-    <textarea name="state"></textarea>
-    <input type="submit" name="submit" value="Save">
-</form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6" align="center">
+            <a href="#">Start auction</a>
+        </div>
+        <div class="col-sm-6" align="center">
+            <a href="#">Roll back auction</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-primary btn-clock">
+                <div class="panel panel-heading">
+                    Teams
+                </div>
+                <div class="panel panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Team name</th>
+                            <th>Budget left</th>
+                            <th>Players bought</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Dnyanesh</td>
+                            <td>100L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        <tr>
+                            <td>Rajdeep</td>
+                            <td>100L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        <tr>
+                            <td>Aalhad</td>
+                            <td>92L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        <tr>
+                            <td>Yogesh</td>
+                            <td>100L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        <tr>
+                            <td>Anupam</td>
+                            <td>100L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        <tr>
+                            <td>Amogh</td>
+                            <td>100L</td>
+                            <td><a href="#">See players</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Remaining players in current category (Star Indian batsmen)
+                </div>
+                <div class="panel panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th>Base price</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Virat Kohli</td>
+                            <td>10L</td>
+                            <td>This player is being auctioned currently</td>
+                        </tr>
+                        <tr>
+                            <td>Rohit Sharma</td>
+                            <td>10L</td>
+                            <td><a href="#">Select this player for auction</a></td>
+                        </tr>
+                        <tr>
+                            <td>Suresh Raina</td>
+                            <td>10L</td>
+                            <td><a href="#">Select this player for auction</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Current Player
+                </div>
+                <div class="panel panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th>Base price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Virat Kohli
+                            </td>
+                            <td>
+                                10L
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Next player (Copy this text to whatsapp)
+                </div>
+                <div class="panel panel-body" align="center">
+                    Next player is Virat Kohli with base price 10L
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Select winner
+                </div>
+                <div class="panel panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Winning team</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select>
+                                    <option>Dnyanesh</option>
+                                    <option>Rajdeep</option>
+                                    <option>Aalhad</option>
+                                    <option>Yogesh</option>
+                                    <option>Anupam</option>
+                                    <option>Amogh</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Summary (Copy this to whatsapp at the end of each turn)
+                </div>
+                <div class="panel panel-body">
+                    *Ravindra Jadeja goes to Yogesh at 8L*<br>
+                    Summary:<br>
+                    Dnyanesh - (No players yet) - Budget left: 100L<br>
+                    Rajdeep - (No players yet) - Budget left: 100L<br>
+                    Aalhad - (No players yet) - Budget left: 100L<br>
+                    Yogesh - (Ravindra Jadeja) - Budget left: 92L<br>
+                    Anupam - (No players yet) - Budget left: 100L<br>
+                    Amogh - (No players yet) - Budget left: 100L<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    Players left
+                </div>
+                <div class="panel-panel-body height-responsive table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Base price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Virat Kohli</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Rohit Sharma</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Suresh Raina</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>R Ashwin</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Brendon McCullum</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Jason Roy</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Ben Stokes</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Dwayne Bravo</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>James Faulkner</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Martyn Guptil</td>
+                            <td>10L</td>
+                        </tr>
+                        <tr>
+                            <td>Kagiso Rabada</td>
+                            <td>10L</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
