@@ -115,3 +115,13 @@ function getLeagueTeams()
 
     return $leagueTeams;
 }
+
+function safeReturn($array, $index, $default=null)
+{
+    return isset($array[$index]) ? $array[$index] : $default;
+}
+
+function isStringSet($string)
+{
+    return (!is_null($string) && $string !== '');
+}

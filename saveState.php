@@ -8,8 +8,8 @@
 
 require_once "functions.php";
 
-$round = $_REQUEST["round"];
-$auctionStateJson = $_REQUEST["state"];
+$round = safeReturn($_REQUEST, "reset");
+$auctionStateJson = safeReturn($_REQUEST, "state");
 
 $fileName = getAuctionStateFile($round);
 file_put_contents($fileName, $auctionStateJson);
