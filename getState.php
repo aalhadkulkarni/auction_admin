@@ -10,33 +10,31 @@ ini_set("display_errors", 1);
 require_once "functions.php";
 
 $round = safeReturn($_REQUEST, "round");
-$fileName = getAuctionStateFile($round, true);
 
-echo $fileName;
+$totalRounds = getTotalRounds();
+$round = isStringSet($round) ? $round : $totalRounds;
+
 $auctionStateJson = "";
-if($round==1 || !isStringSet($round))
-{
-    $auctionStateJson = getInitialState();
-    file_put_contents("auction_states/round1.txt", $auctionStateJson);
-}
-else if($fileName!=null)
+
+$fileName = getAuctionStateFile($round, true);
+if(isStringSet($fileName))
 {
     $auctionStateJson = file_get_contents($fileName);
 }
-if(!isStringSet($round))
+else if($round==1)
 {
-    $round = 1;
+    $auctionStateJson = getInitialState();
+    file_put_contents($fileName, $auctionStateJson);
+    setTotalRounds($round);
 }
+else
+{
+    echo "";
+    exit;
+}
+
 if(isset($_REQUEST["reset"]))
 {
-    for($i=$round+1;;$i++)
-    {
-        $fileName = getAuctionStateFile($i, true);
-        if($fileName==null)
-        {
-            break;
-        }
-        unlink($fileName);
-    }
+    resetAuctionToRound($round);
 }
 echo $auctionStateJson;

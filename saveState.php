@@ -19,9 +19,14 @@ if(isStringSet($round) && isStringSet($auctionStateJson))
     file_put_contents($fileName, $auctionStateJson);
 
     echo $fileName;
-    echo "<br>1";
 }
 else
 {
     echo "0";
+    exit;
+}
+
+if(isset($_REQUEST["reset"]))
+{
+    resetAuctionToRound($round);
 }

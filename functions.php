@@ -125,3 +125,28 @@ function isStringSet($string)
 {
     return (!is_null($string) && $string !== '');
 }
+
+function getTotalRounds()
+{
+    $round = file_get_contents("auction_states/totalRounds.txt");
+    return isStringSet($round) ? $round : 0;
+}
+
+function setTotalRounds($round)
+{
+    file_put_contents("auction_states/totalRounds.txt", $round);
+}
+
+function resetAuctionToRound($round)
+{
+    $totalRounds = getTotalRounds();
+    for($i=$round+1;$i<=$totalRounds;$i++)
+    {
+        $fileName = getAuctionStateFile($i, true);
+        if(isStringSet($fileName))
+        {
+            unlink($fileName);
+        }
+    }
+    setTotalRounds($round);
+}
