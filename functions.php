@@ -55,7 +55,6 @@ function getInitialState()
                 break;
 
             default:
-                echo "<br>";
         }
     }
 

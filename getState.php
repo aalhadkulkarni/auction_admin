@@ -23,6 +23,7 @@ if(isStringSet($fileName))
 }
 else if($round==1)
 {
+    $fileName = getAuctionStateFile($round, false);
     $auctionStateJson = getInitialState();
     file_put_contents($fileName, $auctionStateJson);
     setTotalRounds($round);
