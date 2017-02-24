@@ -23,7 +23,11 @@ else if($fileName!=null)
 {
     $auctionStateJson = file_get_contents($fileName);
 }
-if(isStringSet($round) && isset($_REQUEST["reset"]))
+if(!isStringSet($round))
+{
+    $round = 1;
+}
+if(isset($_REQUEST["reset"]))
 {
     for($i=$round+1;;$i++)
     {
