@@ -17,7 +17,14 @@ $round = isStringSet($round) ? $round : $totalRounds;
 $auctionStateJson = "";
 
 $fileName = getAuctionStateFile($round, true);
-if(isStringSet($fileName))
+if(isset($_REQUEST["hardreset"]))
+{
+    $fileName = getAuctionStateFile(1, false);
+    $auctionStateJson = getInitialState();
+    file_put_contents($fileName, $auctionStateJson);
+    setTotalRounds($round);
+}
+else if(isStringSet($fileName))
 {
     $auctionStateJson = file_get_contents($fileName);
 }
@@ -38,4 +45,5 @@ if(isset($_REQUEST["reset"]))
 {
     resetAuctionToRound($round);
 }
+header("Content-Type: application/json", true);
 echo $auctionStateJson;

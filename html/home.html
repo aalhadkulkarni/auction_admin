@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Auction</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <style>
         .table-responsive
@@ -13,6 +13,307 @@
             max-height: 300px;
         }
     </style>
+
+    <script>
+        var currentPlayer = null;
+        var auctionState =
+        {
+            round: 1,
+            history: [],
+
+            players: [],
+
+            allRemainingPlayers: [],
+
+            batsmenRemaining: [],
+            bowlersRemaining: [],
+            keepersRemaining: [],
+            allroundersRemaining: [],
+
+            unsoldPlayersRemaining: [],
+            unsoldPlayers: [],
+
+            leagueTeams: [],
+
+            categories: [],
+
+            soldPlayers: []
+        };
+
+        function setAuctionState(state)
+        {
+            auctionState = state;
+
+            setRound();
+            setHistory();
+            setAllRemainingPlayers();
+            setLeagueTeams();
+            setUnsoldPlayersRemaining();
+            setUnsoldPlayers();
+            setCurrentCategory();
+            setSummary();
+        }
+
+        function setRound()
+        {
+            $("#roundDiv").text(auctionState.round);
+        }
+
+        function setHistory()
+        {
+        }
+
+        function setAllRemainingPlayers()
+        {
+            for(var i in auctionState.allRemainingPlayers)
+            {
+                var player = auctionState.allRemainingPlayers[i];
+
+                var nameCol = $("<td></td>");
+                nameCol.html(player.name);
+
+                var priceCol = $("<td></td>");
+                priceCol.html(player.basePrice);
+
+                var playerRow = $("<tr></tr>");
+                playerRow.append(nameCol);
+                playerRow.append(priceCol);
+
+                $("#allRemainingPlayersTable tbody").append(playerRow);
+            }
+        }
+
+        function setLeagueTeams()
+        {
+            for(var i in auctionState.leagueTeams)
+            {
+                var leagueTeam = auctionState.leagueTeams[i];
+
+                var nameCol = $("<td></td>");
+                nameCol.html(leagueTeam.name);
+
+                var budgetCol = $("<td></td>");
+                budgetCol.html(leagueTeam.budgetLeft + "L");
+
+                var playersCol = $("<td></td>");
+                playersCol.html("<a href='#'>See players</a>");
+
+                var teamRow = $("<tr></tr>");
+                teamRow.append(nameCol);
+                teamRow.append(budgetCol);
+                teamRow.append(playersCol);
+
+                $("#leagueTeamsTable tbody").append(teamRow);
+
+                var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.name + "</option>"
+                $("#leagueTeamsSelect").append(option);
+            }
+        }
+
+        function setUnsoldPlayersRemaining()
+        {
+        }
+
+        function setUnsoldPlayers()
+        {
+        }
+
+        /*function setCurrentCategory()
+        {
+            var categoryFound = false;
+            for(var i in auctionState.categories)
+            {
+                var category = auctionState.categories[i];
+                for (var j in auctionState.allRemainingPlayers)
+                {
+                    var player = auctionState.allRemainingPlayers[j];
+                    if(player.role==category.role && player.nationality==category.nationality && player.isStar==category.isStar)
+                    {
+                        categoryFound = true;
+
+                        var nameCol = $("<td></td>");
+                        nameCol.html(player.name);
+
+                        var priceCol = $("<td></td>");
+                        priceCol.html(player.basePrice + "L");
+
+                        var selectLinkCol = $("<td></td>");
+                        selectLinkCol.html("<a href='#' onclick='setCurrentPlayer(" + player.id + "); return false;'>Select this player for auction</a>")
+                        //selectLinkCol.html("<button class='btn btn-info form-control'>Select this player for auction</button>");
+
+                        var playerRow = $("<tr id='player" + player.id + "' class='playerRow'></tr>");
+                        playerRow.append(nameCol);
+                        playerRow.append(priceCol);
+                        playerRow.append(selectLinkCol);
+
+                        $("#currentCategoryPlayersTable tbody").append(playerRow);
+                    }
+                }
+                if(categoryFound)
+                {
+                    setCategoryLabel(category);
+                    break;
+                }
+            }
+        }*/
+
+        function setCurrentCategory()
+        {
+            var categoryFound = false;
+            for(var i in auctionState.categories)
+            {
+                var category = auctionState.categories[i];
+                for (var j in auctionState.allRemainingPlayers)
+                {
+                    var player = auctionState.allRemainingPlayers[j];
+                    if(player.role==category.role && player.nationality==category.nationality && player.isStar==category.isStar)
+                    {
+                        categoryFound = true;
+
+                        var nameCol = $("<td></td>");
+                        nameCol.html(player.name);
+
+                        var priceCol = $("<td></td>");
+                        priceCol.html(player.basePrice + "L");
+
+                        var teamCol = $("<td></td>");
+                        //selectLinkCol.html("<a href='#' onclick='setCurrentPlayer(" + player.id + "); return false;'>Select this player for auction</a>")
+                        teamCol.html(player.iplTeam);
+
+                        var playerRow = $("<tr id='player" + player.id + "' class='playerRow' onclick='setCurrentPlayer(" + player.id + ")'></tr>");
+                        playerRow.append(nameCol);
+                        playerRow.append(priceCol);
+                        playerRow.append(teamCol);
+
+                        $("#currentCategoryPlayersTable tbody").append(playerRow);
+                    }
+                }
+                if(categoryFound)
+                {
+                    setCategoryLabel(category);
+                    break;
+                }
+            }
+        }
+
+        function setCurrentPlayer(playerId)
+        {
+            //console.log(playerId);
+            currentPlayer= auctionState.players[playerId];
+            $(".playerRow").removeClass("info");
+            $("#player" + playerId).addClass("info");
+
+            $("#currentPlayerText").html("Next player is " + currentPlayer.name + " (" + currentPlayer.iplTeam + ") with base price " + currentPlayer.basePrice + "L");
+        }
+
+        function setCategoryLabel(category)
+        {
+            var label = "Remaining players in current category (";
+            if(category.isStar)
+            {
+                label += "Star ";
+            }
+            else
+            {
+                label += "Ordinary ";
+            }
+
+            if(category.nationality=="Indian")
+            {
+                label += "Indian ";
+            }
+            else
+            {
+                label += "Overseas ";
+            }
+
+            switch (category.role)
+            {
+                case "Batsman":
+                    label += "Batsmen";
+                    break;
+
+                case "Bowler":
+                    label += "Bowlers";
+                    break;
+
+                case "All Rounder":
+                    label += "All Rounders";
+                    break;
+
+                case "Keeper":
+                    label+= "Keepers";
+                    break;
+            }
+
+            label += ")";
+
+            $("#currentCategoryLabel").html(label);
+        }
+
+        function setSummary()
+        {
+            var summary = "";
+            var history = auctionState.history;
+            if(history!=null && history.length>0)
+            {
+                var lastAction = history[history.length-1];
+                summary += getLastActionText(lastAction);
+            }
+            else
+            {
+                summary += "*Auction starts:*";
+            }
+            for(var i in auctionState.leagueTeams)
+            {
+                var team = auctionState.leagueTeams[i];
+                summary += "<br>";
+                summary += team.name + " (" + team.budgetLeft +  "L):";
+                var actions = team.actions;
+                if(actions==null || actions.length==0)
+                {
+                    summary += " No players yet."
+                }
+                else
+                {
+                    for(var j in actions)
+                    {
+                        var action = actions[j];
+                        var player = auctionState.players[action.playerId];
+                        summary += " " + player.name + ",";
+                        summary = summary.substr(0, summary.length-1);
+                    }
+                }
+            }
+            $("#summaryDiv").html(summary);
+        }
+
+        function getLastActionText(lastAction)
+        {
+            var leagueTeamId = lastAction.leagueTeamId;
+            var playerId = lastAction.playerId;
+            var bid = lastAction.bid;
+
+            var leagueTeam = auctionState.leagueTeams[leagueTeamId];
+            var player = auctionState.players[playerId];
+
+            return "*" + player.name + " is sold to " + leagueTeam.name + " at " + bid + "L*";
+        }
+
+        function init()
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "getState.php",
+                success: function(data)
+                {
+                    setAuctionState(data);
+                }
+            });
+        }
+        window.onload = init;
+    </script>
 </head>
 <body>
 
@@ -33,181 +334,36 @@
 
 <div class="container-fluid">
     <div class="row">
+
         <div class="col-sm-3">
             <div class="panel panel-info">
                 <div class="panel panel-heading" align="center">
                     Current round
                 </div>
-                <div class="panel panel-body" align="center">
+                <div class="panel panel-body" align="center" id="roundDiv">
                     2
-                </div>
-            </div>
-            <div class="panel panel-info btn-clock">
-                <div class="panel panel-heading">
-                    Teams
-                </div>
-                <div class="panel panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Team name</th>
-                            <th>Budget left</th>
-                            <th>Players bought</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Dnyanesh</td>
-                            <td>100L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        <tr>
-                            <td>Rajdeep</td>
-                            <td>100L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        <tr>
-                            <td>Aalhad</td>
-                            <td>92L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        <tr>
-                            <td>Yogesh</td>
-                            <td>100L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        <tr>
-                            <td>Anupam</td>
-                            <td>100L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        <tr>
-                            <td>Amogh</td>
-                            <td>100L</td>
-                            <td><a href="#">See players</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6">
-            <div class="panel panel-info">
+        <div class="col-sm-3">
+            <div class="panel panel-info" align="center">
                 <div class="panel panel-heading">
-                    Remaining players in current category (Star Indian batsmen)
-                </div>
-                <div class="panel panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Player name</th>
-                            <th>Base price</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Virat Kohli</td>
-                            <td>10L</td>
-                            <td>This player is being auctioned currently</td>
-                        </tr>
-                        <tr>
-                            <td>Rohit Sharma</td>
-                            <td>10L</td>
-                            <td><a href="#">Select this player for auction</a></td>
-                        </tr>
-                        <tr>
-                            <td>Suresh Raina</td>
-                            <td>10L</td>
-                            <td><a href="#">Select this player for auction</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-info">
-                <div class="panel panel-heading">
-                    Current Player
+                    Players sold
                 </div>
                 <div class="panel panel-body">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Player name</th>
-                            <th>Base price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                Virat Kohli
-                            </td>
-                            <td>
-                                10L
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    1
                 </div>
             </div>
+        </div>
 
+        <div class="col-sm-3" align="center">
             <div class="panel panel-info">
                 <div class="panel panel-heading">
-                    Next player (Copy this text to whatsapp)
-                </div>
-                <div class="panel panel-body" align="center">
-                    Next player is Virat Kohli with base price 10L
-                </div>
-            </div>
-
-            <div class="panel panel-info">
-                <div class="panel panel-heading">
-                    Select winner
+                    Players unsold
                 </div>
                 <div class="panel panel-body">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Winning team</th>
-                            <th>Price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <select>
-                                    <option>Dnyanesh</option>
-                                    <option>Rajdeep</option>
-                                    <option>Aalhad</option>
-                                    <option>Yogesh</option>
-                                    <option>Anupam</option>
-                                    <option>Amogh</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-info">
-                <div class="panel panel-heading">
-                    Summary (Copy this to whatsapp at the end of each turn)
-                </div>
-                <div class="panel panel-body">
-                    *Ravindra Jadeja goes to Yogesh at 8L*<br>
-                    Summary:<br>
-                    Dnyanesh - (No players yet) - Budget left: 100L<br>
-                    Rajdeep - (No players yet) - Budget left: 100L<br>
-                    Aalhad - (No players yet) - Budget left: 100L<br>
-                    Yogesh - (Ravindra Jadeja) - Budget left: 92L<br>
-                    Anupam - (No players yet) - Budget left: 100L<br>
-                    Amogh - (No players yet) - Budget left: 100L<br>
+                    0
                 </div>
             </div>
         </div>
@@ -221,12 +377,134 @@
                     103
                 </div>
             </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-info btn-clock">
+                <div class="panel panel-heading">
+                    Teams
+                </div>
+                <div class="panel panel-body table-responsive">
+                    <table class="table" id="leagueTeamsTable">
+                        <thead>
+                        <tr>
+                            <th>Team name</th>
+                            <th>Budget left</th>
+                            <th>Players bought</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="panel panel-info">
+                <div class="panel panel-heading" id="currentCategoryLabel">
+                    Remaining players in current category (Star Indian batsmen)
+                </div>
+                <div class="panel panel-body table-responsive" id="currentCategoryPlayersTable">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th>Base price</th>
+                            <th>IPL Team</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--<div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Current Player
+                </div>
+                <div class="panel panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th>Base price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="2">
+                                No player selected
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Next player (Copy this text to whatsapp)
+                </div>
+                <div class="panel panel-body" align="center" id="currentPlayerText">
+                    No player selected
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Select winner
+                </div>
+                <div class="panel panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Winning team</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="leagueTeamsSelect">
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" />
+                            </td>
+                            <td>
+                                <!--<a href="#">Sold!</a>-->
+                                <button class="btn btn-info form-control">Sold!</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Summary (Copy this to whatsapp at the end of each turn)
+                </div>
+                <div class="panel panel-body" id="summaryDiv">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
             <div class="panel panel-info">
                 <div class="panel panel-heading">
                     Players left
                 </div>
                 <div class="panel-panel-body height-responsive table-responsive">
-                    <table class="table">
+                    <table class="table" id="allRemainingPlayersTable">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -234,50 +512,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Virat Kohli</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Rohit Sharma</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Suresh Raina</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>R Ashwin</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Brendon McCullum</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Jason Roy</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Ben Stokes</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Dwayne Bravo</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>James Faulkner</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Martyn Guptil</td>
-                            <td>10L</td>
-                        </tr>
-                        <tr>
-                            <td>Kagiso Rabada</td>
-                            <td>10L</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -17,9 +17,46 @@ class AuctionState
     public $keepersRemaining; //Array of keeperIds
     public $allroundersRemaining; //Array of allrounderIds
 
+    public $allRemainingPlayers;
+
     public $players; //Array of Player objects
 
     public $leagueTeams; //Array of LeagueTeam objects
+
+    public $categories;
+
+    public $unsoldPlayersRemaining;
+    public $unsoldPlayers;
+    public $soldPlayers;
+
+    public function __construct()
+    {
+        $this->unsoldPlayersRemaining = array();
+        $this->unsoldPlayers = array();
+        $this->soldPlayers = array();
+        $this->categories = array
+        (
+            new Category("Bowler", "Indian", false),
+            new Category("Bowler", "Overseas", false),
+
+            new Category("Keeper", "Indian", true),
+            new Category("Keeper", "Overseas", true),
+            new Category("All Rounder", "Indian", true),
+            new Category("All Rounder", "Overseas", true),
+            new Category("Batsman", "Indian", true),
+            new Category("Batsman", "Overseas", true),
+            new Category("Bowler", "Indian", true),
+            new Category("Bowler", "Overseas", true),
+
+            new Category("All Rounder", "Indian", false),
+            new Category("All Rounder", "Overseas", false),
+            new Category("Batsman", "Indian", false),
+            new Category("Batsman", "Overseas", false),
+
+            new Category("Keeper", "Indian", false),
+            new Category("Keeper", "Overseas", false),
+        );
+    }
 }
 
 class Player
@@ -46,6 +83,20 @@ class Action
     public $leagueTeamId;
     public $playerId;
     public $bid;
+}
+
+class Category
+{
+    public $role;
+    public $nationality;
+    public $isStar;
+
+    public function __construct($role, $nationality, $isStar)
+    {
+        $this->role = $role;
+        $this->nationality = $nationality;
+        $this->isStar = $isStar;
+    }
 }
 
 /*{

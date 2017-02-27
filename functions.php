@@ -36,6 +36,7 @@ function getInitialState()
 
     foreach ($players as $player)
     {
+        $auctionState->allRemainingPlayers[] = $player;
         switch($player->role)
         {
             case "Batsman":
@@ -82,7 +83,7 @@ function getPlayers()
         $player->nationality = $playerData[4];
         $player->isStar = ($playerData[5] == "Yes") ? true : false;
 
-        $players[] = $player;
+        $players[$id] = $player;
 
         $id++;
     }
@@ -107,7 +108,7 @@ function getLeagueTeams()
         $leagueTeam->budgetLeft = $leagueTeamData[1];
         $leagueTeam->actions = array();
 
-        $leagueTeams[] = $leagueTeam;
+        $leagueTeams[$id] = $leagueTeam;
 
         $id++;
     }
