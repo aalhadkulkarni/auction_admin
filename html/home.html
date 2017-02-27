@@ -300,6 +300,16 @@
             return "*" + player.name + " is sold to " + leagueTeam.name + " at " + bid + "L*";
         }
 
+        function playerSold()
+        {
+            
+        }
+
+        function playerUnsold()
+        {
+
+        }
+
         function init()
         {
             $.ajax
@@ -467,7 +477,7 @@
                         <tr>
                             <th>Winning team</th>
                             <th>Price</th>
-                            <th></th>
+                            <th colspan="2">Result</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -480,8 +490,10 @@
                                 <input type="text" class="form-control" />
                             </td>
                             <td>
-                                <!--<a href="#">Sold!</a>-->
-                                <button class="btn btn-info form-control">Sold!</button>
+                                <button class="btn btn-info form-control" onclick="playerSold()">Sold!</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info form-control" onclick="playerUnsold()">Unsold!</button>
                             </td>
                         </tr>
                         </tbody>
