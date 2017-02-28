@@ -28,35 +28,11 @@ function getInitialState()
     $auctionState->round = 1;
     $auctionState->leagueTeams = $leagueTeams;
     $auctionState->players = $players;
-    $auctionState->history = array();
-    /*$auctionState->batsmenRemaining = array();
-    $auctionState->bowlersRemaining = array();
-    $auctionState->allroundersRemaining = array();
-    $auctionState->keepersRemaining = array();*/
 
     foreach ($players as $player)
     {
         $auctionState->allRemainingPlayers[$player->id] = $player;
-        /*switch($player->role)
-        {
-            case "Batsman":
-                $auctionState->batsmenRemaining[] = $player;
-                break;
-
-            case "Bowler":
-                $auctionState->bowlersRemaining[] = $player;
-                break;
-
-            case "All Rounder":
-                $auctionState->allroundersRemaining[] = $player;
-                break;
-
-            case "Keeper":
-                $auctionState->keepersRemaining[] = $player;
-                break;
-
-            default:
-        }*/
+        $auctionState->allRemainingPlayersCount++;
     }
 
     $json = json_encode($auctionState);

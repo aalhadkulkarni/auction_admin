@@ -19,10 +19,13 @@ $auctionStateJson = "";
 $fileName = getAuctionStateFile($round, true);
 if(isset($_REQUEST["hardreset"]))
 {
-    $fileName = getAuctionStateFile(1, false);
+    $round = 1;
+    $fileName = getAuctionStateFile($round, false);
     $auctionStateJson = getInitialState();
     file_put_contents($fileName, $auctionStateJson);
+    resetAuctionToRound($round);
     setTotalRounds($round);
+    return;
 }
 else if(isStringSet($fileName))
 {
