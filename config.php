@@ -12,10 +12,10 @@ class AuctionState
 
     public $history; //Object: History of which player was sold to which team at what price from round 1 till now. Null if current round is round 1.
 
-    public $batsmenRemaining; //Array of batsmanIds
+    /*public $batsmenRemaining; //Array of batsmanIds
     public $bowlersRemaining; //Array of bowlerIds
     public $keepersRemaining; //Array of keeperIds
-    public $allroundersRemaining; //Array of allrounderIds
+    public $allroundersRemaining; //Array of allrounderIds*/
 
     public $allRemainingPlayers;
 
@@ -36,9 +36,6 @@ class AuctionState
         $this->soldPlayers = array();
         $this->categories = array
         (
-            new Category("Bowler", "Indian", false),
-            new Category("Bowler", "Overseas", false),
-
             new Category("Keeper", "Indian", true),
             new Category("Keeper", "Overseas", true),
             new Category("All Rounder", "Indian", true),
@@ -52,7 +49,8 @@ class AuctionState
             new Category("All Rounder", "Overseas", false),
             new Category("Batsman", "Indian", false),
             new Category("Batsman", "Overseas", false),
-
+            new Category("Bowler", "Indian", false),
+            new Category("Bowler", "Overseas", false),
             new Category("Keeper", "Indian", false),
             new Category("Keeper", "Overseas", false),
         );
