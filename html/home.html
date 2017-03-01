@@ -113,7 +113,7 @@
                 budgetCol.html(leagueTeam.budgetLeft + "L");
 
                 var playersCol = $("<td></td>");
-                playersCol.html("<a href='#'>See players</a>");
+                playersCol.html("<a href='#' onclick='viewLeagueTeamPlayers(" + leagueTeam.id +"); return false;'>See players</a>");
 
                 var teamRow = $("<tr></tr>");
                 teamRow.append(nameCol);
@@ -124,6 +124,33 @@
 
                 var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.name + "</option>";
                 $("#leagueTeamsSelect").append(option);
+            }
+        }
+
+        function viewLeagueTeamPlayers(leagueTeamId)
+        {
+            $("#leagueTeamPlayersTable tbody").empty();
+            var leagueTeam = auctionState.leagueTeams[leagueTeamId];
+            $("#leagueTeamPlayersModal").modal();
+            $("#leagueTeamPlayersHeader").html(leagueTeam.name);
+            var actions = leagueTeam.actions;
+            for(var i in actions)
+            {
+                var action = actions[i];
+                var player = auctionState.players[action.playerId];
+                var bid = action.bid;
+
+                var playerCol = $("<td></td>");
+                playerCol.html(player.name);
+
+                var bidCol = $("<td></td>");
+                bidCol.html(bid + "L");
+
+                var playerRow = $("<tr></tr>");
+                playerRow.append(playerCol);
+                playerRow.append(bidCol);
+                
+                $("#leagueTeamPlayersTable tbody").append(playerRow);
             }
         }
 
@@ -635,6 +662,36 @@
                 </div>
             </div>
         </div>
+    </div>
+
+</div>
+
+<div id="leagueTeamPlayersModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="leagueTeamPlayersHeader">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-responsive" id="leagueTeamPlayersTable">
+                    <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Bid</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 
