@@ -453,20 +453,6 @@
             $("#historyModal").modal();
         }
 
-        function init()
-        {
-            $.ajax
-            ({
-                type: "POST",
-                url: "getState.php",
-                success: function(data)
-                {
-                    auctionState = data;
-                    updateAuctionState();
-                }
-            });
-        }
-
         function undo()
         {
             if(auctionState.round==1)
@@ -513,6 +499,20 @@
                     init();
                 }
             })
+        }
+
+        function init()
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "getState.php",
+                success: function(data)
+                {
+                    auctionState = data;
+                    updateAuctionState();
+                }
+            });
         }
         window.onload = init;
     </script>
