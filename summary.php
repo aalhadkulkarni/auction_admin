@@ -100,7 +100,7 @@ echo "</b>";
 
 function getPlayers()
 {
-    $input = file_get_contents("data/players.csv");
+    $input = file_get_contents("data/players.txt");
     $lines = explode("\n", $input);
 
     $players= array();
@@ -128,7 +128,7 @@ function getPlayers()
 
 function getLeagueTeams()
 {
-    $input = file_get_contents("data/leagueTeams.csv");
+    $input = file_get_contents("data/leagueTeams.txt");
     $lines = explode("\n", $input);
 
     $leagueTeams= array();
