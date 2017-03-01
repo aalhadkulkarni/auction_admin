@@ -75,6 +75,37 @@
 
         function setHistory()
         {
+            $("#historyTable tbody").empty();
+            var history = auctionState.history;
+            for(var i=history.length-1; i>=0; i--)
+            {
+                var action = history[i];
+
+                var round = i+1;
+                var player = auctionState.players[action.playerId];
+                var leagueTeam = auctionState.leagueTeams[action.leagueTeamId];
+                var bid = action.bid;
+
+                var roundCol = $("<td></td>");
+                roundCol.html(round);
+
+                var playerCol = $("<td></td>");
+                playerCol.append(player.name);
+
+                var leagueTeamCol = $("<td></td>");
+                (leagueTeam!=null && leagueTeam.name) ? leagueTeamCol.html(leagueTeam.name) : leagueTeamCol.html("Unsold");
+
+                var bidCol = $("<td></td>");
+                (leagueTeam!=null && leagueTeam.name) ? bidCol.html(bid + "L") : bidCol.html("-");
+
+                var actionRow = $("<tr></tr>");
+                actionRow.append(roundCol);
+                actionRow.append(playerCol);
+                actionRow.append(leagueTeamCol);
+                actionRow.append(bidCol);
+
+                $("#historyTable tbody").append(actionRow);
+            }
         }
 
         function setAllRemainingPlayers()
@@ -149,7 +180,7 @@
                 var playerRow = $("<tr></tr>");
                 playerRow.append(playerCol);
                 playerRow.append(bidCol);
-                
+
                 $("#leagueTeamPlayersTable tbody").append(playerRow);
             }
         }
@@ -286,8 +317,8 @@
                         var action = actions[j];
                         var player = auctionState.players[action.playerId];
                         summary += " " + player.name + ",";
-                        summary = summary.substr(0, summary.length-1);
                     }
+                    summary = summary.substr(0, summary.length-1);
                 }
             }
             $("#summaryDiv").html(summary);
@@ -417,6 +448,11 @@
             updateAuctionState();
         }
 
+        function showHistory()
+        {
+            $("#historyModal").modal();
+        }
+
         function init()
         {
             $.ajax
@@ -487,11 +523,14 @@
     <div class="panel panel-info">
         <div class="panel panel-body">
             <div class="row">
-                <div class="col-sm-6" align="center">
+                <div class="col-sm-4" align="center">
                     <a href="#" onclick="restart(); return false;">Restart auction</a>
                 </div>
-                <div class="col-sm-6" align="center">
+                <div class="col-sm-4" align="center">
                     <a href="#" onclick="undo(); return false;">Undo</a>
+                </div>
+                <div class="col-sm-4" align="center">
+                    <a href="#" onclick="showHistory(); return false;">Show history</a>
                 </div>
             </div>
         </div>
@@ -680,6 +719,37 @@
                     <thead>
                     <tr>
                         <th>Player</th>
+                        <th>Bid</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="historyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="historyHeader">Auction history</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-responsive" id="historyTable">
+                    <thead>
+                    <tr>
+                        <th>Round</th>
+                        <th>Player</th>
+                        <th>Team</th>
                         <th>Bid</th>
                     </tr>
                     </thead>
