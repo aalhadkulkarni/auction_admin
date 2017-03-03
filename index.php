@@ -8,6 +8,8 @@
 
 include_once "functions.php";
 
+echo file_get_contents("html/home.html");
+die();
 $admins = array
 (
     "aalhadkulkarni" => "aiag#2112A",

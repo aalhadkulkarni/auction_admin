@@ -1,104 +1,104 @@
-Karun Nair,5,Batsman,RR,Indian,No
-Suresh Raina,6,Batsman,GL,Indian,No
-Brendon McCullum,7,Batsman,GL,Overseas,Yes
-Aron Finch,7,Batsman,GL,Overseas,Yes
-Jason Roy,5,Batsman,GL,Overseas,No
-David Miller,7,Batsman,KXIP,Overseas,Yes
-Murali Vijay,5,Batsman,KXIP,Indian,No
-Hashim Amla,6,Batsman,KXIP,Overseas,No
-Eon Morgan,6,Batsman,KXIP,Overseas,No
-Martin Guptill,6,Batsman,KXIP,Overseas,No
-Shaun Marsh,6,Batsman,KXIP,Overseas,No
-Gautam Gambhir,6,Batsman,KKR,Indian,No
-Manish Pandey,5,Batsman,KKR,Indian,No
-Chris lynn,4,Batsman,KKR,Overseas,No
-Rohit Sharma,8,Batsman,MI,Indian,Yes
-Ambati Rayudu,6,Batsman,MI,Indian,No
-Lendl Simmons,6,Batsman,MI,Overseas,No
-Ajinkya Rahane,6,Batsman,RPS,Indian,No
-Steve Smith,6,Batsman,RPS,Overseas,No
-Faf duPlessis,6,Batsman,RPS,Overseas,No
-Usman Khwaja,4,Batsman,RPS,Overseas,No
-Virat Kohli,9,Batsman,RCB,Indian,Yes
-AB deVilliers,9,Batsman,RCB,Overseas,Yes
-Chris Gayle,8,Batsman,RCB,Overseas,Yes
-Kedar Jadhav,5,Batsman,RCB,Indian,No
-David Warner,9,Batsman,SRH,Overseas,Yes
-Shikhar Dhawan,5,Batsman,SRH,Indian,No
-Kane Williamson,6,Batsman,SRH,Overseas,No
-Quinton deKock,8,Keeper,DD,Overseas,Yes
-Sam Billings,4,Keeper,DD,Overseas,No
-Sanju Samson,4,Keeper,DD,Indian,No
-Rishabh Pant,4,Keeper,DD,Indian,No
-Dinesh Kartik,5,Keeper,GL,Indian,No
-Wriddhiman Saha,4,Keeper,KXIP,Indian,No
-Robin Uthappa,7,Keeper,KKR,Indian,Yes
-Parthiv Patel,6,Keeper,MI,Indian,No
-Jos Buttler,7,Keeper,MI,Overseas,Yes
-MS Dhoni,8,Keeper,RPS,Indian,Yes
-KL Rahul,8,Keeper,RCB,Indian,Yes
-Naman Ojha,3,Keeper,SRH,Indian,No
-JP Duminy,8,All Rounder,DD,Overseas,Yes
-Chris Morris,7,All Rounder,DD,Overseas,Yes
-Carlos Braithwaite,6,All Rounder,DD,Overseas,No
-Corey Anderson,6,All Rounder,DD,Overseas,No
-Angelo Mathews,5,All Rounder,DD,Overseas,No
-Ravindra Jadeja,8,All Rounder,GL,Indian,Yes
-James Faulkner,7,All Rounder,GL,Overseas,Yes
-Dwayne Bravo,8,All Rounder,GL,Overseas,Yes
-Dwayne Smith,7,All Rounder,GL,Overseas,Yes
-Glenn Maxwell,7,All Rounder,KXIP,Overseas,Yes
-Darren Sammy,5,All Rounder,KXIP,Overseas,No
-Shakib Al Hasan,5,All Rounder,KKR,Overseas,No
-Yusuf Pathan,5,All Rounder,KKR,Indian,No
-Kieron Pollard,6,All Rounder,MI,Overseas,No
-Hardik Pandya,5,All Rounder,MI,Indian,No
-Ben Stokes,8,All Rounder,RPS,Overseas,Yes
-Dan Christian,3,All Rounder,RPS,Overseas,No
-Mitch Marsh,5,All Rounder,RPS,Overseas,No
-Shane Watson,8,All Rounder,RCB,Overseas,Yes
-Stuart Binny,3,All Rounder,RCB,Indian,No
-Pawan Negi,4,All Rounder,RCB,Indian,No
-Moises Henriques,5,All Rounder,SRH,Overseas,No
-Yuvraj Singh,7,All Rounder,SRH,Indian,No
-Ben Cutting,4,All Rounder,SRH,Overseas,No
-Chris Jordon,5,All Rounder,SRH,Overseas,No
-Mohammed Nabi,3,All Rounder,SRH,Overseas,No
-Zahir Khan,4,Bowler,DD,Indian,No
-Mohammed Shami,5,Bowler,DD,Indian,No
-Jayant Yadav,5,Bowler,DD,Indian,No
-Amit Mishra,5,Bowler,DD,Indian,No
-Kagiso Rabada,5,Bowler,DD,Overseas,No
-Pat Cummins,5,Bowler,DD,Overseas,No
-Pravin Kumar,5,Bowler,GL,Indian,No
-Dhawal Kulkarni,5,Bowler,GL,Indian,No
-Munaf Patel,3,Bowler,GL,Indian,No
-Axar Patel,4,Bowler,KXIP,Indian,No
-Sandeep Sharma,5,Bowler,KXIP,Indian,No
-Mohit Sharma,3,Bowler,KXIP,Indian,No
-Varun Aron,3,Bowler,KXIP,Indian,No
-Matt Henry,4,Bowler,KXIP,Overseas,No
-Sunil Narine,7,Bowler,KKR,Overseas,Yes
-Piyush Chawla,6,Bowler,KKR,Indian,No
-Umesh Yadav,6,Bowler,KKR,Indian,No
-Trent Boult,6,Bowler,KKR,Overseas,No
-Nathan Coulter-Nile,5,Bowler,KKR,Overseas,No
-Chris Woakes,5,Bowler,KKR,Overseas,No
-Kuldeep yadav,4,Bowler,KKR,Indian,No
-Lasith Malinga,7,Bowler,MI,Overseas,Yes
-Harbhajan Singh,7,Bowler,MI,Indian,No
-Jaspreet Bumrah,6,Bowler,MI,Indian,No
-Mitch McGlenaghan,8,Bowler,MI,Overseas,Yes
-Tim Southee,7,Bowler,MI,Overseas,Yes
-Mitch Johnson,5,Bowler,MI,Overseas,No
-Vinay Kumar,5,Bowler,MI,Indian,No
-R Ashwin,8,Bowler,RPS,Indian,Yes
-Adam Zampa,3,Bowler,RPS,Overseas,No
-Yuzavendra Chahal,7,Bowler,RCB,Indian,No
-Adam Milne,6,Bowler,RCB,Overseas,No
-Samuel Badree,6,Bowler,RCB,Overseas,No
-Tymal Mills,6,Bowler,RCB,Overseas,No
-Bhuvneshwar Kumar,7,Bowler,SRH,Indian,Yes
-Ashish Nehra,7,Bowler,SRH,Indian,Yes
-Mustafizur Rahman,8,Bowler,SRH,Overseas,Yes
-Pravin Tambe,3,Bowler,SRH,Indian,No
+Karun Nair,3,Batsman,RR,Indian,No
+Suresh Raina,4,Batsman,GL,Indian,No
+Brendon McCullum,5,Batsman,GL,Overseas,Yes
+Aron Finch,5,Batsman,GL,Overseas,Yes
+Jason Roy,3,Batsman,GL,Overseas,No
+David Miller,5,Batsman,KXIP,Overseas,Yes
+Murali Vijay,3,Batsman,KXIP,Indian,No
+Hashim Amla,4,Batsman,KXIP,Overseas,No
+Eon Morgan,4,Batsman,KXIP,Overseas,No
+Martin Guptill,4,Batsman,KXIP,Overseas,No
+Shaun Marsh,4,Batsman,KXIP,Overseas,No
+Gautam Gambhir,4,Batsman,KKR,Indian,No
+Manish Pandey,3,Batsman,KKR,Indian,No
+Chris lynn,2,Batsman,KKR,Overseas,No
+Rohit Sharma,6,Batsman,MI,Indian,Yes
+Ambati Rayudu,4,Batsman,MI,Indian,No
+Lendl Simmons,4,Batsman,MI,Overseas,No
+Ajinkya Rahane,4,Batsman,RPS,Indian,No
+Steve Smith,4,Batsman,RPS,Overseas,No
+Faf duPlessis,4,Batsman,RPS,Overseas,No
+Usman Khwaja,2,Batsman,RPS,Overseas,No
+Virat Kohli,7,Batsman,RCB,Indian,Yes
+AB deVilliers,7,Batsman,RCB,Overseas,Yes
+Chris Gayle,6,Batsman,RCB,Overseas,Yes
+Kedar Jadhav,3,Batsman,RCB,Indian,No
+David Warner,7,Batsman,SRH,Overseas,Yes
+Shikhar Dhawan,3,Batsman,SRH,Indian,No
+Kane Williamson,4,Batsman,SRH,Overseas,No
+Quinton deKock,6,Keeper,DD,Overseas,Yes
+Sam Billings,2,Keeper,DD,Overseas,No
+Sanju Samson,2,Keeper,DD,Indian,No
+Rishabh Pant,2,Keeper,DD,Indian,No
+Dinesh Kartik,3,Keeper,GL,Indian,No
+Wriddhiman Saha,2,Keeper,KXIP,Indian,No
+Robin Uthappa,5,Keeper,KKR,Indian,Yes
+Parthiv Patel,4,Keeper,MI,Indian,No
+Jos Buttler,5,Keeper,MI,Overseas,Yes
+MS Dhoni,6,Keeper,RPS,Indian,Yes
+KL Rahul,6,Keeper,RCB,Indian,Yes
+Naman Ojha,1,Keeper,SRH,Indian,No
+JP Duminy,6,All Rounder,DD,Overseas,Yes
+Chris Morris,5,All Rounder,DD,Overseas,Yes
+Carlos Braithwaite,4,All Rounder,DD,Overseas,No
+Corey Anderson,4,All Rounder,DD,Overseas,No
+Angelo Mathews,3,All Rounder,DD,Overseas,No
+Ravindra Jadeja,6,All Rounder,GL,Indian,Yes
+James Faulkner,5,All Rounder,GL,Overseas,Yes
+Dwayne Bravo,6,All Rounder,GL,Overseas,Yes
+Dwayne Smith,5,All Rounder,GL,Overseas,Yes
+Glenn Maxwell,5,All Rounder,KXIP,Overseas,Yes
+Darren Sammy,3,All Rounder,KXIP,Overseas,No
+Shakib Al Hasan,3,All Rounder,KKR,Overseas,No
+Yusuf Pathan,3,All Rounder,KKR,Indian,No
+Kieron Pollard,4,All Rounder,MI,Overseas,No
+Hardik Pandya,3,All Rounder,MI,Indian,No
+Ben Stokes,6,All Rounder,RPS,Overseas,Yes
+Dan Christian,1,All Rounder,RPS,Overseas,No
+Mitch Marsh,3,All Rounder,RPS,Overseas,No
+Shane Watson,6,All Rounder,RCB,Overseas,Yes
+Stuart Binny,1,All Rounder,RCB,Indian,No
+Pawan Negi,2,All Rounder,RCB,Indian,No
+Moises Henriques,3,All Rounder,SRH,Overseas,No
+Yuvraj Singh,5,All Rounder,SRH,Indian,No
+Ben Cutting,2,All Rounder,SRH,Overseas,No
+Chris Jordon,3,All Rounder,SRH,Overseas,No
+Mohammed Nabi,1,All Rounder,SRH,Overseas,No
+Zahir Khan,2,Bowler,DD,Indian,No
+Mohammed Shami,3,Bowler,DD,Indian,No
+Jayant Yadav,3,Bowler,DD,Indian,No
+Amit Mishra,3,Bowler,DD,Indian,No
+Kagiso Rabada,3,Bowler,DD,Overseas,No
+Pat Cummins,3,Bowler,DD,Overseas,No
+Pravin Kumar,3,Bowler,GL,Indian,No
+Dhawal Kulkarni,3,Bowler,GL,Indian,No
+Munaf Patel,1,Bowler,GL,Indian,No
+Axar Patel,2,Bowler,KXIP,Indian,No
+Sandeep Sharma,3,Bowler,KXIP,Indian,No
+Mohit Sharma,1,Bowler,KXIP,Indian,No
+Varun Aron,1,Bowler,KXIP,Indian,No
+Matt Henry,2,Bowler,KXIP,Overseas,No
+Sunil Narine,5,Bowler,KKR,Overseas,Yes
+Piyush Chawla,4,Bowler,KKR,Indian,No
+Umesh Yadav,4,Bowler,KKR,Indian,No
+Trent Boult,4,Bowler,KKR,Overseas,No
+Nathan Coulter-Nile,3,Bowler,KKR,Overseas,No
+Chris Woakes,3,Bowler,KKR,Overseas,No
+Kuldeep yadav,2,Bowler,KKR,Indian,No
+Lasith Malinga,5,Bowler,MI,Overseas,Yes
+Harbhajan Singh,5,Bowler,MI,Indian,No
+Jaspreet Bumrah,4,Bowler,MI,Indian,No
+Mitch McGlenaghan,6,Bowler,MI,Overseas,Yes
+Tim Southee,5,Bowler,MI,Overseas,Yes
+Mitch Johnson,3,Bowler,MI,Overseas,No
+Vinay Kumar,3,Bowler,MI,Indian,No
+R Ashwin,6,Bowler,RPS,Indian,Yes
+Adam Zampa,1,Bowler,RPS,Overseas,No
+Yuzavendra Chahal,5,Bowler,RCB,Indian,No
+Adam Milne,4,Bowler,RCB,Overseas,No
+Samuel Badree,4,Bowler,RCB,Overseas,No
+Tymal Mills,4,Bowler,RCB,Overseas,No
+Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes
+Ashish Nehra,5,Bowler,SRH,Indian,Yes
+Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes
+Pravin Tambe,1,Bowler,SRH,Indian,No
