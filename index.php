@@ -8,7 +8,7 @@
 
 include_once "functions.php";
 
-echo file_get_contents("html/home.html");
+echo file_get_contents("html/index.html");
 die();
 $admins = array
 (
@@ -19,7 +19,7 @@ $admins = array
 
 if(isStringSet(safeReturn($_COOKIE, "auction_admin")))
 {
-    echo file_get_contents("html/home.html");
+    echo file_get_contents("html/auction.html");
 }
 else if(isStringSet(safeReturn($_REQUEST, "adminId")))
 {
@@ -28,7 +28,7 @@ else if(isStringSet(safeReturn($_REQUEST, "adminId")))
     if(key_exists($adminId, $admins) && $password == safeReturn($admins, $adminId))
     {
         setcookie("auction_admin", $adminId);
-        echo file_get_contents("html/home.html");
+        echo file_get_contents("html/auction.html");
     }
     else
     {

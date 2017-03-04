@@ -128,7 +128,12 @@
                 },
                 success: function()
                 {
+                    alert("Data saved successfully");
                     init();
+                },
+                error: function ()
+                {
+                    alert("Data could not be saved");
                 }
             });
         }

@@ -60,7 +60,7 @@ Shane Watson,6,All Rounder,RCB,Overseas,Yes
 Stuart Binny,1,All Rounder,RCB,Indian,No
 Pawan Negi,2,All Rounder,RCB,Indian,No
 Moises Henriques,3,All Rounder,SRH,Overseas,No
-Yuvraj Singh,5,All Rounder,SRH,Indian,No
+Yuvraj Singh,4,All Rounder,SRH,Indian,No
 Ben Cutting,2,All Rounder,SRH,Overseas,No
 Chris Jordon,3,All Rounder,SRH,Overseas,No
 Mohammed Nabi,1,All Rounder,SRH,Overseas,No
@@ -86,7 +86,7 @@ Nathan Coulter-Nile,3,Bowler,KKR,Overseas,No
 Chris Woakes,3,Bowler,KKR,Overseas,No
 Kuldeep yadav,2,Bowler,KKR,Indian,No
 Lasith Malinga,5,Bowler,MI,Overseas,Yes
-Harbhajan Singh,5,Bowler,MI,Indian,No
+Harbhajan Singh,4,Bowler,MI,Indian,No
 Jaspreet Bumrah,4,Bowler,MI,Indian,No
 Mitch McGlenaghan,6,Bowler,MI,Overseas,Yes
 Tim Southee,5,Bowler,MI,Overseas,Yes
@@ -94,7 +94,7 @@ Mitch Johnson,3,Bowler,MI,Overseas,No
 Vinay Kumar,3,Bowler,MI,Indian,No
 R Ashwin,6,Bowler,RPS,Indian,Yes
 Adam Zampa,1,Bowler,RPS,Overseas,No
-Yuzavendra Chahal,5,Bowler,RCB,Indian,No
+Yuzavendra Chahal,4,Bowler,RCB,Indian,No
 Adam Milne,4,Bowler,RCB,Overseas,No
 Samuel Badree,4,Bowler,RCB,Overseas,No
 Tymal Mills,4,Bowler,RCB,Overseas,No
