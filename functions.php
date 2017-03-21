@@ -126,3 +126,8 @@ function resetAuctionToRound($round)
     }
     setTotalRounds($round);
 }
+
+function isUserAdmin()
+{
+    return isStringSet(safeReturn($_COOKIE, "auction_admin"));
+}

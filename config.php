@@ -6,6 +6,16 @@
  * Time: 12:14 AM
  */
 
+$admins = array
+(
+    "aalhad" => "admin@123",
+    "yogesh" => "shikari@123",
+    "dnyanesh" => "guruji@123",
+    "rajdeep" => "admin@123",
+    "amogh" => "misal@123",
+    "anupam" => "admin@123"
+);
+
 class AuctionState
 {
     public $round; //Integer: Current round number

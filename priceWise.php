@@ -12,7 +12,7 @@ echo "<h2>Price wise summary</h2>";
 
 $players = getPlayers();
 
-for($x=7; $x>1; $x--)
+for($x=8; $x>=1; $x--)
 {
     $curPlayers = array();
     foreach ($players as $player)
