@@ -1,3 +1,4 @@
+Name,Base Price,Role,Team,Nationality,Star or not
 Karun Nair,3,Batsman,DD,Indian,No
 Suresh Raina,4,Batsman,GL,Indian,No
 Brendon McCullum,5,Batsman,GL,Overseas,Yes
@@ -102,3 +103,4 @@ Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes
 Ashish Nehra,5,Bowler,SRH,Indian,Yes
 Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes
 Pravin Tambe,1,Bowler,SRH,Indian,No
+Imran Tahir,1,Bowler,RPS,Overseas,No

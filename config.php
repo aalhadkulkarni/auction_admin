@@ -16,6 +16,9 @@ $admins = array
     "anupam" => "admin@123"
 );
 
+define("DATA_DIRECTORY", "data");
+define("TOURNAMENTS_HOME_DIR", DATA_DIRECTORY . "/tournaments");
+
 class AuctionState
 {
     public $round; //Integer: Current round number
@@ -86,7 +89,7 @@ class Player
     public $isStar;
 }
 
-class LeagueTeam
+class AuctionTeam
 {
     public $id;
     public $name;
@@ -115,56 +118,113 @@ class Category
     }
 }
 
-/*{
-	"round": <round>,
+class Rule
+{
+    public $id;
+    public $parameter;
+    public $type;
+    public $value;
+    public $lowerBound;
+    public $upperBound;
+    public $points;
+    public $overrideRuleId;
 
-	"history":
-	[
-		{
-			"league_team": <team_id>,
-			"player": <player_id>,
-			"bid": <bid>
-		},...
-	]
+    public function __construct()
+    {
+        $this->id = null;
+        $this->parameter = null;
+        $this->type = null;
+        $this->value = null;
+        $this->lowerBound = null;
+        $this->upperBound = null;
+        $this->points = null;
+        $this->overrideRuleId = null;
+    }
+}
 
-	"batsmen_remaining": [id,id,id,...],
-	"bowlers_remaining": [id,id,id,...],
-	"keepers_remaining": [id,id,id,...],
-	"allrounders_remaining": [id,id,id,...],
+class Parameter
+{
+    public $name;
+    public $displayName;
+    public $ruleIds;
 
-	"players":
-	[
-		{
-			"id": <id>,
-			"name": <name>,
-			"role": <role>,
-			"base_price": <base_price>,
-			"ipl_team": <ipl_team_id>,
-			"league_team": <league_team_id>
-		},...
-	],
+    public function __construct($name, $displayName)
+    {
+        $this->name = $name;
+        $this->displayName = $displayName;
+        $this->ruleIds = array();
+    }
+}
 
-	"ipl_teams":
-	[
-		{
-			"id": <id>,
-			"name": <name>,
-		},...
-	],
+class TournamentPlayer
+{
+    public $id;
+    public $name;
+    public $cricketTeam;
+    public $points;
 
-	"league_teams":
-	[
-		{
-			"id": <id>,
-			"name": <name>
-			"budget_left": <budget_left>,
-			"actions":
-			[
-				{
-					"player_id": <player_id>,
-					"bid": <bid>
-				}
-			]
-		}
-	]
-}*/
+    public function __construct()
+    {
+        $this->points = 0;
+    }
+}
+
+class LeaguePlayer
+{
+    public $id;
+    public $points;
+    public $misc;
+
+    public function __construct()
+    {
+        $this->points = 0;
+        $this->misc = array();
+    }
+}
+
+class LeagueTeam
+{
+    public $id;
+    public $ownerName;
+    public $teamName;
+    public $activeLeaguePlayers;
+    public $inactiveLeaguePlayers;
+    public $curCaptainId;
+    public $curViceCaptainId;
+    public $jackpotMatchNo;
+
+    public function __construct()
+    {
+        $this->activeLeaguePlayers = array();
+        $this->inactiveLeaguePlayers = array();
+    }
+}
+
+class League
+{
+    public $id;
+    public $name;
+    public $leagueTeams;
+
+    public function __construct($id, $name)
+    {
+        $this->id = $id;
+        $this->name= $name;
+        $this->leagueTeams = array();
+    }
+}
+
+class TournamentState
+{
+    public $matchNo;
+    public $leagues;
+    public $scoringRules;
+    public $players;
+
+    public function __construct()
+    {
+        $this->matchNo = 0;
+        $this->leagues = array();
+        $this->players = array();
+    }
+}

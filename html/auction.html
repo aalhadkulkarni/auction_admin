@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Auction</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
@@ -403,6 +403,10 @@
                 {
                     round: auctionState.round,
                     state: JSON.stringify(auctionState)
+                },
+                error: function(e)
+                {
+                    console.log(e);
                 }
             });
         }
