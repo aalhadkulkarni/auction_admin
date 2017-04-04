@@ -174,10 +174,12 @@ class LeaguePlayer
     public $id;
     public $points;
     public $misc;
+    public $isActive;
 
     public function __construct()
     {
         $this->points = 0;
+        $this->isActive = true;
         $this->misc = array();
     }
 }
@@ -187,16 +189,16 @@ class LeagueTeam
     public $id;
     public $ownerName;
     public $teamName;
-    public $activeLeaguePlayers;
-    public $inactiveLeaguePlayers;
+    public $leaguePlayers;
     public $curCaptainId;
     public $curViceCaptainId;
     public $jackpotMatchNo;
+    public $points;
 
     public function __construct()
     {
-        $this->activeLeaguePlayers = array();
-        $this->inactiveLeaguePlayers = array();
+        $this->leaguePlayers = array();
+        $this->points = 0;
     }
 }
 

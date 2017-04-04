@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jackpot Matches</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        var tournamentState;
+
+        function init()
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "tempPlayers.php",
+                data:
+                {
+                    tournamentId: "ipl2017"
+                },
+                success: function(data)
+                {
+                    tournamentState = data;
+                    display();
+                }
+            });
+        }
+
+        function display()
+        {
+            var table = $("#jpTable tbody");
+            table.empty();
+
+            var leagueTeams = tournamentState.leagues[0].leagueTeams;
+            for(var jp=1; jp<=56; jp++)
+            {
+                var teamList = "";
+                var count = 0;
+                for(var i in leagueTeams)
+                {
+                    var leagueTeam = leagueTeams[i];
+                    if (leagueTeam.jackpotMatchNo == jp)
+                    {
+                        teamList += leagueTeam.ownerName + ", ";
+                        count++;
+                    }
+                }
+                if(teamList.length>0)
+                {
+                    teamList = teamList.substr(0, teamList.length-2);
+                    var jpRow = $("<tr></tr>");
+
+                    var matchCol = $("<td width='20%'></td>");
+                    matchCol.html(jp);
+
+                    var teamsCol = $("<td width='50%'></td>");
+                    teamsCol.html(teamList);
+
+                    var countCol = $("<td width='30%'></td>");
+                    countCol.html(count);
+
+                    jpRow.append(matchCol);
+                    jpRow.append(teamsCol);
+                    jpRow.append(countCol);
+
+                    table.append(jpRow);
+
+                }
+            }
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel panel-heading">
+            Jackpot Matches
+        </div>
+        <div class="panel panel-body">
+            <table class="table table-condensed" id="jpTable">
+                <thead>
+                <tr>
+                    <th>
+                        Match No.
+                    </th>
+                    <th>
+                        Teams
+                    </th>
+                    <th>
+                        Number of teams
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

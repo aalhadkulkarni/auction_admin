@@ -278,17 +278,10 @@ function getLeagueTeams($tournament, $league)
     
     foreach ($teamsInput as $index => $line)
     {
-        if($index==0) continue; //Header row
+        if($index==0 || strlen(trim($line))==0) continue; //Header row
         $curTeam = explode(",", $line);
         $team = new LeagueTeam();
-        $timestamp = explode(" ", $curTeam[0]);
-        $time = $timestamp[1];
-        $timeArr = explode(":", $time);
-        $team->id = implode("", $timeArr);
-        if(strlen($team->id)==5)
-        {
-            $team->id = "0" . $team->id;
-        }
+        $team->id = $index;
 
         $team->ownerName = $curTeam[1];
         $team->teamName = $curTeam[2];
@@ -298,7 +291,7 @@ function getLeagueTeams($tournament, $league)
             $tournamentPlayer = getTournamentPlayer($tournament, $curTeam[$i]);
             $leaguePlayer = new LeaguePlayer();
             $leaguePlayer->id = $tournamentPlayer->id;
-            $team->activeLeaguePlayers[] = $leaguePlayer;
+            $team->leaguePlayers[] = $leaguePlayer;
         }
 
         setLeagueSpecificData($tournament, $league, $team, $curTeam);
@@ -320,14 +313,15 @@ function setLeagueSpecificData($tournament, $league, $team, $curTeam)
             $tournamentPlayer = getTournamentPlayer($tournament, $curTeam[$i]);
             $leaguePlayer = new LeaguePlayer();
             $leaguePlayer->id = $tournamentPlayer->id;
-            $team->inactiveLeaguePlayers[] = $leaguePlayer;
+            $leaguePlayer->isActive = false;
+            $team->leaguePlayers[] = $leaguePlayer;
         }
     }
     else if($league == "individual")
     {
-        $team->curCaptainId = $team->activeLeaguePlayers[0]->id;
-        $team->curViceCaptainId = $team->activeLeaguePlayers[1]->id;
-        $team->jackpotMatchNo = (int)$curTeam[13];
+        $team->curCaptainId = $team->leaguePlayers[0]->id;
+        $team->curViceCaptainId = $team->leaguePlayers[1]->id;
+        $team->jackpotMatchNo = (int)$curTeam[14];
         /*for($i=13; $i<count($curTeam); $i++)
         {
             $team->misc[] = $curTeam[$i];
@@ -339,7 +333,7 @@ function getTournamentPlayer($tournament, $playerName)
 {
     $playerName = getRealPlayerName($playerName);
     $players = getTournamentPlayers($tournament);
-    foreach ($players as $player)
+    foreach ($players as $id=>$player)
     {
         if($player->name == $playerName)
         {
@@ -373,11 +367,11 @@ function getTournamentPlayers($tournament)
         $curPlayer = explode(",", $line);
 
         $player = new TournamentPlayer();
-        $player->id = $index;
+        $player->id = (string)$curPlayer[6];
         $player->name = $curPlayer[0];
         $player->cricketTeam = $curPlayer[3];
 
-        $players[] = $player;
+        $players[$player->id] = $player;
     }
 
     return $players;

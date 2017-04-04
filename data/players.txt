@@ -102,3 +102,4 @@ Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes
 Ashish Nehra,5,Bowler,SRH,Indian,Yes
 Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes
 Pravin Tambe,1,Bowler,SRH,Indian,No
+Krunal Pandya,
