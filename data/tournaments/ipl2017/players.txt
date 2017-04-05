@@ -92,9 +92,9 @@ Vinay Kumar,3,Bowler,MI,Indian,No,166
 R Ashwin,6,Bowler,RPS,Indian,Yes,8
 Adam Zampa,1,Bowler,RPS,Overseas,No,958
 Yuzavendra Chahal,4,Bowler,RCB,Indian,No,111
-Adam Milne,4,Bowler,RCB,Overseas,No,3319
+Adam Milne,4,Bowler,RCB,Overseas,No,434
 Samuel Badree,4,Bowler,RCB,Overseas,No,590
-Tymal Mills,4,Bowler,RCB,Overseas,No,434
+Tymal Mills,4,Bowler,RCB,Overseas,No,3319
 Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes,116
 Ashish Nehra,5,Bowler,SRH,Indian,Yes,115
 Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes,1594
@@ -110,3 +110,4 @@ Shreyas Iyer,1,Batsman,DD,Indian,No,1563
 Sandeep Sharma,1,Bowler,KXIP,Indian,No,1112
 Ashoke Dinda,1,Bowler,RPS,Indian,No,48
 Mayank Agarwal,1,Batsman,RPS,Indian,No,158
+Rashid Khan,1,Bowler,SRH,Overseas,No,2885

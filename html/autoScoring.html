@@ -193,7 +193,7 @@
             var script = document.createElement('script');
             script.type = 'text/javascript';
             script.async = true;
-            script.src = "http://datacdn.iplt20.com/dynamic/data/core/cricket/2012/ipl2016/ipl2016-" + matchNo + "/scoring.js";
+            script.src = "http://datacdn.iplt20.com/dynamic/data/core/cricket/2012/ipl2017/ipl2017-" + matchNo + "/scoring.js";
             document.getElementsByTagName('head')[0].appendChild(script);
         }
 
@@ -335,27 +335,30 @@
                 }
             }
 
-            var matchResult = iplMatch.matchInfo.matchStatus.outcome;
-            if(matchResult == "A")
+            if(iplMatch.matchInfo && iplMatch.matchInfo.matchStatus && iplMatch.matchInfo.matchStatus.outcome)
             {
-                winningTeam = team1;
-                losingTeam = team2;
-            }
-            else if(matchResult == "B")
-            {
-                winningTeam = team2;
-                losingTeam = team1;
-            }
-            for(var i in iplPlayers)
-            {
-                var player = iplPlayers[i];
-                if(player.team == winningTeam)
+                var matchResult = iplMatch.matchInfo.matchStatus.outcome;
+                if(matchResult == "A")
                 {
-                    player.winningTeam = true;
+                    winningTeam = team1;
+                    losingTeam = team2;
                 }
-                else if(player.team == losingTeam)
+                else if(matchResult == "B")
                 {
-                    player.losingTeam = true;
+                    winningTeam = team2;
+                    losingTeam = team1;
+                }
+                for(var i in iplPlayers)
+                {
+                    var player = iplPlayers[i];
+                    if(player.team == winningTeam)
+                    {
+                        player.winningTeam = true;
+                    }
+                    else if(player.team == losingTeam)
+                    {
+                        player.losingTeam = true;
+                    }
                 }
             }
         }
@@ -398,6 +401,7 @@
 
             for(var j in pointsForRule)
             {
+                $("#appliedPoints" + j).html("");
                 $("#rule" + j).removeClass("success");
                 $("#rule" + j).removeClass("danger");
                 if(pointsForRule[j] !== null)
@@ -406,10 +410,12 @@
                     if(pointsForRule[j]>0)
                     {
                         $("#rule" + j).addClass("success");
+                        $("#appliedPoints" + j).html(pointsForRule[j]);
                     }
                     if(pointsForRule[j]<0)
                     {
                         $("#rule" + j).addClass("danger");
+                        $("#appliedPoints" + j).html(pointsForRule[j]);
                     }
                     var overrideRuleId =rules[j].overrideRuleId;
                     if(overrideRuleId !== null)
@@ -448,8 +454,12 @@
                     var pointsTd = $("<td></td>");
                     pointsTd.html(rule.points);
 
+                    var appliedPointsTd = $("<td id='appliedPoints" + ruleId + "'></td>");
+                    appliedPointsTd.html("");
+
                     ruleRow.append(conditionTd);
                     ruleRow.append(pointsTd);
+                    ruleRow.append(appliedPointsTd);
 
                     rulesTable.append(ruleRow);
                 }
@@ -572,8 +582,9 @@
                     <table class="table table-condensed" id="rulesTable">
                         <thead>
                         <tr>
-                            <th>Condition</th>
-                            <th>Points</th>
+                            <th width="50%">Condition</th>
+                            <th width="25%">Points</th>
+                            <th width="25%">Points Scored</th>
                         </tr>
                         </thead>
                         <tbody>

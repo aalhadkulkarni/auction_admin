@@ -248,7 +248,6 @@
             }
 
             tournamentState.jackpotScore = jackpotScore;
-            $("#jpScore").html($("<center>Jackpot score: " + jackpotScore + "</center>"));
         }
 
         function setTeams()
@@ -305,7 +304,7 @@
         {
             var statsTable = $("#statsTable tbody");
             var tr = $("<tr></tr>");
-            
+
             var nameCol = $("<td></td>");
             nameCol.html(iplPlayer.shortName + " (" + team + ")");
 
@@ -734,52 +733,11 @@
         </div>
         <div class="panel panel-body">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <input placeholder="Match No" id="matchNo" class="form-control">
                 </div>
-                <div class="col-sm-4">
-                    <select class="form-control" id="team1">
-                        <option disabled selected value>Select team 1</option>
-                        <option value="DD">DD</option>
-                        <option value="GL">GL</option>
-                        <option value="KKR">KKR</option>
-                        <option value="KXIP">KXIP</option>
-                        <option value="MI">MI</option>
-                        <option value="RCB">RCB</option>
-                        <option value="RPS">RPS</option>
-                        <option value="SRH">SRH</option>
-                    </select>
-                </div>
-                <div class="col-sm-4">
-                    <select class="form-control" id="team2">
-                        <option disabled selected value>Select team 2</option>
-                        <option value="DD">DD</option>
-                        <option value="GL">GL</option>
-                        <option value="KKR">KKR</option>
-                        <option value="KXIP">KXIP</option>
-                        <option value="MI">MI</option>
-                        <option value="RCB">RCB</option>
-                        <option value="RPS">RPS</option>
-                        <option value="SRH">SRH</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-info">
-        <div class="panel panel-heading">
-            Select match number
-        </div>
-        <div class="panel panel-body">
-            <div class="row">
-
                 <div class="col-sm-6">
-                    <button class="form-control btn-info" onclick="getMatchData()" id="getMatchData">Get score automatically</button>
-                </div>
-
-                <div class="col-sm-6">
-                    <button class="form-control btn-info" onclick="doScoringManually()" id="doAllManually">Do scoring manually</button>
+                    <button class="form-control btn-info" onclick="getMatchData()" id="getMatchData">Get score</button>
                 </div>
             </div>
         </div>
@@ -853,16 +811,6 @@
                         <tr>
                             <td colspan="11">
                                 <button class="form-control btn-info" onclick="calculateScoreFromUserInput()">Calculate Score Again</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="11">
-                                <button class="form-control btn-info" onclick="saveScores()" id="submit">Save scores</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="11">
-                                <label class="btn-info form-control" id="jpScore"><center></center></label>
                             </td>
                         </tr>
                         </tfoot>
