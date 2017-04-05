@@ -222,11 +222,13 @@ class TournamentState
     public $leagues;
     public $scoringRules;
     public $players;
+    public $jackpotScore;
 
     public function __construct()
     {
         $this->matchNo = 0;
         $this->leagues = array();
         $this->players = array();
+        $this->jackpotScore = 0;
     }
 }

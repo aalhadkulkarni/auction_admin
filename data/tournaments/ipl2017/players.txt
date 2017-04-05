@@ -105,3 +105,8 @@ KL Rahul,5,Keeper,RCB,Indian,Yes,1125
 JP Duminy,5,All Rounder,DD,Overseas,Yes,182
 Mitch Marsh,3,All Rounder,RPS,Overseas,No,221
 Krunal Pandya,1,All Rounder,MI,Indian,No,3183
+Manan Vohra,1,Batsman,KXIP,Indian,No,1085
+Shreyas Iyer,1,Batsman,DD,Indian,No,1563
+Sandeep Sharma,1,Bowler,KXIP,Indian,No,1112
+Ashoke Dinda,1,Bowler,RPS,Indian,No,48
+Mayank Agarwal,1,Batsman,RPS,Indian,No,158

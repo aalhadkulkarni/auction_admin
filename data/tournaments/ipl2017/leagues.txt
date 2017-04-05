@@ -1,1 +1,2 @@
 individual,Individual League
+auction,Auction League

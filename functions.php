@@ -288,7 +288,12 @@ function getLeagueTeams($tournament, $league)
 
         for($i=3; $i<14; $i++)
         {
-            $tournamentPlayer = getTournamentPlayer($tournament, $curTeam[$i]);
+            $useExact = false;
+            if($league == "auction")
+            {
+                $useExact = true;
+            }
+            $tournamentPlayer = getTournamentPlayer($tournament, $curTeam[$i], $useExact);
             $leaguePlayer = new LeaguePlayer();
             $leaguePlayer->id = $tournamentPlayer->id;
             $team->leaguePlayers[] = $leaguePlayer;
@@ -306,32 +311,23 @@ function setLeagueSpecificData($tournament, $league, $team, $curTeam)
 {
     if($league == "auction")
     {
-        $captain = getTournamentPlayer($tournament, $curTeam[13]);
+        $captain = getTournamentPlayer($tournament, $curTeam[14], true);
         $team->curCaptainId = $captain->id;
-        for($i=14; $i<count($curTeam); $i++)
-        {
-            $tournamentPlayer = getTournamentPlayer($tournament, $curTeam[$i]);
-            $leaguePlayer = new LeaguePlayer();
-            $leaguePlayer->id = $tournamentPlayer->id;
-            $leaguePlayer->isActive = false;
-            $team->leaguePlayers[] = $leaguePlayer;
-        }
     }
     else if($league == "individual")
     {
         $team->curCaptainId = $team->leaguePlayers[0]->id;
         $team->curViceCaptainId = $team->leaguePlayers[1]->id;
         $team->jackpotMatchNo = (int)$curTeam[14];
-        /*for($i=13; $i<count($curTeam); $i++)
-        {
-            $team->misc[] = $curTeam[$i];
-        }*/
     }
 }
 
-function getTournamentPlayer($tournament, $playerName)
+function getTournamentPlayer($tournament, $playerName, $useExact = false)
 {
-    $playerName = getRealPlayerName($playerName);
+    if(!$useExact)
+    {
+        $playerName = getRealPlayerName($playerName);
+    }
     $players = getTournamentPlayers($tournament);
     foreach ($players as $id=>$player)
     {
@@ -425,4 +421,14 @@ function getTeamJson($teamLine, $teamHeader, $onlyDisplay = false)
         $team[$headerVal] = $teamVal;
     }
     return $team;
+}
+
+function getMatchNo($tournament)
+{
+    $matchNo = file_get_contents(TOURNAMENTS_HOME_DIR . "/" . $tournament . "/matchCount.txt");
+    if(isStringSet($matchNo))
+    {
+        return intval($matchNo);
+    }
+    return 0;
 }

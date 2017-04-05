@@ -1,0 +1,6 @@
+Timestamp,Your name,Team Name,Player 1,Player 2,Player 3,Player 4,Player 5,Player 6,Player 7,Player 8,Player 9,Player 10,Player 11,Captain
+3/17/2017 7:11:46,Thane,Thane Thunders,Rohit Sharma,Virat Kohli,Jason Roy,Manish Pandey,Yusuf Pathan,Pawan Negi,Chris Morris,Jos Buttler,Pravin Kumar,Harbhajan Singh,Zahir Khan,Rohit Sharma
+3/17/2017 11:01:13,Pune,Pune-Nashik NH50 Bungaat,Chris Gayle,Brendon McCullum,Manan Vohra,Shreyas Iyer,Shane Watson,Shakib Al Hasan,Stuart Binny,MS Dhoni,Pravin Tambe,Sandeep Sharma,Ashoke Dinda,Chris Gayle
+3/17/2017 9:19:18,Karad,Kadak Karadkar,Ajinkya Rahane,Gautam Gambhir,Mayank Agarwal,David Miller,Glenn Maxwell,Kieron Pollard,Moises Henriques,Parthiv Patel,Ashish Nehra,Yuzavendra Chahal,Dhawal Kulkarni,Yuzavendra Chahal
+3/18/2017 13:12:28,Miraj,Magical Mirajkar,Aron Finch,Shikhar Dhawan,Ambati Rayudu,Kedar Jadhav,Ben Stokes,James Faulkner,Hardik Pandya,Robin Uthappa,Axar Patel,Piyush Chawla,Tymal Mills,Tymal Mills
+3/18/2017 22:56:33,Kolhapur,Kalandar Kolhapur,Suresh Raina,Steve Smith,David Warner,Eon Morgan,Yuvraj Singh,Corey Anderson,Krunal Pandya,Dinesh Kartik,Bhuvneshwar Kumar,Amit Mishra,Jaspreet Bumrah,Steve Smith
