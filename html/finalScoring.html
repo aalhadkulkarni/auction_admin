@@ -34,7 +34,7 @@
             $.ajax
             ({
                 type: "POST",
-                url: "tempPlayers.php",
+                url: "getNextMatchState.php",
                 data:
                 {
                     tournamentId: "ipl2017"
@@ -244,6 +244,7 @@
             for(var i in iplPlayers)
             {
                 var iplPlayer = iplPlayers[i];
+                tournamentState.players[iplPlayer.iplId].points += iplPlayer.points;
                 jackpotScore += iplPlayer.points;
             }
 
