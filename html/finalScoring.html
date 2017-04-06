@@ -245,6 +245,12 @@
             {
                 var iplPlayer = iplPlayers[i];
                 jackpotScore += iplPlayer.points;
+
+                var tournamentPlayer = tournamentState.players[iplPlayer.iplId];
+                if(tournamentPlayer != null)
+                {
+                    tournamentPlayer.points += iplPlayer.points;
+                }
             }
 
             tournamentState.jackpotScore = jackpotScore;

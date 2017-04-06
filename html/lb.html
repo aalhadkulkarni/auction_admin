@@ -146,11 +146,21 @@
                     extraInfoCol.html("");
                     if(leagueTeam.curCaptainId == leaguePlayer.id)
                     {
-                        extraInfoCol.html("Captain");
+                        var captainNo = 1;
+                        if(leagueTeam.ccCount)
+                        {
+                            captainNo = leagueTeam.ccCount+1;
+                        }
+                        extraInfoCol.html("Captain " + captainNo);
                     }
                     else if(leagueTeam.curViceCaptainId == leaguePlayer.id)
                     {
-                        extraInfoCol.html("Vice Captain");
+                        var viceCaptainNo = 1;
+                        if(leagueTeam.vccCount)
+                        {
+                            viceCaptainNo = leagueTeam.vccCount+1;
+                        }
+                        extraInfoCol.html("Vice Captain " + viceCaptainNo);
                     }
 
                     playerRow.append(indexCol);
