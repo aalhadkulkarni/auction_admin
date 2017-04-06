@@ -49,7 +49,7 @@
 
         function reset()
         {
-
+            $("#matchNo").val(tournamentState.matchNo+1);
         }
 
         function calculateScoreForPlayer(player)
@@ -244,7 +244,6 @@
             for(var i in iplPlayers)
             {
                 var iplPlayer = iplPlayers[i];
-                tournamentState.players[iplPlayer.iplId].points += iplPlayer.points;
                 jackpotScore += iplPlayer.points;
             }
 

@@ -114,6 +114,12 @@
                 var leaguePlayers = leagueTeam.leaguePlayers;
                 for(var j in leaguePlayers)
                 {
+                    if(j==11)
+                    {
+                        var extraRow = $("<tr></tr>");
+                        extraRow.append($("<th colspan='4'><center>Transfers</center></th>"));
+                        tbody.append(extraRow);
+                    }
                     var leaguePlayer = leaguePlayers[j];
                     var playerRow = $("<tr></tr>");
 
@@ -123,7 +129,15 @@
                     var nameCol = $("<td width='40%'></td>");
                     var player = tournamentState.players[leaguePlayer.id];
                     var playerName = player.name + " (" + player.cricketTeam + ")";
-                    nameCol.html(playerName);
+
+                    if(leaguePlayer.isActive)
+                    {
+                        nameCol.html(playerName);
+                    }
+                    else
+                    {
+                        nameCol.html("<s>" + playerName + "</s>")
+                    }
 
                     var pointsCol = $("<td width='20%'></td>");
                     pointsCol.html(leaguePlayer.points);
