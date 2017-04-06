@@ -13,8 +13,7 @@
             leagues: [],
             matchNo: 0,
             players: [],
-            scoringRules: [],
-            jackpotScore: 0
+            scoringRules: []
         };
 
         var iplMatch = {};
@@ -24,13 +23,6 @@
 
         function init()
         {
-            window.addEventListener('error', function(e) {
-                if(e.target && e.target.id && e.target.id == "getScoreScript")
-                {
-                    alert("Failed to fetch data");
-                    $("#getMatchData").html("Get score");
-                }
-            }, true);
             $.ajax
             ({
                 type: "POST",
@@ -47,9 +39,28 @@
             });
         }
 
-        function reset()
+        function getRuleText(text, rule)
         {
+            switch(rule.type)
+            {
+                case "value":
+                    return rule.value + " " + text;
 
+                case "range":
+                    if(rule.upperBound === null)
+                    {
+                        return text + "  " + rule.lowerBound + " or more";
+                    }
+                    return text + " between " + rule.lowerBound + " to " + rule.upperBound;
+
+                case "boolean":
+                    return text;
+
+                case "perQty":
+                    var temp ="Every " + text;
+                    return temp.substr(0, temp.length-1);
+            }
+            return "";
         }
 
         function calculateScoreForPlayer(player)
@@ -96,8 +107,6 @@
             }
 
             player.points = playerPoints;
-
-            $("#points" + player.iplId).html(player.points);
         }
 
         function getApplicableRulesAndPointsForParameter(player, parameter)
@@ -174,6 +183,7 @@
 
         function getMatchData()
         {
+            iplPlayers = [];
             $("#getMatchData").html("Getting score. Please wait...");
             var matchNo = $("#matchNo").val();
             if (matchNo.length==1)
@@ -183,7 +193,6 @@
             var head = document.getElementsByTagName("head")[0];
             var script = document.createElement('script');
             script.type = 'text/javascript';
-            script.id = "getScoreScript";
             script.async = true;
             script.src = "http://datacdn.iplt20.com/dynamic/data/core/cricket/2012/ipl2017/ipl2017-" + matchNo + "/scoring.js";
             document.getElementsByTagName('head')[0].appendChild(script);
@@ -196,10 +205,11 @@
 
             setTeams();
             setPlayers();
-            setMoMSelect();
-            setWinningTeamSelect();
             setPlayerStats();
             calculateScores();
+
+            updateTeamScores();
+            displayData();
         }
 
         function updateTeamScores()
@@ -212,42 +222,53 @@
                 for(var j in leagueTeams)
                 {
                     var leagueTeam = leagueTeams[j];
-                    console.log(leagueTeam.ownerName);
-                    var leaguePlayers = leagueTeam.leaguePlayers;
+                    var leaguePlayers = leagueTeam.activeLeaguePlayers;
                     for(var k in leaguePlayers)
                     {
                         var leaguePlayer = leaguePlayers[k];
-                        if(leaguePlayer.isActive)
+                        var iplPlayer = iplPlayers[leaguePlayer.id];
+                        if(iplPlayer)
                         {
-                            var iplPlayer = iplPlayers[leaguePlayer.id];
-                            if(iplPlayer)
+                            var curPoints = iplPlayer.points;
+                            if(leagueTeam.curCaptainId == leaguePlayer.id)
                             {
-                                var curPoints = iplPlayer.points;
-                                if(leagueTeam.curCaptainId && leagueTeam.curCaptainId == leaguePlayer.id)
-                                {
-                                    curPoints *= 2;
-                                }
-                                else if(leagueTeam.curViceCaptainId && leagueTeam.curViceCaptainId == leaguePlayer.id)
-                                {
-                                    curPoints *= 1.5;
-                                }
-                                leaguePlayer.points += curPoints;
-                                leagueTeam.points += curPoints;
-                                console.log(iplPlayer.name + " " + leaguePlayer.points);
+                                curPoints *= 2;
+                            }
+                            else if(leagueTeam.curViceCaptainId == leaguePlayer.id)
+                            {
+                                curPoints *= 1.5;
                             }
                         }
                     }
                 }
             }
+        }
 
-            var jackpotScore = 0;
+        function displayData()
+        {
+            var table = $("#scoresTable tbody");
+            table.empty();
             for(var i in iplPlayers)
             {
-                var iplPlayer = iplPlayers[i];
-                jackpotScore += iplPlayer.points;
-            }
+                var player = iplPlayers[i];
 
-            tournamentState.jackpotScore = jackpotScore;
+                var row = $("<tr id='player" + player.iplId + "'></tr>");
+
+                var nameCol = $("<td></td>");
+                nameCol.html(player.name + " (" + player.team + ")");
+
+                var pointsCol = $("<td></td>");
+                pointsCol.html(player.points);
+
+                var linkCol = $("<td></td>");
+                linkCol.html("<a href='#' onclick='displayScoringDetails(" + player.iplId + "); return false;'>See details</a>");
+
+                row.append(nameCol);
+                row.append(pointsCol);
+                row.append(linkCol);
+
+                table.append(row);
+            }
         }
 
         function setTeams()
@@ -260,9 +281,6 @@
         {
             var team1Players = iplMatch.matchInfo.teams[0].players;
             var team2Players = iplMatch.matchInfo.teams[1].players;
-
-            iplPlayers = {};
-            $("#statsTable tbody").empty();
 
             setPlayersForTeam(team1Players, team1);
             setPlayersForTeam(team2Players, team2);
@@ -296,96 +314,7 @@
                     points: 0
                 };
                 iplPlayers[iplPlayer.id] = player;
-                addPlayerRow(iplPlayer, team);
             }
-        }
-
-        function addPlayerRow(iplPlayer, team)
-        {
-            var statsTable = $("#statsTable tbody");
-            var tr = $("<tr></tr>");
-
-            var nameCol = $("<td></td>");
-            nameCol.html(iplPlayer.shortName + " (" + team + ")");
-
-            var notoutCol = $("<td></td>");
-            var notoutInput = $("<select length='2' class='form-control' id='notout" + iplPlayer.id + "'></select>");
-            notoutInput.append($("<option value='0'>No</option>"));
-            notoutInput.append($("<option value='1'>Yes</option>"));
-            notoutCol.html(notoutInput);
-
-            var runsCol = $("<td></td>");
-            runsCol.html($("<input size='3' class='form-control' id='runs" + iplPlayer.id + "'>"));
-
-            var boundariesCol = $("<td></td>");
-            boundariesCol.html($("<input size='2' class='form-control' id='boundaries" + iplPlayer.id + "'>"));
-
-            var strikerrateCol = $("<td></td>");
-            strikerrateCol.html($("<input size='6' class='form-control' id='strikerate" + iplPlayer.id + "'>"));
-
-            var wicketsCol = $("<td></td>");
-            wicketsCol.html($("<input size='2' class='form-control' id='wickets" + iplPlayer.id + "'>"));
-
-            var dotsCol = $("<td></td>");
-            dotsCol.html($("<input size='2' class='form-control' id='dots" + iplPlayer.id + "'>"));
-
-            var economyCol = $("<td></td>");
-            economyCol.html($("<input size='4' class='form-control' id='economy" + iplPlayer.id + "'>"));
-
-            var hattrickCol = $("<td></td>");
-            var hattrickInput = $("<select class='form-control' id='hattrick" + iplPlayer.id + "'></select>");
-            hattrickInput.append($("<option value='0'>No</option>"));
-            hattrickInput.append($("<option value='1'>Yes</option>"));
-            hattrickCol.html(hattrickInput);
-
-            var fieldingCol = $("<td></td>");
-            fieldingCol.html($("<input size='2' class='form-control' id='fielding" + iplPlayer.id + "'>"));
-
-            var pointsCol = $("<td id='points" + iplPlayer.id + "'></td>");
-            pointsCol.html("0");
-
-            tr.append(nameCol);
-            tr.append(notoutCol);
-            tr.append(runsCol);
-            tr.append(boundariesCol);
-            tr.append(strikerrateCol);
-            tr.append(wicketsCol);
-            tr.append(dotsCol);
-            tr.append(economyCol);
-            tr.append(hattrickCol);
-            tr.append(fieldingCol);
-            tr.append(pointsCol);
-
-            statsTable.append(tr);
-        }
-
-        function setMoMSelect()
-        {
-            $("#MoMDiv").html("");
-            var select = $("<select class='form-control' id='MoM'></select>");
-            select.append($("<option disabled selected value>Select MoM</option>"))
-            for(var i in iplPlayers)
-            {
-                var player = iplPlayers[i];
-                if(player.team == team1 || player.team == team2)
-                {
-                    var option = $("<option value='" + player.iplId + "'>" + player.fullName + "</option>");
-                    select.append(option);
-                }
-            }
-            $("#MoMDiv").html(select);
-        }
-
-        function setWinningTeamSelect()
-        {
-            $("#winningTeamDiv").html("");
-            var winnerSelect = $("<select id='winningTeam' class='form-control'></select>");
-            winnerSelect.append($("<option value='noresult' selected='true'>Tie / No Result</option>"))
-            var team1Option = $("<option value='" + team1 + "'>" + team1 + "</option>");
-            var team2Option = $("<option value='" + team2 + "'>" + team2 + "</option>");
-            winnerSelect.append(team1Option);
-            winnerSelect.append(team2Option);
-            $("#winningTeamDiv").append(winnerSelect);
         }
 
         function setPlayerStats()
@@ -396,21 +325,18 @@
                 setInningsStats(innings[i]);
             }
             var playerOfTheMatchName = iplMatch.matchInfo.additionalInfo["result.playerofthematch"];
-            var MoMselect = $("#MoM");
             for(var i in iplPlayers)
             {
                 var player = iplPlayers[i];
                 if(player.fullName == playerOfTheMatchName)
                 {
                     player.MoM = true;
-                    MoMselect.val(player.iplId);
                 }
             }
 
             if(iplMatch.matchInfo && iplMatch.matchInfo.matchStatus && iplMatch.matchInfo.matchStatus.outcome)
             {
                 var matchResult = iplMatch.matchInfo.matchStatus.outcome;
-                var winnerSelect = $("#winningTeam");
                 if(matchResult == "A")
                 {
                     winningTeam = team1;
@@ -421,56 +347,123 @@
                     winningTeam = team2;
                     losingTeam = team1;
                 }
-                else
+                for(var i in iplPlayers)
                 {
-                    winningTeam = null;
-                    losingTeam = null;
+                    var player = iplPlayers[i];
+                    if(player.team == winningTeam)
+                    {
+                        player.winningTeam = true;
+                    }
+                    else if(player.team == losingTeam)
+                    {
+                        player.losingTeam = true;
+                    }
                 }
-                winnerSelect.val(winningTeam);
             }
+        }
 
+        function displayScoringDetails(playerId)
+        {
             for(var i in iplPlayers)
             {
-                var player = iplPlayers[i];
-                if(player.team == winningTeam)
-                {
-                    player.winningTeam = true;
-                }
-                else if(player.team == losingTeam)
-                {
-                    player.losingTeam = true;
-                }
+                $("#player" + i).removeClass("info");
             }
+            $("#player" + playerId).addClass("info");
+            var player = iplPlayers[playerId];
+            var playerPoints = 0;
 
-            for(var i in iplPlayers)
+            var parameters = tournamentState.scoringRules.parameters;
+            var rules = tournamentState.scoringRules.rules;
+            var pointsForRule = [];
+            for(var i in rules)
             {
-                var player = iplPlayers[i];
-                var id = player.iplId;
-
-                $("#runs" + id).val(player.runs);
-                $("#strikerate" + id).val(player.strikerate);
-                $("#wickets" + id).val(player.wickets);
-                $("#boundaries" + id).val(player.boundaries);
-                $("#dots" + id).val(player.dots);
-                $("#economy" + id).val(player.economy);
-                $("#fielding" + id).val(player.fielding);
-                if(player.notout)
+                pointsForRule[i.toString()] = null;
+            }
+            for(var i in parameters)
+            {
+                var parameter = parameters[i];
+                if (player[i] !== null)
                 {
-                    $("#notout" + id).val("1");
-                }
-                else
-                {
-                    $("#notout" + id).val("0");
-                }
-                if(player.hattrick)
-                {
-                    $("#hattrick" + id).val("1");
-                }
-                else
-                {
-                    $("#hattrick" + id).val("0");
+                    var result = getApplicableRulesAndPointsForParameter(player, parameter);
+                    if(result.length>0)
+                    {
+                        for(var j in result)
+                        {
+                            var object = result[j];
+                            var ruleId = object.ruleId;
+                            var points = object.points;
+                            pointsForRule[ruleId] = points;
+                        }
+                    }
                 }
             }
+
+            for(var j in pointsForRule)
+            {
+                $("#appliedPoints" + j).html("");
+                $("#rule" + j).removeClass("success");
+                $("#rule" + j).removeClass("danger");
+                if(pointsForRule[j] !== null)
+                {
+                    playerPoints += pointsForRule[j];
+                    if(pointsForRule[j]>0)
+                    {
+                        $("#rule" + j).addClass("success");
+                        $("#appliedPoints" + j).html(pointsForRule[j]);
+                    }
+                    if(pointsForRule[j]<0)
+                    {
+                        $("#rule" + j).addClass("danger");
+                        $("#appliedPoints" + j).html(pointsForRule[j]);
+                    }
+                    var overrideRuleId =rules[j].overrideRuleId;
+                    if(overrideRuleId !== null)
+                    {
+                        pointsForRule[overrideRuleId] = null
+                    }
+                }
+            }
+        }
+
+        function reset()
+        {
+            var rulesTable = $("#rulesTable tbody");
+            rulesTable.empty();
+
+            var rules = tournamentState.scoringRules.rules;
+            var parameters = tournamentState.scoringRules.parameters;
+            for(var i in parameters)
+            {
+                $("#" + i).val("");
+
+                var parameter = parameters[i];
+                var ruleIds = parameter.ruleIds;
+                for(var i in ruleIds)
+                {
+                    var ruleId = ruleIds[i]
+                    var rule = rules[ruleId];
+
+                    var ruleText = getRuleText(parameter.displayName, rule);
+
+                    var ruleRow = $("<tr id='rule" + ruleId + "'></tr>");
+
+                    var conditionTd = $("<td></td>");
+                    conditionTd.html(ruleText);
+
+                    var pointsTd = $("<td></td>");
+                    pointsTd.html(rule.points);
+
+                    var appliedPointsTd = $("<td id='appliedPoints" + ruleId + "'></td>");
+                    appliedPointsTd.html("");
+
+                    ruleRow.append(conditionTd);
+                    ruleRow.append(pointsTd);
+                    ruleRow.append(appliedPointsTd);
+
+                    rulesTable.append(ruleRow);
+                }
+            }
+            $("#rulesHeading").html("Rules");
         }
 
         function setInningsStats(innings)
@@ -528,205 +521,12 @@
             }
         }
 
-        function calculateScoreFromUserInput()
-        {
-            winningTeam = $("#winningTeam").val();
-            var MoMId = $("#MoM").val();
-
-            for(var i in tournamentState.players)
-            {
-                var tournamentPlayer = tournamentState.players[i];
-                var id = tournamentPlayer.id;
-
-                var player = iplPlayers[id];
-
-                if(player!=undefined)
-                {
-                    player.runs = null;
-                    player.wickets = null;
-                    player.strikerate = null;
-                    player.boundaries = null;
-                    player.dots = null;
-                    player.economy = null;
-                    player.notout = null;
-                    player.winningTeam = null;
-                    player.losingTeam = null;
-                    player.hattrick = null;
-                    player.MoM = null;
-                    var runsInput = $("#runs" + id);
-                    player.runs = getVal(runsInput);
-
-                    var strikerateInput = $("#strikerate" + id);
-                    player.strikerate = getVal(strikerateInput);
-
-                    var wicketsInput = $("#wickets" + id);
-                    player.wickets = getVal(wicketsInput);
-
-                    var boundariesInput = $("#boundaries" + id);
-                    player.boundaries = getVal(boundariesInput);
-
-                    var dotsInput = $("#dots" + id);
-                    player.dots = getVal(dotsInput);
-
-                    var economysInput = $("#economy" + id);
-                    player.economy = getVal(economysInput);
-
-                    var fieldingInput = $("#fielding" + id);
-                    player.fielding = getVal(fieldingInput);
-
-                    var notoutInput = $("#notout" + id);
-                    var notout = getVal(notoutInput);
-                    if(notout==null)
-                    {
-                        player.notout = null;
-                    }
-                    else if(notout == "1")
-                    {
-                        player.notout = true;
-                    }
-                    else if(notout == "0")
-                    {
-                        player.notout = false;
-                    }
-
-                    var hattrickInput = $("#hattrick" + id);
-                    var hattrick = getVal(hattrickInput);
-                    if(hattrick==null)
-                    {
-                        player.hattrick = null;
-                    }
-                    else if(hattrick == "1")
-                    {
-                        player.hattrick = true;
-                    }
-                    else if(hattrick == "0")
-                    {
-                        player.hattrick = false;
-                    }
-
-                    if(player.iplId == MoMId)
-                    {
-                        player.MoM = true;
-                    }
-                    player.winningTeam = null;
-                    player.losingTeam = null;
-                    if(player.team == winningTeam)
-                    {
-                        player.winningTeam = true;
-                        player.losingTeam = false;
-                    }
-                    else if(winningTeam!="noresult")
-                    {
-                        player.winningTeam = false;
-                        player.losingTeam = true;
-                    }
-                }
-            }
-
-            calculateScores();
-        }
-
-        function getVal(input)
-        {
-            if(input && typeof input.val == "function" && input.val().trim().length>0)
-            {
-                return input.val().trim();
-            }
-            return null;
-        }
-
-        function doScoringManually()
-        {
-            $("#statsTable tbody").empty();
-            iplPlayers = {};
-            team1 = $("#team1").val();
-            team2 = $("#team2").val();
-
-            var players = tournamentState.players;
-            for(var i in players)
-            {
-                var player = players[i];
-                if(player.cricketTeam == team1 || player.cricketTeam == team2)
-                {
-                    var iplPlayer =
-                    {
-                        iplId: player.id,
-                        id: player.id,
-                        team: player.cricketTeam,
-                        name: player.name,
-                        fullName: player.name,
-                        shortName: player.name,
-                        notout: false,
-                        runs: null,
-                        boundaries: null,
-                        strikerate: null,
-                        wickets: null,
-                        dots: null,
-                        economy: null,
-                        hattrick: null,
-                        fielding: null,
-                        MoM: null,
-                        winningTeam: null,
-                        losingTeam: null,
-                        orangeCap: null,
-                        purpleCap: null,
-                        points: 0
-                    };
-                    iplPlayers[iplPlayer.id] = iplPlayer;
-                    addPlayerRow(iplPlayer, player.cricketTeam);
-                }
-            }
-            setMoMSelect();
-            setWinningTeamSelect();
-        }
-
-        function saveScores()
-        {
-            if(confirm("Are you sure"))
-            {
-                updateTeamScores();
-                tournamentState.matchNo++;
-
-                $("#submit").val("Saving. Please wait...");
-                $("#submit").prop("disabled", true);
-                $.ajax
-                ({
-                    type: "POST",
-                    url: "saveTournamentState.php",
-                    data:
-                    {
-                        state: JSON.stringify(tournamentState)
-                    },
-                    success: function(data)
-                    {
-                        if(data == "1")
-                        {
-                            alert("Data saved successfully. Please check leader board");
-                            $("#submit").val("Data saved successfully");
-                        }
-                        else
-                        {
-                            alert("Failed. Please try again.");
-                            $("#submit").val("Save scores");
-                            $("#submit").prop("disabled", false);
-                        }
-                    },
-                    error: function (e)
-                    {
-                        alert("Failed. Please try again.");
-                        $("#submit").val("Save scores");
-                        $("#submit").prop("disabled", false);
-                    }
-                });
-            }
-        }
-
         window.onload = init;
     </script>
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container">
     <div class="panel panel-info">
         <div class="panel panel-heading">
             Select match number
@@ -743,82 +543,59 @@
         </div>
     </div>
 
-    <div class="panel panel-info">
-        <div class="panel panel-heading">
-            Match Extra Info
-        </div>
-        <div class="panel panel-body">
-            <div class="row">
-                <div class="col-sm-6" id="winningTeamDiv">
-                </div>
-
-                <div class="col-sm-6" id="MoMDiv">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
 
-        <div class="col-sm-12">
+        <div class="col-sm-6">
             <div class="panel panel-info">
                 <div class="panel panel-heading">
                     Scores
                 </div>
                 <div class="panel panel-body">
-                    <table class="table table-condensed" id="statsTable">
+                    <table class="table table-condensed" id="scoresTable">
                         <thead>
                         <tr>
                             <th>
                                 Player
                             </th>
-                            </th>
-                            <th>
-                                Not Out
-                            </th>
-                            <th>
-                                Runs
-                            </th>
-                            <th>
-                                4s & 6s
-                            </th>
-                            <th>
-                                SR
-                            </th>
-                            <th>
-                                Wickets
-                            </th>
-                            <th>
-                                Dots
-                            </th>
-                            <th>
-                                Economy
-                            </th>
-                            <th>
-                                Hattrick
-                            </th>
-                            <th>
-                                Ct/St/RO
-                            </th>
                             <th>
                                 Points
+                            </th>
+                            <th>
+                                Details
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="11">
-                                <button class="form-control btn-info" onclick="calculateScoreFromUserInput()">Calculate Score Again</button>
-                            </td>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-6">
+            <div class="panel panel-info">
+                <div class="panel panel-heading" id="rulesHeading">
+                    Loading, please wait...
+                </div>
+                <div class="panel panel-body">
+                    <table class="table table-condensed" id="rulesTable">
+                        <thead>
+                        <tr>
+                            <th width="50%">Condition</th>
+                            <th width="25%">Points</th>
+                            <th width="25%">Points Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
 </body>

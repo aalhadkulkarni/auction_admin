@@ -91,7 +91,7 @@
                     nameCol.html(display);
 
                     var pointsCol = $("<td></td>");
-                    pointsCol.html(player.points);
+                    pointsCol.html(tournamentState.players[player.id].points);
 
                     playerRow.append(nameCol);
                     playerRow.append(pointsCol);
@@ -118,6 +118,9 @@
                     var display = player.name + " (" + player.cricketTeam + ")";
                     var playerRow = $("<tr id='otherPlayer" + player.id + "' onclick='toggleOtherPlayer(" + player.id +")'></tr>");
                     playerRow.append($("<td>" + display + "</td>"));
+                    var pointsCol = $("<td></td>");
+                    pointsCol.html(player.points);
+                    playerRow.append(pointsCol);
                     otherPlayersTable.append(playerRow);
                 }
             }
@@ -458,7 +461,7 @@
                                 Player
                             </th>
                             <th>
-                                Points
+                                Total Points
                             </th>
                         </tr>
                         </thead>
@@ -482,6 +485,9 @@
                         <tr>
                             <td>
                                 Player
+                            </td>
+                            <td>
+                                Total Points
                             </td>
                         </tr>
                         </thead>
