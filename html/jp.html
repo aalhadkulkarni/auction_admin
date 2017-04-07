@@ -8,7 +8,8 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var tournamentState;
+        var tournamentState = {};
+        var jpScores = [];
 
         function init()
         {
@@ -23,7 +24,20 @@
                 success: function(data)
                 {
                     tournamentState = data;
-                    display();
+                    $.ajax
+                    ({
+                        type: "POST",
+                        url: "getJpScores.php",
+                        data:
+                        {
+                            tournamentId: "ipl2017"
+                        },
+                        success: function(data)
+                        {
+                            jpScores = data;
+                            display();
+                        }
+                    });
                 }
             });
         }
@@ -52,17 +66,28 @@
                     teamList = teamList.substr(0, teamList.length-2);
                     var jpRow = $("<tr></tr>");
 
-                    var matchCol = $("<td width='20%'></td>");
+                    var matchCol = $("<td width='15%'></td>");
                     matchCol.html(jp);
 
-                    var teamsCol = $("<td width='50%'></td>");
+                    var teamsCol = $("<td width='45%'></td>");
                     teamsCol.html(teamList);
 
-                    var countCol = $("<td width='30%'></td>");
+                    var scoreCol = $("<td width='20%'></td>");
+                    if(jpScores[jp])
+                    {
+                        scoreCol.html(jpScores[jp]);
+                    }
+                    else
+                    {
+                        scoreCol.html("-");
+                    }
+
+                    var countCol = $("<td width='20%'></td>");
                     countCol.html(count);
 
                     jpRow.append(matchCol);
                     jpRow.append(teamsCol);
+                    jpRow.append(scoreCol);
                     jpRow.append(countCol);
 
                     table.append(jpRow);
@@ -119,6 +144,9 @@
                     </th>
                     <th>
                         Teams
+                    </th>
+                    <th>
+                        Score
                     </th>
                     <th>
                         Number of teams
