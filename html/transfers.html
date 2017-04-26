@@ -18,6 +18,7 @@
         var tournamentState;
         var league = null;
         var selectedTeam = null;
+        var selectedTeamId = null;
 
         var selectedPlayersList = {};
 
@@ -27,6 +28,7 @@
             $("#getTeamInfo").html("Getting team details...");
             var teamName = $("#teamName").val();
             var teamId = $("#teamId").val();
+            selectedTeamId = teamId;
 
             $.ajax
             ({
@@ -211,7 +213,7 @@
             }
         }
 
-        function saveTeam()
+        function saveTransfers()
         {
             var count = 0;
             for(var i in selectedPlayersList)
@@ -238,12 +240,21 @@
                 alert("You have kicked out your current vice captain. Please select new vice captain");
                 return;
             }
+
+            var transfersObject =
+            {
+                in: [],
+                out: [],
+                captain: null,
+                viceCaptain: null
+            };
             for(var i in selectedTeam.leaguePlayers)
             {
                 var player = selectedTeam.leaguePlayers[i];
                 if(!selectedPlayersList[player.id])
                 {
-                    player.isActive = false;
+                    //player.isActive = false;
+                    transfersObject.out.push(player.id);
                 }
             }
 
@@ -263,14 +274,15 @@
                 if(!found)
                 {
                     transfers++;
-                    var newPlayer =
+                    /*var newPlayer =
                     {
                         id: i,
                         isActive: true,
                         misc: [],
                         points: 0
                     };
-                    selectedTeam.leaguePlayers.push(newPlayer);
+                    selectedTeam.leaguePlayers.push(newPlayer);*/
+                    transfersObject.in.push(i);
                 }
             }
 
@@ -279,7 +291,8 @@
 
             if(newCaptainId!=selectedTeam.curCaptainId)
             {
-                selectedTeam.curCaptainId = newCaptainId;
+                //selectedTeam.curCaptainId = newCaptainId;
+                transfersObject.captain = newCaptainId;
                 if(selectedTeam.ccCount)
                 {
                     selectedTeam.ccCount++;
@@ -292,7 +305,8 @@
 
             if(newViceCaptainId!=selectedTeam.curViceCaptainId)
             {
-                selectedTeam.curViceCaptainId = newViceCaptainId;
+                //selectedTeam.curViceCaptainId = newViceCaptainId;
+                transfersObject.viceCaptain = newViceCaptainId;
                 if(selectedTeam.vccCount)
                 {
                     selectedTeam.vccCount++;
@@ -314,16 +328,19 @@
 
             if(selectedTeam.transferCount>11)
             {
+                selectedTeam.transferCount -= transfers;
                 alert("Your transfer limit is exceeded");
                 return;
             }
             if(selectedTeam.ccCount>7)
             {
+                selectedTeam.ccCount--;
                 alert("Your captain change limit is exceeded");
                 return;
             }
             if(selectedTeam.vccCount>7)
             {
+                selectedTeam.vccCount--;
                 alert("Your vice captain change limit is exceeded");
                 return;
             }
@@ -333,6 +350,14 @@
 
             if(captain.cricketTeam == viceCaptain.cricketTeam)
             {
+                if(transfersObject.captain!=null)
+                {
+                    selectedTeam.ccCount--;
+                }
+                if(transfersObject.viceCaptain!=null)
+                {
+                    selectedTeam.vccCount--;
+                }
                 alert("Captain and Vice captain cannot be from the same IPL team");
                 return;
             }
@@ -343,10 +368,12 @@
             $.ajax
             ({
                 type: "POST",
-                url: "doTransfers.php",
+                url: "saveTransfers.php",
                 data:
                 {
-                    state: JSON.stringify(tournamentState)
+                    //state: JSON.stringify(tournamentState)
+                    teamId: selectedTeamId,
+                    transfers: JSON.stringify(transfersObject)
                 },
                 success: function (result)
                 {
@@ -356,12 +383,22 @@
                     }
                     else
                     {
+                        selectedTeam.transferCount-=transfers;
                         alert("Team could not be saved. Please try again");
                         $("#submit").prop("disabled", false);
                     }
                 },
                 error: function(e)
                 {
+                    selectedTeam.transferCount-=transfers;
+                    if(transfersObject.captain!=null)
+                    {
+                        selectedTeam.ccCount--;
+                    }
+                    if(transfersObject.viceCaptain!=null)
+                    {
+                        selectedTeam.vccCount--;
+                    }
                     alert("Team could not be saved. Please try again");
                     $("#submit").prop("disabled", false);
                 }
@@ -373,28 +410,42 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="panel panel-info">
         <div class="panel-body">
 
             <div class="row">
-                <div class="col-sm-2">
-                    <a href="transfers.php">Transfers</a>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="transfers.php">Transfers</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="rules.php">Scoring rules</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="liveScoring.php">Live scoring</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="mvp.php">Most valuable players</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-2">
-                    <a href="lb.php">Leader board</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="jp.php">Jackpot matches</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="mvp.php">Most valuable players</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="rules.php">Scoring rules</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="liveScoring.php">Live scoring</a>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="lb.php">Leader board</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="gw.php">GameWeek LB</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="jp.php">Jackpot matches</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="3">Phoenix award (Coming soon)</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -531,7 +582,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button class="btn-info form-control" onclick="saveTeam()" id="submit">
+            <button class="btn-info form-control" onclick="saveTransfers()" id="submit">
                 Save changes
             </button>
         </div>
