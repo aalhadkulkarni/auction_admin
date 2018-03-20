@@ -52,11 +52,11 @@ function getPlayers()
         $player = new Player();
 
         $player->id = $id;
-        $player->nationality = $playerData[0];
+        $player->team = $playerData[0];
         $player->name = $playerData[1];
         $player->role = $playerData[2];
         $player->basePrice = $playerData[3];
-        $player->isStar = ($playerData[3] >=3) ? true : false;
+        $player->slab = $playerData[4];
 
         $players[$id] = $player;
 

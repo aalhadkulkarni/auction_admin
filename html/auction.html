@@ -271,23 +271,20 @@
 
         function setCurrentCategory()
         {
-            var category = $("#categorySelect").val();
-            if(!category) return;
-            var roles = ["All Rounder", "Keeper", "Batsman", "Bowler"];
-            var role = roles[category%4];
-            var isStar = (category<=4);
+            var role = $("#roleSelect").val();
+            var slab = $("#slabSelect").val();
 
             var categoryPlayers = auctionState.allRemainingPlayers;
-            if(category == 9)
+            /*if(category == 9)
             {
                 categoryPlayers = auctionState.unsoldPlayersRemaining;
-            }
+            }*/
 
             $("#currentCategoryPlayersTable tbody").empty();
             for (var j in categoryPlayers)
             {
                 var player = categoryPlayers[j];
-                if(category==9 || player.role==role && player.isStar==isStar)
+                if((player.role==role || role == "All") && (player.slab==slab || slab == "All"))
                 {
                     var nameCol = $("<td></td>");
                     nameCol.html(player.name);
@@ -296,7 +293,7 @@
                     priceCol.html(player.basePrice + "L");
 
                     var teamCol = $("<td></td>");
-                    teamCol.html(player.nationality);
+                    teamCol.html(player.team);
 
                     var playerRow = $("<tr id='player" + player.id + "' class='playerRow' onclick='setCurrentPlayer(" + player.id + ")'></tr>");
                     playerRow.append(nameCol);
@@ -314,52 +311,7 @@
             $(".playerRow").removeClass("info");
             $("#player" + playerId).addClass("info");
 
-            $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.nationality + ") with base price " + currentPlayer.basePrice + "L");
-        }
-
-        function setCategoryLabel(category)
-        {
-            var label = "Remaining players in current category (";
-            if(category.isStar)
-            {
-                label += "Star ";
-            }
-            else
-            {
-                label += "Ordinary ";
-            }
-
-            if(category.nationality=="Indian")
-            {
-                label += "Indian ";
-            }
-            else
-            {
-                label += "Overseas ";
-            }
-
-            switch (category.role)
-            {
-                case "Batsman":
-                    label += "Batsmen";
-                    break;
-
-                case "Bowler":
-                    label += "Bowlers";
-                    break;
-
-                case "All Rounder":
-                    label += "All Rounders";
-                    break;
-
-                case "Keeper":
-                    label+= "Keepers";
-                    break;
-            }
-
-            label += ")";
-
-            $("#currentCategoryLabel").html(label);
+            $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L");
         }
 
         function setSummary()
@@ -708,22 +660,27 @@
                     Current category
                 </div>
                 <div class="panel panel-body table-responsive" id="currentCategoryPlayersTable">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <select class="form-control" id="slabSelect" onchange="setCurrentCategory()">
+                                <option>Marquee</option>
+                                <option>Star</option>
+                                <option>Others</option>
+                                <option selected>All</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="roleSelect" onchange="setCurrentCategory()">
+                                <option>Batsman</option>
+                                <option>Bowler</option>
+                                <option>All Rounder</option>
+                                <option>Keeper</option>
+                                <option selected>All</option>
+                            </select>
+                        </div>
+                    </div>
                     <table class="table">
                         <thead>
-                        <tr>
-                            <select class="form-control" id="categorySelect" onchange="setCurrentCategory()">
-                                <option value disabled selected> -- Select category -- </option>
-                                <option value="1">Star Keepers</option>
-                                <option value="2">Star Batsmen</option>
-                                <option value="3">Star Bowlers</option>
-                                <option value="4">Star All Rounders</option>
-                                <option value="5">Ordinary Keepers</option>
-                                <option value="6">Ordinary Batsmen</option>
-                                <option value="7">Ordinary Bowlers</option>
-                                <option value="8">Ordinary All Rounders</option>
-                                <option value="9">Unsold Players</option>
-                            </select>
-                        </tr>
                         <tr>
                             <th>Player name</th>
                             <th>Base price</th>

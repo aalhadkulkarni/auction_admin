@@ -57,23 +57,18 @@ class AuctionState
         $this->remainingUnsoldPlayersCount = 0;
         $this->categories = array
         (
-            new Category("Keeper", "Indian", true),
-            new Category("Keeper", "Overseas", true),
-            new Category("All Rounder", "Indian", true),
-            new Category("All Rounder", "Overseas", true),
-            new Category("Batsman", "Indian", true),
-            new Category("Batsman", "Overseas", true),
-            new Category("Bowler", "Indian", true),
-            new Category("Bowler", "Overseas", true),
-
-            new Category("All Rounder", "Indian", false),
-            new Category("All Rounder", "Overseas", false),
-            new Category("Batsman", "Indian", false),
-            new Category("Batsman", "Overseas", false),
-            new Category("Bowler", "Indian", false),
-            new Category("Bowler", "Overseas", false),
-            new Category("Keeper", "Indian", false),
-            new Category("Keeper", "Overseas", false),
+            new Category("Keeper", "Marquee"),
+            new Category("Keeper", "Star"),
+            new Category("Keeper", "Others"),
+            new Category("All Rounder", "Marquee"),
+            new Category("All Rounder", "Star"),
+            new Category("All Rounder", "Others"),
+            new Category("Batsman", "Marquee"),
+            new Category("Batsman", "Star"),
+            new Category("Batsman", "Others"),
+            new Category("Bowler", "Marquee"),
+            new Category("Bowler", "Star"),
+            new Category("Bowler", "Others"),
         );
     }
 }
@@ -85,8 +80,8 @@ class Player
     public $role;
     public $basePrice;
     public $iplTeam;
-    public $nationality;
-    public $isStar;
+    public $team;
+    public $slab;
 }
 
 class AuctionTeam
@@ -107,14 +102,12 @@ class Action
 class Category
 {
     public $role;
-    public $nationality;
-    public $isStar;
+    public $slab;
 
-    public function __construct($role, $nationality, $isStar)
+    public function __construct($role, $slab)
     {
         $this->role = $role;
-        $this->nationality = $nationality;
-        $this->isStar = $isStar;
+        $this->slab = $slab;
     }
 }
 
