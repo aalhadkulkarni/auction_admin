@@ -6,28 +6,36 @@
  * Time: 1:44 AM
  */
 
-ini_set("display_errors", "On");
+ini_set("display_errors", "0");
 
-require_once "functions.php";
+$loggedInUser = null;
 
-$output = "0";
-
-$teamId = safeReturn($_REQUEST, "teamId");
-$teamName = safeReturn($_REQUEST, "teamName");
-
-$teamText = file_get_contents(TOURNAMENTS_HOME_DIR . "/ipl2017/individual/teams.txt");
-$teams = explode("\n", $teamText);
-foreach ($teams as $index=>$team)
+$users = array
+(
+    "admin" => "admin123",
+    "Thane" => "Thane123",
+    "Miraj" => "Miraj123",
+    "Karad" => "Karad123",
+    "Kolhapur" => "Kolhapur123",
+    "Pune" => "Pune123",
+    "Viewer" => ""
+);
+$userCookie = $_COOKIE["usercookie"];
+if (array_key_exists($userCookie, $users))
 {
-    if($index==0 || strlen(trim($team))==0) continue; //Header row
-    $curTeam = explode(",", $team);
-    $curTeamId = getTeamId($curTeam[0]);
-    $curTeamName = $curTeam[2];
-    if($teamId === $curTeamId && $teamName == $curTeamName)
+    $loggedInUser = $userCookie;
+}
+else
+{
+    $userName = $_REQUEST["userName"];
+    $password = $_REQUEST["password"];
+    if (isset($userName) && isset($password) && $users[$userName] == $password || $userName == "Viewer")
     {
-        $output = "1";
-        break;
+        setcookie("usercookie", $userName);
+    }
+    else
+    {
+        readfile("html/login.html");
+        die();
     }
 }
-
-echo $output;

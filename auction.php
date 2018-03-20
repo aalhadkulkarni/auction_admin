@@ -8,11 +8,4 @@
 
 require_once "functions.php";
 
-if(true || isUserAdmin())
-{
-    echo file_get_contents("html/auction.html");
-}
-else
-{
-    echo file_get_contents("html/login.html");
-}
+echo file_get_contents("html/auction.html");

@@ -8,4 +8,5 @@
 
 include_once "functions.php";
 
-echo file_get_contents("html/index.html");
+include_once "login.php";
+//echo file_get_contents("html/index.html");

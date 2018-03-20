@@ -6,15 +6,7 @@
  * Time: 12:14 AM
  */
 
-$admins = array
-(
-    "aalhad" => "admin@123",
-    "yogesh" => "shikari@123",
-    "dnyanesh" => "guruji@123",
-    "rajdeep" => "admin@123",
-    "amogh" => "misal@123",
-    "anupam" => "admin@123"
-);
+include_once "authenticate.php";
 
 define("DATA_DIRECTORY", "data");
 define("TOURNAMENTS_HOME_DIR", DATA_DIRECTORY . "/tournaments");
