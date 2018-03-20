@@ -8,7 +8,7 @@
 
 ini_set("display_errors", "On");
 require_once "functions.php";
-
+/*
 header("Content-Type: application/json", true);
 
 $tournament = "ipl2017";
@@ -25,4 +25,4 @@ $tournamentPlayers = getTournamentPlayers($tournament);
 $tournamentState->leagues = $leagues;
 
 $output = json_encode($tournamentState);
-echo $output;
+echo $output;*/

@@ -162,6 +162,7 @@ class TournamentPlayer
     public $name;
     public $cricketTeam;
     public $points;
+    public $role;
 
     public function __construct()
     {
@@ -173,14 +174,12 @@ class LeaguePlayer
 {
     public $id;
     public $points;
-    public $misc;
     public $isActive;
 
     public function __construct()
     {
         $this->points = 0;
         $this->isActive = true;
-        $this->misc = array();
     }
 }
 
@@ -191,8 +190,6 @@ class LeagueTeam
     public $teamName;
     public $leaguePlayers;
     public $curCaptainId;
-    public $curViceCaptainId;
-    public $jackpotMatchNo;
     public $points;
 
     public function __construct()
@@ -222,13 +219,11 @@ class TournamentState
     public $leagues;
     public $scoringRules;
     public $players;
-    public $jackpotScore;
 
     public function __construct()
     {
         $this->matchNo = 0;
         $this->leagues = array();
         $this->players = array();
-        $this->jackpotScore = 0;
     }
 }

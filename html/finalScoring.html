@@ -175,18 +175,12 @@
         function getMatchData()
         {
             $("#getMatchData").html("Getting score. Please wait...");
-            var matchNo = $("#matchNo").val();
-            if (matchNo.length==1)
+            var matchNo = parseInt($("#matchNo").val());
+            matchNo+=4247;
+            $.getJSON( "https://cricketapi-icc.pulselive.com/fixtures/" + matchNo +"/scoring", function(data)
             {
-                matchNo = "0" + matchNo;
-            }
-            var head = document.getElementsByTagName("head")[0];
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.id = "getScoreScript";
-            script.async = true;
-            script.src = "http://datacdn.iplt20.com/dynamic/data/core/cricket/2012/ipl2017/ipl2017-" + matchNo + "/scoring.js";
-            document.getElementsByTagName('head')[0].appendChild(script);
+                onScoring(data);
+            });
         }
 
         function onScoring(matchObject)
@@ -292,14 +286,14 @@
                     strikerate: null,
                     wickets: null,
                     dots: null,
+                    maidens: null,
                     economy: null,
                     hattrick: null,
                     fielding: null,
                     MoM: null,
+                    MoS: null,
                     winningTeam: null,
                     losingTeam: null,
-                    orangeCap: null,
-                    purpleCap: null,
                     points: 0
                 };
                 iplPlayers[iplPlayer.id] = player;
@@ -311,7 +305,7 @@
         {
             var statsTable = $("#statsTable tbody");
             var tr = $("<tr></tr>");
-            
+
             var nameCol = $("<td></td>");
             nameCol.html(iplPlayer.shortName + " (" + team + ")");
 
@@ -336,6 +330,9 @@
             var dotsCol = $("<td></td>");
             dotsCol.html($("<input size='2' class='form-control' id='dots" + iplPlayer.id + "'>"));
 
+            var maidensCol = $("<td></td>");
+            maidensCol.html($("<input size='2' class='form-control' id='maidens" + iplPlayer.id + "'>"));
+
             var economyCol = $("<td></td>");
             economyCol.html($("<input size='4' class='form-control' id='economy" + iplPlayer.id + "'>"));
 
@@ -358,6 +355,7 @@
             tr.append(strikerrateCol);
             tr.append(wicketsCol);
             tr.append(dotsCol);
+            tr.append(maidensCol);
             tr.append(economyCol);
             tr.append(hattrickCol);
             tr.append(fieldingCol);
@@ -459,6 +457,7 @@
                 $("#wickets" + id).val(player.wickets);
                 $("#boundaries" + id).val(player.boundaries);
                 $("#dots" + id).val(player.dots);
+                $("#maidens" + id).val(player.maidens);
                 $("#economy" + id).val(player.economy);
                 $("#fielding" + id).val(player.fielding);
                 if(player.notout)
@@ -523,6 +522,7 @@
                 var player = iplPlayers[playerId];
                 player.wickets = stats["w"];
                 player.dots = stats["d"];
+                player.maidens = stats["maid"];
                 player.economy = stats["e"];
             }
         }
@@ -554,6 +554,7 @@
                     player.strikerate = null;
                     player.boundaries = null;
                     player.dots = null;
+                    player.maidens = null;
                     player.economy = null;
                     player.notout = null;
                     player.winningTeam = null;
@@ -574,6 +575,9 @@
 
                     var dotsInput = $("#dots" + id);
                     player.dots = getVal(dotsInput);
+
+                    var maidensInput = $("#maidens" + id);
+                    player.maidens = getVal(maidensInput);
 
                     var economysInput = $("#economy" + id);
                     player.economy = getVal(economysInput);
@@ -669,6 +673,7 @@
                         strikerate: null,
                         wickets: null,
                         dots: null,
+                        maidens: null,
                         economy: null,
                         hattrick: null,
                         fielding: null,
@@ -746,27 +751,27 @@
                 <div class="col-sm-4">
                     <select class="form-control" id="team1">
                         <option disabled selected value>Select team 1</option>
-                        <option value="DD">DD</option>
-                        <option value="GL">GL</option>
-                        <option value="KKR">KKR</option>
-                        <option value="KXIP">KXIP</option>
-                        <option value="MI">MI</option>
-                        <option value="RCB">RCB</option>
-                        <option value="RPS">RPS</option>
-                        <option value="SRH">SRH</option>
+                        <option value="AUS">Australia</option>
+                        <option value="BAN">Bangladesh</option>
+                        <option value="ENG">England</option>
+                        <option value="IND">India</option>
+                        <option value="NZ">New Zealand</option>
+                        <option value="PAK">Pakistan</option>
+                        <option value="SA">South Africa</option>
+                        <option value="SL">Sri Lanka</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
                     <select class="form-control" id="team2">
                         <option disabled selected value>Select team 2</option>
-                        <option value="DD">DD</option>
-                        <option value="GL">GL</option>
-                        <option value="KKR">KKR</option>
-                        <option value="KXIP">KXIP</option>
-                        <option value="MI">MI</option>
-                        <option value="RCB">RCB</option>
-                        <option value="RPS">RPS</option>
-                        <option value="SRH">SRH</option>
+                        <option value="AUS">Australia</option>
+                        <option value="BAN">Bangladesh</option>
+                        <option value="ENG">England</option>
+                        <option value="IND">India</option>
+                        <option value="NZ">New Zealand</option>
+                        <option value="PAK">Pakistan</option>
+                        <option value="SA">South Africa</option>
+                        <option value="SL">Sri Lanka</option>
                     </select>
                 </div>
             </div>
@@ -838,6 +843,9 @@
                             </th>
                             <th>
                                 Dots
+                            </th>
+                            <th>
+                                Maidens
                             </th>
                             <th>
                                 Economy

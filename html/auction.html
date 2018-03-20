@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Auction</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
@@ -168,6 +168,7 @@
             for(var i in actions)
             {
                 var action = actions[i];
+                if(!action) continue;
                 var player = auctionState.players[action.playerId];
                 var bid = action.bid;
 
@@ -177,58 +178,132 @@
                 var bidCol = $("<td></td>");
                 bidCol.html(bid + "L");
 
+                var removeCol = $("<td></td>");
+                removeCol.html("<a href='#' onclick='removePlayer(" + leagueTeamId + ", " + action.playerId + "); return false;'>Remove Player</a>");
+
                 var playerRow = $("<tr></tr>");
                 playerRow.append(playerCol);
                 playerRow.append(bidCol);
+                playerRow.append(removeCol);
 
                 $("#leagueTeamPlayersTable tbody").append(playerRow);
             }
         }
 
+        function removePlayer(leagueTeamId, playerId)
+        {
+            var leagueTeam = auctionState.leagueTeams[leagueTeamId];
+            var actions = leagueTeam.actions;
+            var player = auctionState.players[playerId];
+
+            for(var i in actions)
+            {
+                var action = actions[i];
+                if(action.playerId == playerId)
+                {
+                    if(confirm("Remove " + player.name + " from " + leagueTeam.name + "?"))
+                    {
+                        delete(actions[i]);
+                        leagueTeam.budgetLeft += parseFloat(player.basePrice);
+                        auctionState.ruledOutPlayers = auctionState.ruledOutPlayers || [];
+                        auctionState.ruledOutPlayers.push(player);
+                        for(var i in auctionState.soldPlayers)
+                        {
+                            if(auctionState.soldPlayers[i].id == playerId)
+                            {
+                                delete(auctionState.soldPlayers[i]);
+                            }
+                        }
+                        auctionState.soldPlayersCount--;
+                        break;
+                    }
+                }
+            }
+
+            saveState();
+            updateAuctionState();
+        }
+
         function setUnsoldPlayersRemaining()
         {
+            $("#unsoldRemainingPlayersTable tbody").empty();
+            for(var i in auctionState.unsoldPlayersRemaining)
+            {
+                var player = auctionState.unsoldPlayersRemaining[i];
+
+                if (!player) continue;
+
+                var nameCol = $("<td></td>");
+                nameCol.html(player.name);
+
+                var priceCol = $("<td></td>");
+                priceCol.html(player.basePrice + "L");
+
+                var playerRow = $("<tr></tr>");
+                playerRow.append(nameCol);
+                playerRow.append(priceCol);
+
+                $("#unsoldRemainingPlayersTable tbody").append(playerRow);
+            }
         }
 
         function setUnsoldPlayers()
         {
+            $("#unsoldPlayersTable tbody").empty();
+            for(var i in auctionState.unsoldPlayers)
+            {
+                var player = auctionState.unsoldPlayers[i];
+
+                if (!player) continue;
+                var nameCol = $("<td></td>");
+                nameCol.html(player.name);
+
+                var priceCol = $("<td></td>");
+                priceCol.html(player.basePrice + "L");
+
+                var playerRow = $("<tr></tr>");
+                playerRow.append(nameCol);
+                playerRow.append(priceCol);
+
+                $("#unsoldPlayersTable tbody").append(playerRow);
+            }
         }
 
         function setCurrentCategory()
         {
-            $("#currentCategoryPlayersTable tbody").empty();
-            var categoryFound = false;
-            for(var i in auctionState.categories)
+            var category = $("#categorySelect").val();
+            if(!category) return;
+            var roles = ["All Rounder", "Keeper", "Batsman", "Bowler"];
+            var role = roles[category%4];
+            var isStar = (category<=4);
+
+            var categoryPlayers = auctionState.allRemainingPlayers;
+            if(category == 9)
             {
-                var category = auctionState.categories[i];
-                for (var j in auctionState.allRemainingPlayers)
+                categoryPlayers = auctionState.unsoldPlayersRemaining;
+            }
+
+            $("#currentCategoryPlayersTable tbody").empty();
+            for (var j in categoryPlayers)
+            {
+                var player = categoryPlayers[j];
+                if(category==9 || player.role==role && player.isStar==isStar)
                 {
-                    var player = auctionState.allRemainingPlayers[j];
-                    if(player.role==category.role && player.nationality==category.nationality && player.isStar==category.isStar)
-                    {
-                        categoryFound = true;
+                    var nameCol = $("<td></td>");
+                    nameCol.html(player.name);
 
-                        var nameCol = $("<td></td>");
-                        nameCol.html(player.name);
+                    var priceCol = $("<td></td>");
+                    priceCol.html(player.basePrice + "L");
 
-                        var priceCol = $("<td></td>");
-                        priceCol.html(player.basePrice + "L");
+                    var teamCol = $("<td></td>");
+                    teamCol.html(player.nationality);
 
-                        var teamCol = $("<td></td>");
-                        //selectLinkCol.html("<a href='#' onclick='setCurrentPlayer(" + player.id + "); return false;'>Select this player for auction</a>")
-                        teamCol.html(player.iplTeam);
+                    var playerRow = $("<tr id='player" + player.id + "' class='playerRow' onclick='setCurrentPlayer(" + player.id + ")'></tr>");
+                    playerRow.append(nameCol);
+                    playerRow.append(priceCol);
+                    playerRow.append(teamCol);
 
-                        var playerRow = $("<tr id='player" + player.id + "' class='playerRow' onclick='setCurrentPlayer(" + player.id + ")'></tr>");
-                        playerRow.append(nameCol);
-                        playerRow.append(priceCol);
-                        playerRow.append(teamCol);
-
-                        $("#currentCategoryPlayersTable tbody").append(playerRow);
-                    }
-                }
-                if(categoryFound)
-                {
-                    setCategoryLabel(category);
-                    break;
+                    $("#currentCategoryPlayersTable tbody").append(playerRow);
                 }
             }
         }
@@ -239,7 +314,7 @@
             $(".playerRow").removeClass("info");
             $("#player" + playerId).addClass("info");
 
-            $("#currentPlayerText").html("Next player is " + currentPlayer.name + " (" + currentPlayer.iplTeam + ") with base price " + currentPlayer.basePrice + "L");
+            $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.nationality + ") with base price " + currentPlayer.basePrice + "L");
         }
 
         function setCategoryLabel(category)
@@ -305,6 +380,7 @@
                 var team = auctionState.leagueTeams[i];
                 summary += "<br>";
                 summary += team.name + " (" + team.budgetLeft +  "L):";
+                summary += "(Players bought: " + team.actions.length + "):";
                 var actions = team.actions;
                 if(actions==null || actions.length==0)
                 {
@@ -315,6 +391,7 @@
                     for(var j in actions)
                     {
                         var action = actions[j];
+                        if(!action) continue;
                         var player = auctionState.players[action.playerId];
                         summary += " " + player.name + ",";
                     }
@@ -403,12 +480,9 @@
                 {
                     round: auctionState.round,
                     state: JSON.stringify(auctionState)
-                },
-                error: function(e)
-                {
-                    console.log(e);
                 }
             });
+            downloadState();
         }
 
         function playerUnsold()
@@ -436,14 +510,14 @@
             if(auctionState.allRemainingPlayers[currentPlayerId])
             {
                 delete(auctionState.allRemainingPlayers[currentPlayerId]);
-                auctionState.unsoldPlayersRemaining.push(currentPlayer);
+                auctionState.unsoldPlayersRemaining[currentPlayerId] = currentPlayer;
                 auctionState.allRemainingPlayersCount--;
                 auctionState.remainingUnsoldPlayersCount++;
             }
             else
             {
                 delete(auctionState.unsoldPlayersRemaining[currentPlayerId]);
-                auctionState.unsoldPlayers.push(currentPlayer);
+                auctionState.unsoldPlayers[currentPlayerId] = currentPlayer;
                 auctionState.remainingUnsoldPlayersCount--;
                 auctionState.unsoldPlayersCount++;
             }
@@ -503,6 +577,20 @@
                     init();
                 }
             })
+        }
+
+        function downloadState()
+        {
+            var str = JSON.stringify(auctionState);
+            var uri = 'data:text/plain;charset=utf-8,' + str;
+
+            var downloadLink = document.createElement("a");
+            downloadLink.href = uri;
+            downloadLink.download = (auctionState.round) + " Auction Round.txt";
+
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
         }
 
         function init()
@@ -617,15 +705,29 @@
         <div class="col-sm-6">
             <div class="panel panel-info">
                 <div class="panel panel-heading" id="currentCategoryLabel">
-                    Remaining players in current category (Star Indian batsmen)
+                    Current category
                 </div>
                 <div class="panel panel-body table-responsive" id="currentCategoryPlayersTable">
                     <table class="table">
                         <thead>
                         <tr>
+                            <select class="form-control" id="categorySelect" onchange="setCurrentCategory()">
+                                <option value disabled selected> -- Select category -- </option>
+                                <option value="1">Star Keepers</option>
+                                <option value="2">Star Batsmen</option>
+                                <option value="3">Star Bowlers</option>
+                                <option value="4">Star All Rounders</option>
+                                <option value="5">Ordinary Keepers</option>
+                                <option value="6">Ordinary Batsmen</option>
+                                <option value="7">Ordinary Bowlers</option>
+                                <option value="8">Ordinary All Rounders</option>
+                                <option value="9">Unsold Players</option>
+                            </select>
+                        </tr>
+                        <tr>
                             <th>Player name</th>
                             <th>Base price</th>
-                            <th>IPL Team</th>
+                            <th>Cricket Team</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -704,6 +806,40 @@
                     </table>
                 </div>
             </div>
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Unsold players (To be taken in last round)
+                </div>
+                <div class="panel-panel-body height-responsive table-responsive">
+                    <table class="table" id="unsoldRemainingPlayersTable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Base price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    Unsold players
+                </div>
+                <div class="panel-panel-body height-responsive table-responsive">
+                    <table class="table" id="unsoldPlayersTable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Base price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -724,6 +860,7 @@
                     <tr>
                         <th>Player</th>
                         <th>Bid</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

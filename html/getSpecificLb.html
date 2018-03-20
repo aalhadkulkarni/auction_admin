@@ -16,10 +16,10 @@
             $.ajax
             ({
                 type: "POST",
-                url: "tempPlayers.php",
+                url: "getNthMatchState.php",
                 data:
                 {
-                    tournamentId: "ipl2017"
+                    matchNo: {{matchNo}}
                 },
                 success: function(data)
                 {
@@ -37,7 +37,16 @@
         function showLeaderBoard()
         {
             $("#listDiv").html("");
-            var league = tournamentState.leagues[0];
+            var league = null;
+            var leagueVal = $("#leagues").val();
+            if(leagueVal == "individual")
+            {
+                league = tournamentState.leagues[0];
+            }
+            else
+            {
+                league = tournamentState.leagues[1];
+            }
 
             var leagueTeams = [];
             for(var i in league.leagueTeams)
@@ -103,63 +112,63 @@
                 var tbody = $("<tbody></tbody>");
 
                 var leaguePlayers = leagueTeam.leaguePlayers;
-                var sr = 1;
-                for(var active=0; active<2; active++)
+                for(var j in leaguePlayers)
                 {
-                    var isActive = (active==0) ? true : false;
-                    for(var j in leaguePlayers)
+                    if(j==11)
                     {
-                        var leaguePlayer = leaguePlayers[j];
-                        if(leaguePlayer.isActive != isActive)
-                        {
-                            continue;
-                        }
-                        var playerRow = $("<tr></tr>");
-
-                        var indexCol = $("<td width='20%'></td>");
-                        indexCol.html(sr);
-
-                        var nameCol = $("<td width='40%'></td>");
-                        var player = tournamentState.players[leaguePlayer.id];
-                        var playerName = player.name + " (" + player.cricketTeam + ")";
-
-                        nameCol.html(playerName);
-
-                        var pointsCol = $("<td width='20%'></td>");
-                        pointsCol.html(leaguePlayer.points);
-
-                        var extraInfoCol = $("<td width='20%'></td>");
-                        extraInfoCol.html("");
-                        if(leagueTeam.curCaptainId == leaguePlayer.id && leaguePlayer.isActive)
-                        {
-                            var captainNo = 1;
-                            if(leagueTeam.ccCount)
-                            {
-                                captainNo = leagueTeam.ccCount+1;
-                            }
-                            extraInfoCol.html("Captain ");
-                        }
-                        else if(leagueTeam.curViceCaptainId == leaguePlayer.id && leaguePlayer.isActive)
-                        {
-                            var viceCaptainNo = 1;
-                            if(leagueTeam.vccCount)
-                            {
-                                viceCaptainNo = leagueTeam.vccCount+1;
-                            }
-                            extraInfoCol.html("Vice Captain " + viceCaptainNo);
-                        }
-
-                        playerRow.append(indexCol);
-                        playerRow.append(nameCol);
-                        playerRow.append(pointsCol);
-                        playerRow.append(extraInfoCol);
-
-                        tbody.append(playerRow);
-                        sr++;
+                        var extraRow = $("<tr></tr>");
+                        extraRow.append($("<th colspan='4'><center>Transfers</center></th>"));
+                        tbody.append(extraRow);
                     }
-                    var extraRow = $("<tr></tr>");
-                    extraRow.append($("<th colspan='4'><center>Reserves</center></th>"));
-                    tbody.append(extraRow);
+                    var leaguePlayer = leaguePlayers[j];
+                    var playerRow = $("<tr></tr>");
+
+                    var indexCol = $("<td width='20%'></td>");
+                    indexCol.html(parseInt(j)+1);
+
+                    var nameCol = $("<td width='40%'></td>");
+                    var player = tournamentState.players[leaguePlayer.id];
+                    var playerName = player.name + " (" + player.cricketTeam + ")";
+
+                    if(leaguePlayer.isActive)
+                    {
+                        nameCol.html(playerName);
+                    }
+                    else
+                    {
+                        nameCol.html("<s>" + playerName + "</s>")
+                    }
+
+                    var pointsCol = $("<td width='20%'></td>");
+                    pointsCol.html(leaguePlayer.points);
+
+                    var extraInfoCol = $("<td width='20%'></td>");
+                    extraInfoCol.html("");
+                    if(leagueTeam.curCaptainId == leaguePlayer.id && leaguePlayer.isActive)
+                    {
+                        var captainNo = 1;
+                        if(leagueTeam.ccCount)
+                        {
+                            captainNo = leagueTeam.ccCount+1;
+                        }
+                        extraInfoCol.html("Captain " + captainNo);
+                    }
+                    else if(leagueTeam.curViceCaptainId == leaguePlayer.id && leaguePlayer.isActive)
+                    {
+                        var viceCaptainNo = 1;
+                        if(leagueTeam.vccCount)
+                        {
+                            viceCaptainNo = leagueTeam.vccCount+1;
+                        }
+                        extraInfoCol.html("Vice Captain " + viceCaptainNo);
+                    }
+
+                    playerRow.append(indexCol);
+                    playerRow.append(nameCol);
+                    playerRow.append(pointsCol);
+                    playerRow.append(extraInfoCol);
+
+                    tbody.append(playerRow);
                 }
 
                 var tfoot = $("<tfoot></tfoot>");
@@ -267,7 +276,13 @@
         </div>
         <div class="panel panel-body">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <select class="form-control" id="leagues">
+                        <option value="individual">Individual League</option>
+                        <option value="auction">Auction League</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
                     <button class="btn-info form-control" onclick="showLeaderBoard()">Get Leaderboard</button>
                 </div>
             </div>

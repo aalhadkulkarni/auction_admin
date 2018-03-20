@@ -2,105 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jackpot Matches</title>
+    <title>P&W Exchange</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var tournamentState = {};
-        var jpScores = [];
+        var pnwInfo = {};
 
         function init()
         {
             $.ajax
             ({
                 type: "POST",
-                url: "tempPlayers.php",
-                data:
-                {
-                    tournamentId: "ipl2017"
-                },
+                url: "getpnwinfo.php",
                 success: function(data)
                 {
-                    tournamentState = data;
-                    $.ajax
-                    ({
-                        type: "POST",
-                        url: "getJpScores.php",
-                        data:
-                        {
-                            tournamentId: "ipl2017"
-                        },
-                        success: function(data)
-                        {
-                            jpScores = data;
-                            display();
-                        }
-                    });
+                    pnwInfo = data;
+                    setData();
                 }
             });
         }
 
-        function display()
+        function setData()
         {
-            var table = $("#jpTable tbody");
+            var table = $("#infoTable tbody");
             table.empty();
-
-            var leagueTeams = tournamentState.leagues[0].leagueTeams;
-            for(var jp=1; jp<=56; jp++)
+            for(var i in pnwInfo)
             {
-                var teamList = "";
-                var count = 0;
-                for(var i in leagueTeams)
-                {
-                    var leagueTeam = leagueTeams[i];
-                    if (leagueTeam.jackpotMatchNo == jp)
-                    {
-                        teamList += leagueTeam.ownerName + ", ";
-                        count++;
-                    }
-                }
-                if(teamList.length>0)
-                {
-                    teamList = teamList.substr(0, teamList.length-2);
-                    var jpRow = $("<tr></tr>");
+                var teamInfo = pnwInfo[i];
 
-                    var matchCol = $("<td width='15%'></td>");
-                    matchCol.html("<a target='_blank' href='http://www.iplt20.com/match/2017/" + jp + "'>" + jp + " (See details)</a>");
+                var row = $("<tr></tr>");
 
-                    var teamsCol = $("<td width='45%'></td>");
-                    teamsCol.html(teamList);
+                var displayCol = $("<td></td>");
+                displayCol.html(teamInfo.name);
 
-                    var scoreCol = $("<td width='20%'></td>");
-                    if(jpScores[jp])
-                    {
-                        scoreCol.html(jpScores[jp]);
-                    }
-                    else
-                    {
-                        scoreCol.html("-");
-                    }
+                var transfersCol = $("<td></td>");
+                transfersCol.html(teamInfo.transfersRemaining);
 
-                    var countCol = $("<td width='20%'></td>");
-                    countCol.html(count);
+                var ccCol = $("<td></td>");
+                ccCol.html(teamInfo.ccRemaining);
 
-                    jpRow.append(matchCol);
-                    jpRow.append(teamsCol);
-                    jpRow.append(scoreCol);
-                    jpRow.append(countCol);
+                var vccCol = $("<td></td>");
+                vccCol.html(teamInfo.vccRemaining);
 
-                    table.append(jpRow);
+                var pointsCol = $("<td></td>");
+                pointsCol.html(teamInfo.points);
 
-                }
+                row.append(displayCol);
+                row.append(transfersCol);
+                row.append(ccCol);
+                row.append(vccCol);
+                row.append(pointsCol);
+
+                table.append(row);
             }
         }
 
         window.onload = init;
+
     </script>
 </head>
 <body>
-
 <div class="container-fluid">
     <div class="panel panel-info">
         <div class="panel-body">
@@ -150,34 +113,42 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="panel panel-info">
         <div class="panel panel-heading">
-            Jackpot Matches
+            Transfers and P&W Summary
         </div>
+
         <div class="panel panel-body">
-            <table class="table table-condensed" id="jpTable">
+            <table class="table table-condensed" id="infoTable">
                 <thead>
                 <tr>
                     <th>
-                        Match No.
+                        Team
                     </th>
                     <th>
-                        Teams
+                        Extra transfers bought
                     </th>
                     <th>
-                        Score
+                        Extra captain changes bought
                     </th>
                     <th>
-                        Number of teams
+                        Extra vice Captain changes bought
+                    </th>
+                    <th>
+                        P&W Points
                     </th>
                 </tr>
                 </thead>
-
                 <tbody>
-
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <center><label class="form-control btn-info"><a target="_blank" href="https://goo.gl/forms/7GKqbBn8O27cX9TQ2">Submit P&W exchange request</a></label></center>
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>

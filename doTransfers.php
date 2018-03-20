@@ -6,6 +6,9 @@
  * Time: 3:28 AM
  */
 
+ini_set("display_errors", "On");
+error_reporting(E_ALL);
+
 require_once "functions.php";
 
 $tournament = "ipl2017";
@@ -17,6 +20,7 @@ $nextMatchFile = TOURNAMENTS_HOME_DIR . "/" . $tournament . "/tournament_states/
 
 $tournamentState = safeReturn($_REQUEST, "state");
 
-file_put_contents($nextMatchFile, $tournamentState);
-
-echo "1";
+if(file_put_contents($nextMatchFile, $tournamentState))
+{
+    echo "1";
+}

@@ -1,105 +1,120 @@
-Karun Nair,3,Batsman,DD,Indian,No
-Suresh Raina,4,Batsman,GL,Indian,No
-Brendon McCullum,5,Batsman,GL,Overseas,Yes
-Aron Finch,5,Batsman,GL,Overseas,Yes
-Jason Roy,3,Batsman,GL,Overseas,No
-David Miller,5,Batsman,KXIP,Overseas,Yes
-Murali Vijay,3,Batsman,KXIP,Indian,No
-Hashim Amla,4,Batsman,KXIP,Overseas,No
-Eon Morgan,4,Batsman,KXIP,Overseas,No
-Martin Guptill,4,Batsman,KXIP,Overseas,No
-Shaun Marsh,4,Batsman,KXIP,Overseas,No
-Gautam Gambhir,4,Batsman,KKR,Indian,No
-Manish Pandey,3,Batsman,KKR,Indian,No
-Chris lynn,2,Batsman,KKR,Overseas,No
-Rohit Sharma,6,Batsman,MI,Indian,Yes
-Ambati Rayudu,4,Batsman,MI,Indian,No
-Lendl Simmons,4,Batsman,MI,Overseas,No
-Ajinkya Rahane,4,Batsman,RPS,Indian,No
-Steve Smith,4,Batsman,RPS,Overseas,No
-Faf duPlessis,4,Batsman,RPS,Overseas,No
-Usman Khwaja,2,Batsman,RPS,Overseas,No
-Virat Kohli,7,Batsman,RCB,Indian,Yes
-AB deVilliers,7,Batsman,RCB,Overseas,Yes
-Chris Gayle,6,Batsman,RCB,Overseas,Yes
-Kedar Jadhav,3,Batsman,RCB,Indian,No
-David Warner,7,Batsman,SRH,Overseas,Yes
-Shikhar Dhawan,3,Batsman,SRH,Indian,No
-Kane Williamson,4,Batsman,SRH,Overseas,No
-Quinton deKock,6,Keeper,DD,Overseas,Yes
-Sam Billings,2,Keeper,DD,Overseas,No
-Sanju Samson,2,Keeper,DD,Indian,No
-Rishabh Pant,2,Keeper,DD,Indian,No
-Dinesh Kartik,3,Keeper,GL,Indian,No
-Wriddhiman Saha,2,Keeper,KXIP,Indian,No
-Robin Uthappa,5,Keeper,KKR,Indian,Yes
-Parthiv Patel,4,Keeper,MI,Indian,No
-Jos Buttler,5,Keeper,MI,Overseas,Yes
-MS Dhoni,6,Keeper,RPS,Indian,Yes
-KL Rahul,6,Keeper,RCB,Indian,Yes
-Naman Ojha,1,Keeper,SRH,Indian,No
-JP Duminy,6,All Rounder,DD,Overseas,Yes
-Chris Morris,5,All Rounder,DD,Overseas,Yes
-Carlos Braithwaite,4,All Rounder,DD,Overseas,No
-Corey Anderson,4,All Rounder,DD,Overseas,No
-Angelo Mathews,3,All Rounder,DD,Overseas,No
-Ravindra Jadeja,6,All Rounder,GL,Indian,Yes
-James Faulkner,5,All Rounder,GL,Overseas,Yes
-Dwayne Bravo,6,All Rounder,GL,Overseas,Yes
-Dwayne Smith,5,All Rounder,GL,Overseas,Yes
-Glenn Maxwell,5,All Rounder,KXIP,Overseas,Yes
-Darren Sammy,3,All Rounder,KXIP,Overseas,No
-Shakib Al Hasan,3,All Rounder,KKR,Overseas,No
-Yusuf Pathan,3,All Rounder,KKR,Indian,No
-Kieron Pollard,4,All Rounder,MI,Overseas,No
-Hardik Pandya,3,All Rounder,MI,Indian,No
-Ben Stokes,6,All Rounder,RPS,Overseas,Yes
-Dan Christian,1,All Rounder,RPS,Overseas,No
-Mitch Marsh,3,All Rounder,RPS,Overseas,No
-Shane Watson,6,All Rounder,RCB,Overseas,Yes
-Stuart Binny,1,All Rounder,RCB,Indian,No
-Pawan Negi,2,All Rounder,RCB,Indian,No
-Moises Henriques,3,All Rounder,SRH,Overseas,No
-Yuvraj Singh,4,All Rounder,SRH,Indian,No
-Ben Cutting,2,All Rounder,SRH,Overseas,No
-Chris Jordon,3,All Rounder,SRH,Overseas,No
-Mohammed Nabi,1,All Rounder,SRH,Overseas,No
-Zahir Khan,2,Bowler,DD,Indian,No
-Mohammed Shami,3,Bowler,DD,Indian,No
-Jayant Yadav,3,Bowler,DD,Indian,No
-Amit Mishra,3,Bowler,DD,Indian,No
-Kagiso Rabada,3,Bowler,DD,Overseas,No
-Pat Cummins,3,Bowler,DD,Overseas,No
-Pravin Kumar,3,Bowler,GL,Indian,No
-Dhawal Kulkarni,3,Bowler,GL,Indian,No
-Munaf Patel,1,Bowler,GL,Indian,No
-Axar Patel,2,Bowler,KXIP,Indian,No
-Sandeep Sharma,3,Bowler,KXIP,Indian,No
-Mohit Sharma,1,Bowler,KXIP,Indian,No
-Varun Aron,1,Bowler,KXIP,Indian,No
-Matt Henry,2,Bowler,KXIP,Overseas,No
-Sunil Narine,5,Bowler,KKR,Overseas,Yes
-Piyush Chawla,4,Bowler,KKR,Indian,No
-Umesh Yadav,4,Bowler,KKR,Indian,No
-Trent Boult,4,Bowler,KKR,Overseas,No
-Nathan Coulter-Nile,3,Bowler,KKR,Overseas,No
-Chris Woakes,3,Bowler,KKR,Overseas,No
-Kuldeep yadav,2,Bowler,KKR,Indian,No
-Lasith Malinga,5,Bowler,MI,Overseas,Yes
-Harbhajan Singh,4,Bowler,MI,Indian,No
-Jaspreet Bumrah,4,Bowler,MI,Indian,No
-Mitch McGlenaghan,6,Bowler,MI,Overseas,Yes
-Tim Southee,5,Bowler,MI,Overseas,Yes
-Mitch Johnson,3,Bowler,MI,Overseas,No
-Vinay Kumar,3,Bowler,MI,Indian,No
-R Ashwin,6,Bowler,RPS,Indian,Yes
-Adam Zampa,1,Bowler,RPS,Overseas,No
-Yuzavendra Chahal,4,Bowler,RCB,Indian,No
-Adam Milne,4,Bowler,RCB,Overseas,No
-Samuel Badree,4,Bowler,RCB,Overseas,No
-Tymal Mills,4,Bowler,RCB,Overseas,No
-Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes
-Ashish Nehra,5,Bowler,SRH,Indian,Yes
-Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes
-Pravin Tambe,1,Bowler,SRH,Indian,No
-Krunal Pandya,
+Bangladesh,Shakib Al Hasan,All Rounder,4
+England,Ben Stokes,All Rounder,4
+India,Ravindra Jadeja,All Rounder,4
+New Zealand,Corey Anderson,All Rounder,4
+South Africa,Chris Morris,All Rounder,4
+Australia,Steven Smith,Batsman,4
+Australia,David Warner ,Batsman,4
+England,Joe Root,Batsman,4
+India,Virat Kohli,Batsman,4
+New Zealand,Kane Williamson ,Batsman,4
+New Zealand,Martin Guptill,Batsman,4
+South Africa,AB de Villiers,Batsman,4
+South Africa,Hashim Amla,Batsman,4
+Australia,Pat Cummins,Bowler,4
+Australia,Mitchell Starc,Bowler,4
+Bangladesh,Mustafizur Rahman,Bowler,4
+New Zealand,Trent Boult,Bowler,4
+Pakistan,Mohammad Amir,Bowler,4
+South Africa,Imran Tahir,Bowler,4
+South Africa,Kagiso Rabada,Bowler,4
+Sri Lanka,Lasith Malinga,Bowler,4
+England,Jos Buttler ,Keeper,4
+India,MS Dhoni ,Keeper,4
+South Africa,Quinton de Kock,Keeper,4
+Australia,Glenn Maxwell,All Rounder,3
+England,Moeen Ali,All Rounder,3
+Pakistan,Shoaib Malik,All Rounder,3
+South Africa,Jean-Paul Duminy,All Rounder,3
+Sri Lanka,Angelo Mathews,All Rounder,3
+Australia,Aaron Finch,Batsman,3
+Australia,Chris Lynn,Batsman,3
+England,Alex Hales,Batsman,3
+England,Jason Roy,Batsman,3
+England,Eoin Morgan ,Batsman,3
+India,Shikhar Dhawan,Batsman,3
+India,Rohit Sharma,Batsman,3
+South Africa,Faf du Plessis,Batsman,3
+Australia,Josh Hazlewood,Bowler,3
+England,Chris Woakes,Bowler,3
+India,Bhuvneshwar Kumar,Bowler,3
+India,Mohammed Shami,Bowler,3
+India,Umesh Yadav,Bowler,3
+India,Jasprit Bumrah,Bowler,3
+New Zealand,Mitchell McClenaghan,Bowler,3
+Pakistan,Wahab Riaz,Bowler,3
+South Africa,Morne Morkel,Bowler,3
+Sri Lanka,Nuwan Kulasekara,Bowler,3
+New Zealand,Tom Latham,Keeper,3
+Australia,Moises Henriques,All Rounder,2
+Australia,Marcus Stoinis,All Rounder,2
+India,Hardik Pandya,All Rounder,2
+India,Yuvraj Singh,All Rounder,2
+New Zealand,James Neesham,All Rounder,2
+Pakistan,Mohammad Hafeez,All Rounder,2
+Pakistan,Imad Wasim,All Rounder,2
+South Africa,Farhaan Behardien,All Rounder,2
+Sri Lanka,Thisara Perera,All Rounder,2
+Australia,Travis Head,Batsman,2
+Bangladesh,Mahmudullah,Batsman,2
+Bangladesh,Tamim Iqbal,Batsman,2
+Bangladesh,Soumya Sarkar,Batsman,2
+India,Kedar Jadhav,Batsman,2
+India,Ajinkya Rahane,Batsman,2
+New Zealand,Ross Taylor,Batsman,2
+Pakistan,Ahmed Shehzad,Batsman,2
+Pakistan,Azhar Ali,Batsman,2
+Pakistan,Umar Akmal,Batsman,2
+South Africa,David Miller,Batsman,2
+Sri Lanka,Upul Tharanga,Batsman,2
+Sri Lanka,Dinesh Chandimal,Batsman,2
+Sri Lanka,Chamara Kapugedera,Batsman,2
+Australia,James Pattinson,Bowler,2
+Bangladesh,Taskin Ahmed,Bowler,2
+England,Adil Rashid,Bowler,2
+England,Jake Ball,Bowler,2
+England,Liam Plunkett,Bowler,2
+England,David Willey,Bowler,2
+India,Ravichandran Ashwin,Bowler,2
+New Zealand,Tim Southee,Bowler,2
+New Zealand,Adam Milne,Bowler,2
+New Zealand,Mitchell Santner,Bowler,2
+Pakistan,Junaid Khan,Bowler,2
+South Africa,Wayne Parnell,Bowler,2
+Australia,Matthew Wade ,Keeper,2
+Bangladesh,Mushfiqur Rahim,Keeper,2
+England,Jonny Bairstow,Keeper,2
+New Zealand,Luke Ronchi,Keeper,2
+Pakistan,Sarfraz Ahmed,Keeper,2
+Sri Lanka,Kusal Perera,Keeper,2
+Sri Lanka,Niroshan Dickwella,Keeper,2
+Australia,John Hastings,All Rounder,1
+Bangladesh,Mashrafe Mortaza,All Rounder,1
+Bangladesh,Mehedi Hasan,All Rounder,1
+New Zealand,Colin de Grandhomme,All Rounder,1
+South Africa,Andile Phehlukwayo,All Rounder,1
+South Africa,Dwaine Pretorius,All Rounder,1
+Sri Lanka,Seekkuge Prasanna,All Rounder,1
+Bangladesh,Sabbir Rahman,Batsman,1
+Bangladesh,Imrul Kayes,Batsman,1
+Bangladesh,Mosaddek Hossain,Batsman,1
+New Zealand,Neil Broom,Batsman,1
+Pakistan,Babar Azam,Batsman,1
+Pakistan,Fakhar Zaman,Batsman,1
+Sri Lanka,Asela Gunaratne,Batsman,1
+Australia,Adam Zampa,Bowler,1
+Bangladesh,Rubel Hossain,Bowler,1
+Bangladesh,Shafiul Islam,Bowler,1
+Bangladesh,Sunzamul Islam,Bowler,1
+England,Mark Wood,Bowler,1
+New Zealand,Jeetan Patel,Bowler,1
+Pakistan,Fahim Ashraf,Bowler,1
+Pakistan,Hasan Ali,Bowler,1
+Pakistan,Shadab Khan,Bowler,1
+South Africa,Keshav Maharaj,Bowler,1
+Sri Lanka,Suranga Lakmal,Bowler,1
+Sri Lanka,Nuwan Pradeep,Bowler,1
+Sri Lanka,Lakshan Sandakan,Bowler,1
+England,Sam Billings,Keeper,1
+India,Dinesh Karthik,Keeper,1
+Sri Lanka,Kusal Mendis,Keeper,1

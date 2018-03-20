@@ -1,113 +1,121 @@
-Name,Base Price,Role,Team,Nationality,Star or not,Player ID
-Karun Nair,3,Batsman,DD,Indian,No,276
-Suresh Raina,4,Batsman,GL,Indian,No,14
-Brendon McCullum,5,Batsman,GL,Overseas,Yes,202
-Aron Finch,5,Batsman,GL,Overseas,Yes,167
-Jason Roy,3,Batsman,GL,Overseas,No,1906
-David Miller,5,Batsman,KXIP,Overseas,Yes,187
-Hashim Amla,4,Batsman,KXIP,Overseas,No,456
-Eon Morgan,4,Batsman,KXIP,Overseas,No,197
-Martin Guptill,4,Batsman,KXIP,Overseas,No,431
-Shaun Marsh,4,Batsman,KXIP,Overseas,No,191
-Gautam Gambhir,4,Batsman,KKR,Indian,No,84
-Manish Pandey,3,Batsman,KKR,Indian,No,123
-Chris lynn,2,Batsman,KKR,Overseas,No,179
-Rohit Sharma,6,Batsman,MI,Indian,Yes,107
-Ambati Rayudu,4,Batsman,MI,Indian,No,100
-Lendl Simmons,4,Batsman,MI,Overseas,No,595
-Ajinkya Rahane,4,Batsman,RPS,Indian,No,135
-Steve Smith,4,Batsman,RPS,Overseas,No,271
-Faf duPlessis,4,Batsman,RPS,Overseas,No,24
-Usman Khwaja,2,Batsman,RPS,Overseas,No,948
-Virat Kohli,7,Batsman,RCB,Indian,Yes,164
-AB deVilliers,7,Batsman,RCB,Overseas,Yes,233
-Chris Gayle,6,Batsman,RCB,Overseas,Yes,236
-Kedar Jadhav,3,Batsman,RCB,Indian,No,297
-David Warner,7,Batsman,SRH,Overseas,Yes,170
-Shikhar Dhawan,3,Batsman,SRH,Indian,No,41
-Kane Williamson,4,Batsman,SRH,Overseas,No,440
-Quinton deKock,6,Keeper,DD,Overseas,Yes,834
-Sam Billings,2,Keeper,DD,Overseas,No,2756
-Sanju Samson,2,Keeper,DD,Indian,No,258
-Rishabh Pant,2,Keeper,DD,Indian,No,2972
-Dinesh Kartik,3,Keeper,GL,Indian,No,102
-Wriddhiman Saha,2,Keeper,KXIP,Indian,No,16
-Robin Uthappa,5,Keeper,KKR,Indian,Yes,127
-Parthiv Patel,4,Keeper,MI,Indian,No,44
-Jos Buttler,5,Keeper,MI,Overseas,Yes,509
-MS Dhoni,6,Keeper,RPS,Indian,Yes,1
-Naman Ojha,1,Keeper,SRH,Indian,No,52
-Chris Morris,5,All Rounder,DD,Overseas,Yes,836
-Carlos Braithwaite,4,All Rounder,DD,Overseas,No,2722
-Corey Anderson,4,All Rounder,DD,Overseas,No,968
-Angelo Mathews,3,All Rounder,DD,Overseas,No,217
-Ravindra Jadeja,6,All Rounder,GL,Indian,Yes,9
-James Faulkner,5,All Rounder,GL,Overseas,Yes,193
-Dwayne Bravo,6,All Rounder,GL,Overseas,Yes,25
-Dwayne Smith,5,All Rounder,GL,Overseas,Yes,413
-Glenn Maxwell,5,All Rounder,KXIP,Overseas,Yes,282
-Darren Sammy,3,All Rounder,KXIP,Overseas,No,589
-Shakib Al Hasan,3,All Rounder,KKR,Overseas,No,201
-Yusuf Pathan,3,All Rounder,KKR,Indian,No,96
-Kieron Pollard,4,All Rounder,MI,Overseas,No,210
-Hardik Pandya,3,All Rounder,MI,Indian,No,2740
-Ben Stokes,6,All Rounder,RPS,Overseas,Yes,1154
-Dan Christian,1,All Rounder,RPS,Overseas,No,181
-Shane Watson,6,All Rounder,RCB,Overseas,Yes,227
-Stuart Binny,1,All Rounder,RCB,Indian,No,148
-Pawan Negi,2,All Rounder,RCB,Indian,No,53
-Moises Henriques,3,All Rounder,SRH,Overseas,No,388
-Yuvraj Singh,4,All Rounder,SRH,Indian,No,113
-Ben Cutting,2,All Rounder,SRH,Overseas,No,913
-Chris Jordon,3,All Rounder,SRH,Overseas,No,1299
-Mohammed Nabi,1,All Rounder,SRH,Overseas,No,618
-Zahir Khan,2,Bowler,DD,Indian,No,165
-Mohammed Shami,3,Bowler,DD,Indian,No,94
-Jayant Yadav,3,Bowler,DD,Indian,No,1740
-Amit Mishra,3,Bowler,DD,Indian,No,30
-Kagiso Rabada,3,Bowler,DD,Overseas,No,1664
-Pat Cummins,3,Bowler,DD,Overseas,No,488
-Pravin Kumar,3,Bowler,GL,Indian,No,77
-Dhawal Kulkarni,3,Bowler,GL,Indian,No,101
-Munaf Patel,1,Bowler,GL,Indian,No,104
-Axar Patel,2,Bowler,KXIP,Indian,No,1113
-Sandeep Sharma,3,Bowler,KXIP,Indian,No,1112
-Mohit Sharma,1,Bowler,KXIP,Indian,No,11107
-Varun Aron,1,Bowler,KXIP,Indian,No,61
-Matt Henry,2,Bowler,KXIP,Overseas,No,1505
-Sunil Narine,5,Bowler,KKR,Overseas,Yes,203
-Piyush Chawla,4,Bowler,KKR,Indian,No,76
-Umesh Yadav,4,Bowler,KKR,Indian,No,59
-Trent Boult,4,Bowler,KKR,Overseas,No,969
-Nathan Coulter-Nile,3,Bowler,KKR,Overseas,No,840
-Chris Woakes,3,Bowler,KKR,Overseas,No,967
-Kuldeep yadav,2,Bowler,KKR,Indian,No,261
-Lasith Malinga,5,Bowler,MI,Overseas,Yes,211
-Harbhajan Singh,4,Bowler,MI,Indian,No,103
-Jaspreet Bumrah,4,Bowler,MI,Indian,No,1124
-Mitch McGlenaghan,6,Bowler,MI,Overseas,Yes,730
-Tim Southee,5,Bowler,MI,Overseas,Yes,307
-Mitch Johnson,3,Bowler,MI,Overseas,No,213
-Vinay Kumar,3,Bowler,MI,Indian,No,166
-R Ashwin,6,Bowler,RPS,Indian,Yes,8
-Adam Zampa,1,Bowler,RPS,Overseas,No,958
-Yuzavendra Chahal,4,Bowler,RCB,Indian,No,111
-Adam Milne,4,Bowler,RCB,Overseas,No,434
-Samuel Badree,4,Bowler,RCB,Overseas,No,590
-Tymal Mills,4,Bowler,RCB,Overseas,No,3319
-Bhuvneshwar Kumar,5,Bowler,SRH,Indian,Yes,116
-Ashish Nehra,5,Bowler,SRH,Indian,Yes,115
-Mustafizur Rahman,6,Bowler,SRH,Overseas,Yes,1594
-Pravin Tambe,1,Bowler,SRH,Indian,No,1114
-Imran Tahir,1,Bowler,RPS,Overseas,No,898
-Murali Vijay,2,Batsman,KXIP,Indian,No,7
-KL Rahul,5,Keeper,RCB,Indian,Yes,1125
-JP Duminy,5,All Rounder,DD,Overseas,Yes,182
-Mitch Marsh,3,All Rounder,RPS,Overseas,No,221
-Krunal Pandya,1,All Rounder,MI,Indian,No,3183
-Manan Vohra,1,Batsman,KXIP,Indian,No,1085
-Shreyas Iyer,1,Batsman,DD,Indian,No,1563
-Sandeep Sharma,1,Bowler,KXIP,Indian,No,1112
-Ashoke Dinda,1,Bowler,RPS,Indian,No,48
-Mayank Agarwal,1,Batsman,RPS,Indian,No,158
-Rashid Khan,1,Bowler,SRH,Overseas,No,2885
+Team,Name,Role,Base Price,id
+SA,Chris Morris,All Rounder,4L,836
+SA,Jean-Paul Duminy,All Rounder,3L,182
+SA,Farhaan Behardien,All Rounder,2L,457
+SA,Andile Phehlukwayo,All Rounder,1L,1662
+SA,Dwaine Pretorius,All Rounder,1L,837
+SA,AB de Villiers,Batsman,4L,233
+SA,Hashim Amla,Batsman,4L,456
+SA,Faf du Plessis,Batsman,3L,24
+SA,David Miller,Batsman,2L,187
+SA,Imran Tahir,Bowler,4L,898
+SA,Kagiso Rabada,Bowler,4L,1664
+SA,Morne Morkel,Bowler,3L,169
+SA,Wayne Parnell,Bowler,2L,223
+SA,Keshav Maharaj,Bowler,1L,1894
+SA,Quinton de Kock,Keeper,4L,834
+AUS,Glenn Maxwell,All Rounder,3L,282
+AUS,Moises Henriques,All Rounder,2L,388
+AUS,Marcus Stoinis,All Rounder,2L,964
+AUS,John Hastings,All Rounder,1L,748
+AUS,Steven Smith,Batsman,4L,271
+AUS,David Warner,Batsman,4L,170
+AUS,Aaron Finch,Batsman,3L,167
+AUS,Chris Lynn,Batsman,3L,179
+AUS,Travis Head,Batsman,2L,1020
+AUS,Pat Cummins,Bowler,4L,488
+AUS,Mitchell Starc,Bowler,4L,490
+AUS,Josh Hazlewood,Bowler,3L,857
+AUS,James Pattinson,Bowler,2L,199
+AUS,Adam Zampa,Bowler,1L,958
+AUS,Matthew Wade,Keeper,2L,290
+NZ,Corey Anderson,All Rounder,4L,968
+NZ,James Neesham,All Rounder,2L,971
+NZ,Colin de Grandhomme,All Rounder,1L,820
+NZ,Kane Williamson,Batsman,4L,440
+NZ,Martin Guptill,Batsman,4L,431
+NZ,Ross Taylor,Batsman,2L,226
+NZ,Neil Broom,Batsman,1L,1280
+NZ,Trent Boult,Bowler,4L,969
+NZ,Mitchell McClenaghan,Bowler,3L,730
+NZ,Tim Southee,Bowler,2L,307
+NZ,Adam Milne,Bowler,2L,435
+NZ,Mitchell Santner,Bowler,2L,1903
+NZ,Jeetan Patel,Bowler,1L,974
+NZ,Tom Latham,Keeper,3L,1140
+NZ,Luke Ronchi,Keeper,2L,338
+ENG,Ben Stokes,All Rounder,4L,1154
+ENG,Moeen Ali,All Rounder,3L,1735
+ENG,Joe Root,Batsman,4L,887
+ENG,Alex Hales,Batsman,3L,511
+ENG,Jason Roy,Batsman,3L,1906
+ENG,Eoin Morgan,Batsman,3L,197
+ENG,Chris Woakes,Bowler,3L,967
+ENG,Adil Rashid,Bowler,2L,796
+ENG,Jake Ball,Bowler,2L,3310
+ENG,Liam Plunkett,Bowler,2L,1842
+ENG,David Willey,Bowler,2L,2758
+ENG,Mark Wood,Bowler,1L,2749
+ENG,Jos Buttler,Keeper,4L,509
+ENG,Jonny Bairstow,Keeper,2L,506
+ENG,Sam Billings,Keeper,1L,2756
+IND,Ravindra Jadeja,All Rounder,4L,9
+IND,Hardik Pandya,All Rounder,2L,2740
+IND,Yuvraj Singh,All Rounder,2L,113
+IND,Virat Kohli,Batsman,4L,164
+IND,Shikhar Dhawan,Batsman,3L,41
+IND,Rohit Sharma,Batsman,3L,107
+IND,Kedar Jadhav,Batsman,2L,297
+IND,Ajinkya Rahane,Batsman,2L,135
+IND,Bhuvneshwar Kumar,Bowler,3L,116
+IND,Mohammed Shami,Bowler,3L,94
+IND,Umesh Yadav,Bowler,3L,59
+IND,Jasprit Bumrah,Bowler,3L,1124
+IND,Ravichandran Ashwin,Bowler,2L,8
+IND,MS Dhoni,Keeper,4L,1
+IND,Dinesh Karthik,Keeper,1L,102
+PAK,Shoaib Malik,All Rounder,3L,314
+PAK,Mohammad Hafeez,All Rounder,2L,441
+PAK,Imad Wasim,All Rounder,2L,2760
+PAK,Ahmed Shehzad,Batsman,2L,979
+PAK,Azhar Ali,Batsman,2L,985
+PAK,Haris Sohail,All Rounder,1L,855
+PAK,Babar Azam,Batsman,1L,2759
+PAK,Fakhar Zaman,Batsman,1L,3801
+PAK,Mohammad Amir,Bowler,4L,2896
+PAK,Wahab Riaz,Bowler,3L,988
+PAK,Junaid Khan,Bowler,2L,981
+PAK,Fahim Ashraf,Bowler,1L,4208
+PAK,Hasan Ali,Bowler,1L,3325
+PAK,Shadab Khan,Bowler,1L,3046
+PAK,Sarfraz Ahmed,Keeper,2L,846
+SL,Angelo Mathews,All Rounder,3L,217
+SL,Thisara Perera,All Rounder,2L,215
+SL,Seekkuge Prasanna,All Rounder,1L,808
+SL,Upul Tharanga,Batsman,2L,501
+SL,Dinesh Chandimal,Batsman,2L,230
+SL,Chamara Kapugedera,Batsman,2L,353
+SL,Asela Gunaratne,Batsman,1L,3153
+SL,Lasith Malinga,Bowler,4L,211
+SL,Nuwan Kulasekara,Bowler,3L,23
+SL,Suranga Lakmal,Bowler,1L,993
+SL,Nuwan Pradeep,Bowler,1L,505
+SL,Lakshan Sandakan,Bowler,1L,1869
+SL,Kusal Perera,Keeper,2L,1738
+SL,Niroshan Dickwella,Keeper,2L,1847
+SL,Kusal Mendis,Keeper,1L,1670
+BAN,Shakib Al Hasan,All Rounder,4L,201
+BAN,Mashrafe Mortaza,All Rounder,1L,391
+BAN,Mehedi Hasan,All Rounder,1L,1597
+BAN,Mahmudullah,Batsman,2L,492
+BAN,Tamim Iqbal,Batsman,2L,287
+BAN,Soumya Sarkar,Batsman,2L,1919
+BAN,Sabbir Rahman,Batsman,1L,1734
+BAN,Imrul Kayes,Batsman,1L,1493
+BAN,Mosaddek Hossain,Batsman,1L,1588
+BAN,Mustafizur Rahman,Bowler,4L,1594
+BAN,Taskin Ahmed,Bowler,2L,1839
+BAN,Rubel Hossain,Bowler,1L,1135
+BAN,Shafiul Islam,Bowler,1L,499
+BAN,Sunzamul Islam,Bowler,1L,3710
+BAN,Mushfiqur Rahim,Keeper,2L,491
