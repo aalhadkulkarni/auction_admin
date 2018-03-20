@@ -8,4 +8,7 @@
 
 require_once "functions.php";
 
-echo file_get_contents("html/auction.html");
+if ($loggedInUser == "admin")
+{
+    echo file_get_contents("html/auction.html");
+}

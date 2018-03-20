@@ -31,6 +31,7 @@ else
     $password = $_REQUEST["password"];
     if (isset($userName) && isset($password) && $users[$userName] == $password || $userName == "Viewer")
     {
+        $loggedInUser = $userName;
         setcookie("usercookie", $userName);
     }
     else
