@@ -500,12 +500,17 @@
         }
 
         function submitNoBid() {
+            if (submitted) {
+                alert("Kiti vela submit karnar ata? Bid already submitted. Waiting for others.");
+                return;
+            }
             if (summary.teams.indexOf(currentTeamId) != -1) {
                 alert("Kiti ghaai! You have the highest bid currently. Please wait for others to submit their raised bids.");
                 return;
             }
             if (summary.outTeams[currentTeamId]) {
                 alert("Are ho kalla na baba! You have already submitted no bid for this player. Bakiche bid kartayt toparyanta gotya khajva tumhi jara");
+                return;
             }
             $.ajax
             ({
@@ -521,6 +526,7 @@
                         alert("Error in submitting 'No bid'. Please try again. (Say JSRM before submitting this time)");
                     } else {
                         alert("'No Bid' submitted successfully");
+                        submitted = true;
                     }
                 },
                 error: function () {
