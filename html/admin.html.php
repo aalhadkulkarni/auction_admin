@@ -354,7 +354,7 @@
                         bidsReceived++;
                     }
                     updateCurrentBids();
-                    if (bidsReceived == 5) {
+                    if (bidsReceived == 5/* && !summary.allShouldBid*/) {
                         alert("All bids are in");
                     } else if (!stopBids) {
                         setTimeout(listenToBids, 5000);
@@ -461,6 +461,7 @@
         }
 
         function setBiddingSummary(status) {
+            summary.allShouldBid = false;
             summary.playerId = currentPlayer.id;
             status && (summary.status = status);
             summary.teams = [];
@@ -475,6 +476,36 @@
                     else if (parseFloat(currentBids[i]) > parseFloat(summary.bid) || !summary.bid) {
                         summary.bid = currentBids[i];
                         summary.teams = [i];
+                    }
+                }
+            }
+            if (currentPlayer.slab == "Marquee") {
+                var allMax = true;
+                for (var i in currentBids) {
+                    var curBid = parseFloat(currentBids[i]);
+                    if (!curBid || isNaN(curBid)) {
+                        continue;
+                    }
+                    if (curBid < parseFloat(summary.bid)) {
+                        allMax = false;
+                        break;
+                    }
+                }
+                if (allMax) {
+                    for (var i in summary.teams) {
+                        console.log("Resetting " + summary.teams[i]);
+                        currentBids[summary.teams[i]] = undefined;
+                    }
+                    summary.allShouldBid = true;
+                }
+            } else if (currentPlayer.slab == "Star") {
+                if (summary.teams.length >= 2) {
+                    summary.allShouldBid = true;
+                    for (var i in auctionState.leagueTeams) {
+                        if (summary.teams.indexOf(i) == -1) {
+                            currentBids[i] = "No bid";
+                            summary.outTeams[i] = 1;
+                        }
                     }
                 }
             }
@@ -513,7 +544,7 @@
         function askForRaise() {
             setBiddingSummary("Raise");
             for (var i in currentBids) {
-                if (summary.teams.indexOf(i) != -1) {
+                if (summary.teams.indexOf(i) != -1 && !summary.allShouldBid) {
                     currentBids[i] = summary.bid;
                 } else if (summary.outTeams[i]) {
                     currentBids[i] = "No bid";

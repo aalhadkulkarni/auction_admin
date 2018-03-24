@@ -13,11 +13,11 @@ $loggedInUser = null;
 $users = array
 (
     "admin" => "admin123",
-    "Thane" => "Thane123",
-    "Miraj" => "Miraj123",
-    "Karad" => "Karad123",
-    "Kolhapur" => "Kolhapur123",
-    "Pune" => "Pune123",
+    "Thane" => "2139",
+    "Miraj" => "2859",
+    "Karad" => "2105",
+    "Kolhapur" => "1401",
+    "Pune" => "2101",
     "Viewer" => ""
 );
 $userCookie = $_COOKIE["usercookie"];

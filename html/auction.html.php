@@ -349,7 +349,7 @@
                     if (!summary.outTeams[currentTeamId]) {
                         alert("Admin has asked for raised bids. Please check current leader and submit your bid.");
                     }
-                    if (summary.teams.indexOf(currentTeamId) != -1 && !summary.outTeams[currentTeamId]) {
+                    if ((summary.teams.indexOf(currentTeamId) != -1 || summary.allShouldBid) && !summary.outTeams[currentTeamId]) {
                         biddingSummary += "<br>Please submit your raised bid";
                     }
                 }
@@ -442,7 +442,7 @@
                 alert("Kiti vela submit karnar ata? Bid already submitted. Waiting for others.");
                 return;
             }
-            if (summary.teams.indexOf(currentTeamId) != -1) {
+            if (summary.teams.indexOf(currentTeamId) != -1 && !summary.allShouldBid) {
                 alert("Kiti ghaai! You already have the highest bid. Please wait for others to submit their raised bids.");
                 return;
             }
@@ -504,7 +504,7 @@
                 alert("Kiti vela submit karnar ata? Bid already submitted. Waiting for others.");
                 return;
             }
-            if (summary.teams.indexOf(currentTeamId) != -1) {
+            if (summary.teams.indexOf(currentTeamId) != -1  && !summary.allShouldBid) {
                 alert("Kiti ghaai! You have the highest bid currently. Please wait for others to submit their raised bids.");
                 return;
             }
