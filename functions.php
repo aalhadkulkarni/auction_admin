@@ -8,6 +8,12 @@
 
 require_once "config.php";
 
+function echoVariables()
+{
+    global $loggedInUser;
+    echo "userName = '$loggedInUser'";
+}
+
 function getAuctionStateFile($round, $checkIfExists = false)
 {
     $fileName = "auction_states/round" . $round . ".txt";
@@ -52,8 +58,8 @@ function getPlayers()
         $player = new Player();
 
         $player->id = $id;
-        $player->team = $playerData[0];
-        $player->name = $playerData[1];
+        $player->name = $playerData[0];
+        $player->team = $playerData[1];
         $player->role = $playerData[2];
         $player->basePrice = $playerData[3];
         $player->slab = $playerData[4];

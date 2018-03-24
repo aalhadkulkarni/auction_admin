@@ -21,6 +21,13 @@ $users = array
     "Viewer" => ""
 );
 $userCookie = $_COOKIE["usercookie"];
+$logout = $_REQUEST["logout"];
+if ($logout == 1)
+{
+    $_COOKIE["usercookie"] = null;
+    $userCookie = null;
+    setcookie("usercookie", null, time()-3600);
+}
 if (array_key_exists($userCookie, $users))
 {
     $loggedInUser = $userCookie;

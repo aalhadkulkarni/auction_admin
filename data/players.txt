@@ -1,120 +1,145 @@
-Bangladesh,Shakib Al Hasan,All Rounder,4,Marquee
-England,Ben Stokes,All Rounder,4,Marquee
-India,Ravindra Jadeja,All Rounder,4,Marquee
-New Zealand,Corey Anderson,All Rounder,4,Marquee
-South Africa,Chris Morris,All Rounder,4,Marquee
-Australia,Steven Smith,Batsman,4,Marquee
-Australia,David Warner ,Batsman,4,Marquee
-England,Joe Root,Batsman,4,Marquee
-India,Virat Kohli,Batsman,4,Marquee
-New Zealand,Kane Williamson ,Batsman,4,Marquee
-New Zealand,Martin Guptill,Batsman,4,Marquee
-South Africa,AB de Villiers,Batsman,4,Marquee
-South Africa,Hashim Amla,Batsman,4,Marquee
-Australia,Pat Cummins,Bowler,4,Marquee
-Australia,Mitchell Starc,Bowler,4,Marquee
-Bangladesh,Mustafizur Rahman,Bowler,4,Marquee
-New Zealand,Trent Boult,Bowler,4,Marquee
-Pakistan,Mohammad Amir,Bowler,4,Marquee
-South Africa,Imran Tahir,Bowler,4,Marquee
-South Africa,Kagiso Rabada,Bowler,4,Marquee
-Sri Lanka,Lasith Malinga,Bowler,4,Marquee
-England,Jos Buttler ,Keeper,4,Marquee
-India,MS Dhoni ,Keeper,4,Marquee
-South Africa,Quinton de Kock,Keeper,4,Marquee
-Australia,Glenn Maxwell,All Rounder,3,Star
-England,Moeen Ali,All Rounder,3,Star
-Pakistan,Shoaib Malik,All Rounder,3,Star
-South Africa,Jean-Paul Duminy,All Rounder,3,Star
-Sri Lanka,Angelo Mathews,All Rounder,3,Star
-Australia,Aaron Finch,Batsman,3,Star
-Australia,Chris Lynn,Batsman,3,Star
-England,Alex Hales,Batsman,3,Star
-England,Jason Roy,Batsman,3,Star
-England,Eoin Morgan ,Batsman,3,Star
-India,Shikhar Dhawan,Batsman,3,Star
-India,Rohit Sharma,Batsman,3,Star
-South Africa,Faf du Plessis,Batsman,3,Star
-Australia,Josh Hazlewood,Bowler,3,Star
-England,Chris Woakes,Bowler,3,Star
-India,Bhuvneshwar Kumar,Bowler,3,Star
-India,Mohammed Shami,Bowler,3,Star
-India,Umesh Yadav,Bowler,3,Star
-India,Jasprit Bumrah,Bowler,3,Star
-New Zealand,Mitchell McClenaghan,Bowler,3,Star
-Pakistan,Wahab Riaz,Bowler,3,Star
-South Africa,Morne Morkel,Bowler,3,Star
-Sri Lanka,Nuwan Kulasekara,Bowler,3,Star
-New Zealand,Tom Latham,Keeper,3,Star
-Australia,Moises Henriques,All Rounder,2,Others
-Australia,Marcus Stoinis,All Rounder,2,Others
-India,Hardik Pandya,All Rounder,2,Others
-India,Yuvraj Singh,All Rounder,2,Others
-New Zealand,James Neesham,All Rounder,2,Others
-Pakistan,Mohammad Hafeez,All Rounder,2,Others
-Pakistan,Imad Wasim,All Rounder,2,Others
-South Africa,Farhaan Behardien,All Rounder,2,Others
-Sri Lanka,Thisara Perera,All Rounder,2,Others
-Australia,Travis Head,Batsman,2,Others
-Bangladesh,Mahmudullah,Batsman,2,Others
-Bangladesh,Tamim Iqbal,Batsman,2,Others
-Bangladesh,Soumya Sarkar,Batsman,2,Others
-India,Kedar Jadhav,Batsman,2,Others
-India,Ajinkya Rahane,Batsman,2,Others
-New Zealand,Ross Taylor,Batsman,2,Others
-Pakistan,Ahmed Shehzad,Batsman,2,Others
-Pakistan,Azhar Ali,Batsman,2,Others
-Pakistan,Umar Akmal,Batsman,2,Others
-South Africa,David Miller,Batsman,2,Others
-Sri Lanka,Upul Tharanga,Batsman,2,Others
-Sri Lanka,Dinesh Chandimal,Batsman,2,Others
-Sri Lanka,Chamara Kapugedera,Batsman,2,Others
-Australia,James Pattinson,Bowler,2,Others
-Bangladesh,Taskin Ahmed,Bowler,2,Others
-England,Adil Rashid,Bowler,2,Others
-England,Jake Ball,Bowler,2,Others
-England,Liam Plunkett,Bowler,2,Others
-England,David Willey,Bowler,2,Others
-India,Ravichandran Ashwin,Bowler,2,Others
-New Zealand,Tim Southee,Bowler,2,Others
-New Zealand,Adam Milne,Bowler,2,Others
-New Zealand,Mitchell Santner,Bowler,2,Others
-Pakistan,Junaid Khan,Bowler,2,Others
-South Africa,Wayne Parnell,Bowler,2,Others
-Australia,Matthew Wade ,Keeper,2,Others
-Bangladesh,Mushfiqur Rahim,Keeper,2,Others
-England,Jonny Bairstow,Keeper,2,Others
-New Zealand,Luke Ronchi,Keeper,2,Others
-Pakistan,Sarfraz Ahmed,Keeper,2,Others
-Sri Lanka,Kusal Perera,Keeper,2,Others
-Sri Lanka,Niroshan Dickwella,Keeper,2,Others
-Australia,John Hastings,All Rounder,1,Others
-Bangladesh,Mashrafe Mortaza,All Rounder,1,Others
-Bangladesh,Mehedi Hasan,All Rounder,1,Others
-New Zealand,Colin de Grandhomme,All Rounder,1,Others
-South Africa,Andile Phehlukwayo,All Rounder,1,Others
-South Africa,Dwaine Pretorius,All Rounder,1,Others
-Sri Lanka,Seekkuge Prasanna,All Rounder,1,Others
-Bangladesh,Sabbir Rahman,Batsman,1,Others
-Bangladesh,Imrul Kayes,Batsman,1,Others
-Bangladesh,Mosaddek Hossain,Batsman,1,Others
-New Zealand,Neil Broom,Batsman,1,Others
-Pakistan,Babar Azam,Batsman,1,Others
-Pakistan,Fakhar Zaman,Batsman,1,Others
-Sri Lanka,Asela Gunaratne,Batsman,1,Others
-Australia,Adam Zampa,Bowler,1,Others
-Bangladesh,Rubel Hossain,Bowler,1,Others
-Bangladesh,Shafiul Islam,Bowler,1,Others
-Bangladesh,Sunzamul Islam,Bowler,1,Others
-England,Mark Wood,Bowler,1,Others
-New Zealand,Jeetan Patel,Bowler,1,Others
-Pakistan,Fahim Ashraf,Bowler,1,Others
-Pakistan,Hasan Ali,Bowler,1,Others
-Pakistan,Shadab Khan,Bowler,1,Others
-South Africa,Keshav Maharaj,Bowler,1,Others
-Sri Lanka,Suranga Lakmal,Bowler,1,Others
-Sri Lanka,Nuwan Pradeep,Bowler,1,Others
-Sri Lanka,Lakshan Sandakan,Bowler,1,Others
-England,Sam Billings,Keeper,1,Others
-India,Dinesh Karthik,Keeper,1,Others
-Sri Lanka,Kusal Mendis,Keeper,1,Others
+AB de Villiers,RCB,Batsman,6,Marquee
+Chris Lynn,KKR,Batsman,5,Marquee
+David Warner,SRH,Batsman,6,Marquee
+Gautam Gambhir,DD,Batsman,5,Marquee
+Rohit Sharma,MI,Batsman,6,Marquee
+Shikhar Dhawan,SRH,Batsman,5,Marquee
+Steve Smith,RR,Batsman,6,Marquee
+Suresh Raina,CSK,Batsman,5,Marquee
+Virat Kohli,RCB,Batsman,6,Marquee
+Bhuvneshwar Kumar,SRH,Bowler,6,Marquee
+Jasprit Bumrah,MI,Bowler,5,Marquee
+Jaydev Unadkat,RR,Bowler,5,Marquee
+Rashid Khan,SRH,Bowler,5,Marquee
+Sunil Narine,KKR,Bowler,5,Marquee
+Yuzvendra Chahal,RCB,Bowler,5,Marquee
+Dinesh Karthik,KKR,Keeper,6,Marquee
+Quinton De Kock,RCB,Keeper,5,Marquee
+Robin Uthappa,KKR,Keeper,5,Marquee
+Ben Stokes,RR,All Rounder,6,Marquee
+Chris Morris,DD,All Rounder,6,Marquee
+Dwayne Bravo,CSK,All Rounder,5,Marquee
+Hardik Pandya,MI,All Rounder,6,Marquee
+Krunal Pandya,MI,All Rounder,5,Marquee
+Glenn Maxwell,DD,All Rounder,5,Marquee
+Aaron Finch,KXIP,Batsman,4,Star
+Brendon McCullum,RCB,Batsman,3,Star
+Colin Munro,DD,Batsman,3,Star
+David Miller,KXIP,Batsman,4,Star
+Evin Lewis,MI,Batsman,4,Star
+Kane Williamson,SRH,Batsman,3,Star
+Manish Pandey,SRH,Batsman,4,Star
+Shreyas Iyer,DD,Batsman,4,Star
+Andrew Tye,KXIP,Bowler,3,Star
+Kuldeep Yadav,KKR,Bowler,3,Star
+Mitchell Starc,KKR,Bowler,4,Star
+Nathan Coulter-Nile,RCB,Bowler,3,Star
+Pat Cummins,MI,Bowler,3,Star
+Jos Buttler,RR,Keeper,4,Star
+KL Rahul,KXIP,Keeper,4,Star
+MS Dhoni,CSK,Keeper,4,Star
+Rishabh Pant,DD,Keeper,4,Star
+Sanju Samson,RR,Keeper,4,Star
+Andre Russell,KKR,All Rounder,4,Star
+Axar Patel,KXIP,All Rounder,4,Star
+Jean-Paul Duminy,MI,All Rounder,3,Star
+Kieron Pollard,MI,All Rounder,3,Star
+Ravindra Jadeja,CSK,All Rounder,4,Star
+Shane Watson,CSK,All Rounder,3,Star
+Ambati Rayudu,CSK,Batsman,2,Others
+Faf Du Plessis,CSK,Batsman,2,Others
+Murali Vijay,CSK,Batsman,2,Others
+Harbhajan Singh,CSK,Bowler,2,Others
+Imran Tahir,CSK,Bowler,2,Others
+Karn Sharma,CSK,Bowler,2,Others
+Lungisani Ngidi,CSK,Bowler,2,Others
+Mitchell Santner,CSK,Bowler,2,Others
+Mark Wood,CSK,Bowler,2,Others
+Shardul Thakur,CSK,Bowler,2,Others
+Sam Billings,CSK,Keeper,2,Others
+Kedar Jadhav,CSK,All Rounder,2,Others
+Gurkeerat Singh,DD,Batsman,2,Others
+Jason Roy,DD,Batsman,2,Others
+Prithvi Shaw,DD,Batsman,2,Others
+Rahul Tewatia,DD,Batsman,2,Others
+Amit Mishra,DD,Bowler,2,Others
+Jayant Yadav,DD,Bowler,2,Others
+Kagiso Rabada,DD,Bowler,2,Others
+Mohammed Shami,DD,Bowler,2,Others
+Shahbaz Nadeem,DD,Bowler,2,Others
+Trent Boult,DD,Bowler,2,Others
+Naman Ojha,DD,Keeper,2,Others
+Daniel Christian,DD,All Rounder,2,Others
+Vijay Shankar,DD,All Rounder,2,Others
+Apoorv Wankhade,KKR,Batsman,2,Others
+Cameron Delport,KKR,Batsman,2,Others
+Nitish Rana,KKR,Batsman,2,Others
+Shubman Gill,KKR,Batsman,2,Others
+Kamlesh Nagarkoti,KKR,Bowler,2,Others
+Mitchell Johnson,KKR,Bowler,2,Others
+Piyush Chawla,KKR,Bowler,2,Others
+R Vinay Kumar,KKR,Bowler,2,Others
+Rinku Singh,KKR,Bowler,2,Others
+Shivam Mavi,KKR,Bowler,2,Others
+Chris Gayle,KXIP,Batsman,2,Others
+Karun Nair,KXIP,Batsman,2,Others
+Manoj Tiwary,KXIP,Batsman,2,Others
+Mayank Agarwal,KXIP,Batsman,2,Others
+Ankit Singh Rajpoot,KXIP,Bowler,2,Others
+Barinder Sran,KXIP,Bowler,2,Others
+Mohit Sharma,KXIP,Bowler,2,Others
+Mujeeb Zadran,KXIP,Bowler,2,Others
+Marcus Stoinis,KXIP,All Rounder,2,Others
+Ravichandran Ashwin,KXIP,All Rounder,2,Others
+Yuvraj Singh,KXIP,All Rounder,2,Others
+Ben Cutting,MI,Batsman,2,Others
+Saurabh Tiwary,MI,Batsman,2,Others
+Surya Kumar Yadav,MI,Batsman,2,Others
+Akila Dhananjaya,MI,Bowler,2,Others
+Anukul Roy,MI,Bowler,2,Others
+Mustafizur Rahman,MI,Bowler,2,Others
+Pradeep Sangwan,MI,Bowler,2,Others
+Rahul Chahar,MI,Bowler,2,Others
+Mitchell McClenaghan,MI,Bowler,2,Others
+Ishan Kishan,MI,Keeper,2,Others
+Aditya Tare,MI,Keeper,2,Others
+Manan Vohra,RCB,Batsman,2,Others
+Sarfraz Khan,RCB,Batsman,2,Others
+Mohd Siraj,RCB,Bowler,2,Others
+Murugan Ashwin,RCB,Bowler,2,Others
+Pawan Negi,RCB,Bowler,2,Others
+Tim Southee,RCB,Bowler,2,Others
+Umesh Yadav,RCB,Bowler,2,Others
+Washington Sundar,RCB,Bowler,2,Others
+Chris Woakes,RCB,All Rounder,2,Others
+Colin De Grandhomme,RCB,All Rounder,2,Others
+Moeen Ali,RCB,All Rounder,2,Others
+Mandeep Singh,RCB,All Rounder,2,Others
+Parthiv Patel,RCB,Keeper,2,Others
+Ajinkya Rahane,RR,Batsman,2,Others
+Aryaman Vikram Birla,RR,Batsman,2,Others
+Ben Laughlin,RR,Batsman,2,Others
+Darcy Short,RR,Batsman,2,Others
+Jofra Archer,RR,Batsman,2,Others
+Rahul Tripathi,RR,Batsman,2,Others
+Dhawal Kulkarni,RR,Bowler,2,Others
+Dushmanta Chameera,RR,Bowler,2,Others
+Anureet Singh Kathuria,RR,Bowler,2,Others
+Gowtham Krishnappa,RR,Bowler,2,Others
+Zahir Khan Pakteen,RR,Bowler,2,Others
+Stuart Binny,RR,All Rounder,2,Others
+Shreyas Gopal,RR,All Rounder,2,Others
+Sachin Baby,SRH,Batsman,2,Others
+Basil Thampi,SRH,Bowler,2,Others
+Chris Jordan,SRH,Bowler,2,Others
+Mohammad Nabi,SRH,Bowler,2,Others
+Sandeep Sharma,SRH,Bowler,2,Others
+Siddharth Kaul,SRH,Bowler,2,Others
+Syed Khaleel Ahmed,SRH,Bowler,2,Others
+T Natarajan,SRH,Bowler,2,Others
+Wriddhiman Saha,SRH,Keeper,2,Others
+Carlos Brathwaite,SRH,All Rounder,2,Others
+Deepak Hooda,SRH,All Rounder,2,Others
+Shakib Hasan,SRH,All Rounder,2,Others
+Yusuf Pathan,SRH,All Rounder,2,Others
+Shreevats Goswami,SRH,Keeper,2,Others

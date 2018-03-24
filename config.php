@@ -6,6 +6,10 @@
  * Time: 12:14 AM
  */
 
+header("Cache-Control: no-cache, no-store, must-revalidate", true);
+header("Pragma: no-cache", true);
+header("Expires: 0", true);
+
 include_once "authenticate.php";
 
 define("DATA_DIRECTORY", "data");

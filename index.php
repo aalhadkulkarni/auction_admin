@@ -2,11 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: aalhadk
- * Date: 24/2/17
- * Time: 1:04 AM
+ * Date: 4/3/17
+ * Time: 7:28 PM
  */
 
-include_once "functions.php";
+require_once "functions.php";
 
-include_once "login.php";
-//echo file_get_contents("html/index.html");
+if ($loggedInUser == "admin")
+{
+    include_once("html/admin.html.php");
+}
+else if ($loggedInUser == "Viewer")
+{
+    include_once "html/viewer.html.php";
+}
+else
+{
+    include_once "html/auction.html.php";
+}
