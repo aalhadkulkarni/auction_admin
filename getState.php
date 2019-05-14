@@ -24,6 +24,8 @@ if(isset($_REQUEST["hardreset"]))
     $auctionStateJson = getInitialState();
     file_put_contents($fileName, $auctionStateJson);
     resetAuctionToRound($round);
+    deleteDirectory("bidding");
+    mkdir("bidding");
     setTotalRounds($round);
     return;
 }

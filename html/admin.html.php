@@ -305,7 +305,18 @@
             stopBids = true;
         }
 
+        function getRandom(from, to) {
+            return Math.floor(Math.random() * (to - from + 1) + from);
+        }
+
+        function setRandomPlayer() {
+            var rows = $(".playerRow");
+            var selectedRow = getRandom(1, rows.length) - 1;
+            rows[selectedRow].click();
+        }
+
         function startBiddingForPlayer() {
+            setRandomPlayer();
             stopBids = false;
             $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L");
 
@@ -318,6 +329,7 @@
         }
 
         function listenToBids() {
+            return;
             if (stopBids) {
                 return;
             }
@@ -891,8 +903,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <button class="btn btn-info form-control" onclick="startBiddingForPlayer()">Start bidding for
-                            this player
+                        <button class="btn btn-info form-control" onclick="startBiddingForPlayer()">Choose a random player and start bidding
                         </button>
                     </div>
                 </div>
