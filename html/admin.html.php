@@ -278,6 +278,9 @@
                     var nameCol = $("<td></td>");
                     nameCol.html(player.name);
 
+                    var roleCol = $("<td></td>");
+                    roleCol.html(player.role);
+
                     var priceCol = $("<td></td>");
                     priceCol.html(player.basePrice + "L");
 
@@ -286,6 +289,7 @@
 
                     var playerRow = $("<tr id='player" + player.id + "' class='playerRow' onclick='setCurrentPlayer(" + player.id + ")'></tr>");
                     playerRow.append(nameCol);
+                    playerRow.append(roleCol);
                     playerRow.append(priceCol);
                     playerRow.append(teamCol);
 
@@ -891,6 +895,7 @@
                                 <thead>
                                 <tr>
                                     <th>Player name</th>
+                                    <th>Role</th>
                                     <th>Base price</th>
                                     <th>Cricket Team</th>
                                 </tr>
