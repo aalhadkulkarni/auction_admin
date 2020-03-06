@@ -3,18 +3,18 @@ Shikhar Dhawan,DC,Batsman,5,Marquee
 Rishabh Pant,DC,Keeper,5,Marquee
 Jonny Bairstow,SRH,Keeper,5,Marquee
 Shreyas Iyer,DC,Batsman,4,Marquee
-Sunil Naraine,KKR,Bowler5,Marquee
+Sunil Naraine,KKR,Bowler,5,Marquee
 Andre Russel,KKR,All Rounder,5,Marquee
-Chris GayleKXIP,Batsman,6,Marquee
+Chris Gayle,KXIP,Batsman,6,Marquee
 KL Rahul,KXIP,Keeper,5,Marquee
 Rohit Sharma,MI,Batsman,6,Marquee
 Jaspreet Bumrah,MI,Bowler,6,Marquee
-Krunal Pandya,MI,All Rounder5,Marquee
-Hardik Pandya,MI,All Rounder6,Marquee
+Krunal Pandya,MI,All Rounder,5,Marquee
+Hardik Pandya,MI,All Rounder,6,Marquee
 Virat Kohli,RCB,Batsman,6,Marquee
 Yuzvendra Chahal,RCB,Bowler,5,Marquee
 AB de Villiers,RCB,Batsman,6,Marquee
-Steve SmithRR,Batsman,5,Marquee
+Steve Smith,RR,Batsman,5,Marquee
 Ben Stokes,RR,All Rounder,6,Marquee
 David Warner,SRH,Batsman,6,Marquee
 Rashid Khan,SRH,Bowler,5,Marquee
@@ -27,20 +27,20 @@ Ravindra Jadeja,CSK,All Rounder,4,Star
 Dwayne Bravo,CSK,All Rounder,4,Star
 Shane Watson,CSK,All Rounder,3,Star
 Trent boult,MI,Bowler,3,Star
-Chris MorisRCB,All Rounder3,Star
+Chris Moris,RCB,All Rounder,3,Star
 Chrish Lynn,MI,Batsman,3,Star
 Robin Uthappa,RR,Batsman,4,Star
-Ravichandran Ashwin,DC,Bowler3,Star
-Mohammad Shami,KXIP,Bowler3,Star
-Mujeeb Ur Rehman,KXIP,Bowler3,Star
-Andrew Tye,RR,Bowler4,Star
+Ravichandran Ashwin,DC,Bowler,3,Star
+Mohammad Shami,KXIP,Bowler,3,Star
+Mujeeb Ur Rehman,KXIP,Bowler,3,Star
+Andrew Tye,RR,Bowler,4,Star
 Qinton De Kock,MI,keeper,4,Star
 Shimron Hetmyer,DC,Batsman,3,Star
 Marcus Stoinis,DC,All Rounder,3,Star
 Umesh Yadav,RCB,Bowler,3,Star
 Sanju Samson,RR,Keeper,4,Star
 Siddharth Kaul,SRH,Bowler,3,Star
-Oshane ThomasRR,Bowler,3,Star
+Oshane Thomas,RR,Bowler,3,Star
 Glenn Maxwell,KXIP,All Rounder,4,Star
 Sheldon Cottrell,KXIP,Bowler,3,Star
 Jason Roy,DC,Batsman,4,Star
@@ -53,22 +53,22 @@ Colin Munro,DC,Batsman,2,Star
 Shubhman Gill,KKR,Batsman,2,Star
 David Miller,RR,Batsman,2,Star
 Nicolas Pooran,KXIP,Keeper,2,Star
-Kieron PollardMI,All Rounder2,Star
-Mitchel McClenaghan,MI,Bowler2,Star
+Kieron Pollard,MI,All Rounder,2,Star
+Mitchel McClenaghan,MI,Bowler,2,Star
 Washington Sundar,RCB,Bowler,2,Star
 Manish Pandey,SRH,Batsman,3,Star
 Vijay Shankar,SRH,All Rounder,3,Star
 Mohammad Nabi,SRH,Bowler,3,Star
 Suresh Raina,CSK,Batsman,3,Star
-Kuldeep yadav,KKR,Bowler4,Marquee
-Lasith Malinga,MI,Bowler3,Draft
+Kuldeep yadav,KKR,Bowler,4,Marquee
+Lasith Malinga,MI,Bowler,3,Draft
 Murali Vijay,CSK,Batsman,2,Draft
-Harbhajan Singh,CSK,Bowler2,Draft
+Harbhajan Singh,CSK,Bowler,2,Draft
 Kedar Jadhav,CSK,All Rounder,2,Draft
 Karn Sharma,CSK,Bowler,2,Draft
-Mitchell Santner,CSK,Bowler2,Draft
-Lungisani Ngidi,CSK,Bowler2,Draft
-Ruturaj GaikwadCSK,Batsman,2,Draft
+Mitchell Santner,CSK,Bowler,2,Draft
+Lungisani Ngidi,CSK,Bowler,2,Draft
+Ruturaj Gaikwad,CSK,Batsman,2,Draft
 Narayan Jagadeesan,CSK,Keeper,2,Draft
 KM Asif,CSK,All Rounder,2,Draft
 Monu Singh,CSK,Batsman,2,Draft
@@ -83,39 +83,39 @@ Harshal Patel,DC,Bowler,2,Draft
 Keemo Paul,DC,All Rounder,2,Draft
 Shefane Rutherford,MI,Batsman,2,Draft
 Ishant Sharma,DC,Bowler,2,Draft
-Rahul TewatiaRR,Bowler,2,Draft
-Shivam Mavi,KKR,Bowler2,Draft
-Harry Gurney,KKR,Bowler2,Draft
-Piyush Chawala,CSK,Bowler2,Draft
+Rahul Tewatia,RR,Bowler,2,Draft
+Shivam Mavi,KKR,Bowler,2,Draft
+Harry Gurney,KKR,Bowler,2,Draft
+Piyush Chawala,CSK,Bowler,2,Draft
 Nikhil Naik,KKR,Keeper,2,Draft
-Lockie Ferguson,KKR,Bowler2,Draft
-Prasidh KrishnaKKR,Bowler2,Draft
+Lockie Ferguson,KKR,Bowler,2,Draft
+Prasidh Krishna,KKR,Bowler,2,Draft
 Nitish Rana,KKR,Batsman,2,Draft
-Kamlesh Nagarkoti,KKR,Bowler2,Draft
+Kamlesh Nagarkoti,KKR,Bowler,2,Draft
 Rinku Singh,KKR,Batsman,2,Draft
 Mayank Agarwal,KXIP,Batsman,2,Draft
-Arshdeep Singh,KXIP,Bowler2,Draft
-Murgan Ashiwin,KXIP,Bowler2,Draft
-Agnivesh Ayachi,KXIP,All Rounder2,Draft
-Sam Curran,CSK,All Rounder2,Draft
-Harpreet Brar,KXIP,All Rounder2,Draft
-Moises Henriques,KXIP,All Rounder2,Draft
+Arshdeep Singh,KXIP,Bowler,2,Draft
+Murgan Ashiwin,KXIP,Bowler,2,Draft
+Agnivesh Ayachi,KXIP,All Rounder,2,Draft
+Sam Curran,CSK,All Rounder,2,Draft
+Harpreet Brar,KXIP,All Rounder,2,Draft
+Moises Henriques,KXIP,All Rounder,2,Draft
 Sarfraz Khan,KXIP,Batsman,2,Draft
 Mandeep Singh,KXIP,Batsman,2,Draft
-Karun NairKXIP,Batsman,2,Draft
-Darshan Nalkande,KXIP,All Rounder2,Draft
-Ankit RajpootRR,Bowler2,Draft
+Karun Nair,KXIP,Batsman,2,Draft
+Darshan Nalkande,KXIP,All Rounder,2,Draft
+Ankit Rajpoot,RR,Bowler,2,Draft
 Simran Singh,KXIP,Keeper,2,Draft
-Varun Chakravarthy,KKR,All Rounder2,Draft
-Hardus Vilojen,KXIP,Bowler2,Draft
-Jayant Yadav,MI,Bowler2,Draft
+Varun Chakravarthy,KKR,All Rounder,2,Draft
+Hardus Vilojen,KXIP,Bowler,2,Draft
+Jayant Yadav,MI,Bowler,2,Draft
 Anmolpreet Singh,MI,Batsman,2,Draft
-Mayank Markande,RR,Bowler2,Draft
+Mayank Markande,RR,Bowler,2,Draft
 Ishan Kishan,MI,Keeper,2,Draft
 Aditya Tare,MI,Keeper,2,Draft
-Rahul Chahar,MI,Bowler2,Draft
+Rahul Chahar,MI,Bowler,2,Draft
 Siddhesh Lad,MI,Batsman,2,Draft
-Anukul Roy,MI,Bowler2,Draft
+Anukul Roy,MI,Bowler,2,Draft
 Moeen Ali,RCB,All Rounder,2,Draft
 Nathan Coulter-Nile,MI,Bowler,2,Draft
 Shivam Dubey,RCB,All Rounder,2,Draft
@@ -132,7 +132,7 @@ Stuart Binny,RR,All Rounder,2,Draft
 Sudheshan Midhun,RR,Bowler,2,Draft
 Ish Sodhi,RR,Bowler,2,Draft
 Mahipal Lomoror,RR,All Rounder,2,Draft
-Oshane ThomasRR,Bowler,2,Draft
+Oshane Thomas,RR,Bowler,2,Draft
 Riyan Parag,RR,All Rounder,2,Draft
 Dhawal Kulkarni,MI,Bowler,2,Draft
 Varun Aaron,RR,Bowler,2,Draft
@@ -150,7 +150,7 @@ Sandeep Sharma,SRH,Bowler,2,Draft
 Shahabaz Nadeem,SRH,Bowler,2,Draft
 Shreevats Goswami,SRH,Keeper,2,Draft
 Yashasvi Jaiswal,RR,All Rounder,2,Draft
-Ruturaj GaikwadCSK,Batsman,2,Draft
+Ruturaj Gaikwad,CSK,Batsman,2,Draft
 Tom Curran,RR,All Rounder,3,Draft
 Josh Hazlewood,CSK,Bowler,2,Draft
 Alex Carey,DC,Keeper,3,Draft
