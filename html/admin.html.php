@@ -875,7 +875,7 @@
                             <select class="form-control" id="slabSelect" onchange="setCurrentCategory()">
                                 <option>Marquee</option>
                                 <option>Star</option>
-                                <option>Others</option>
+                                <option>Draft</option>
                                 <option selected>All</option>
                             </select>
                         </div>
