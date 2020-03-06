@@ -153,7 +153,7 @@ Yashasvi Jaiswal,RR,All Rounder,2,Draft
 Ruturaj Gaikwad,CSK,Batsman,2,Draft
 Tom Curran,RR,All Rounder,2,Draft
 Josh Hazlewood,CSK,Bowler,2,Draft
-Alex Carey,DC,Keeper,3,Draft
+Alex Carey,DC,Keeper,2,Draft
 Tushar Deshpande,DC,Bowler,2,Draft
 Dinesh Karthik,KKR,Keeper,2,Draft
 Faf Du Plessis,CSK,Batsman,2,Draft
