@@ -60,8 +60,8 @@ Manish Pandey,SRH,Batsman,3,Star
 Vijay Shankar,SRH,All Rounder,3,Star
 Mohammad Nabi,SRH,Bowler,3,Star
 Suresh Raina,CSK,Batsman,3,Star
-Kuldeep yadav,KKR,Bowler,4,Marquee
-Lasith Malinga,MI,Bowler,3,Draft
+Kuldeep yadav,KKR,Bowler,4,Star
+Lasith Malinga,MI,Bowler,3,Star
 Murali Vijay,CSK,Batsman,2,Draft
 Harbhajan Singh,CSK,Bowler,2,Draft
 Kedar Jadhav,CSK,All Rounder,2,Draft
@@ -161,4 +161,4 @@ Shreyas Gopal,RR,All Rounder,2,Draft
 Shardul Thakur,CSK,Bowler,3,Draft
 Jaydev Unadkat,RR,Bowler,2,Draft
 Gowtham Krishnappa,KXIP,All Rounder,2,Draft
-Ambati Rayudu,CSK,Batsman,3,Star
+Ambati Rayudu,CSK,Batsman,3,Draft
