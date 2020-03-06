@@ -2,7 +2,7 @@ MS Dhoni,CSK,Keeper,5,Marquee
 Shikhar Dhawan,DC,Batsman,5,Marquee
 Rishabh Pant,DC,Keeper,5,Marquee
 Jonny Bairstow,SRH,Keeper,5,Marquee
-Shreyas Iyer,DC,Batsman,4,Marquee
+Shreyas Iyer,DC,Batsman,5,Marquee
 Sunil Naraine,KKR,Bowler,5,Marquee
 Andre Russel,KKR,All Rounder,5,Marquee
 Chris Gayle,KXIP,Batsman,6,Marquee
@@ -45,17 +45,17 @@ Glenn Maxwell,KXIP,All Rounder,4,Star
 Sheldon Cottrell,KXIP,Bowler,3,Star
 Jason Roy,DC,Batsman,4,Star
 Chris Woakes,DC,All Rounder,3,Star
-Deepak Chahar,CSK,Bowler,2,Star
+Deepak Chahar,CSK,Bowler,3,Star
 Imran Tahir,CSK,Bowler,3,Star
 Suryakkumar Yadav,MI,Batsman,3,Star
-Kagiso Rabada,DC,Bowler,2,Star
-Colin Munro,DC,Batsman,2,Star
-Shubhman Gill,KKR,Batsman,2,Star
-David Miller,RR,Batsman,2,Star
-Nicolas Pooran,KXIP,Keeper,2,Star
-Kieron Pollard,MI,All Rounder,2,Star
-Mitchel McClenaghan,MI,Bowler,2,Star
-Washington Sundar,RCB,Bowler,2,Star
+Kagiso Rabada,DC,Bowler,3,Star
+Colin Munro,DC,Batsman,3,Star
+Shubhman Gill,KKR,Batsman,3,Star
+David Miller,RR,Batsman,3,Star
+Nicolas Pooran,KXIP,Keeper,3,Star
+Kieron Pollard,MI,All Rounder,3,Star
+Mitchel McClenaghan,MI,Bowler,3,Star
+Washington Sundar,RCB,Bowler,3,Star
 Manish Pandey,SRH,Batsman,3,Star
 Vijay Shankar,SRH,All Rounder,3,Star
 Mohammad Nabi,SRH,Bowler,3,Star
@@ -151,14 +151,14 @@ Shahabaz Nadeem,SRH,Bowler,2,Draft
 Shreevats Goswami,SRH,Keeper,2,Draft
 Yashasvi Jaiswal,RR,All Rounder,2,Draft
 Ruturaj Gaikwad,CSK,Batsman,2,Draft
-Tom Curran,RR,All Rounder,3,Draft
+Tom Curran,RR,All Rounder,2,Draft
 Josh Hazlewood,CSK,Bowler,2,Draft
 Alex Carey,DC,Keeper,3,Draft
 Tushar Deshpande,DC,Bowler,2,Draft
-Dinesh Karthik,KKR,Keeper,3,Draft
-Faf Du Plessis,CSK,Batsman,3,Draft
+Dinesh Karthik,KKR,Keeper,2,Draft
+Faf Du Plessis,CSK,Batsman,2,Draft
 Shreyas Gopal,RR,All Rounder,2,Draft
-Shardul Thakur,CSK,Bowler,3,Draft
+Shardul Thakur,CSK,Bowler,2,Draft
 Jaydev Unadkat,RR,Bowler,2,Draft
 Gowtham Krishnappa,KXIP,All Rounder,2,Draft
-Ambati Rayudu,CSK,Batsman,3,Draft
+Ambati Rayudu,CSK,Batsman,2,Draft
