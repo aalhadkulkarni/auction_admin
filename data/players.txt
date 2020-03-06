@@ -7,7 +7,7 @@ Sunil Naraine,KKR,Bowler ,5,Marquee
 Andre Russel,KKR,All Rounder,5,Marquee
 Chris Gayle ,KXIP,Batsman,6,Marquee
 KL Rahul,KXIP,Keeper,5,Marquee
-Rohit Sharama,MI,Batsman,6,Marquee
+Rohit Sharma,MI,Batsman,6,Marquee
 Jaspreet Bumrah,MI,Bowler ,6,Marquee
 Krunal Pandya,MI,All Rounder ,5,Marquee
 Hardik Pandya,MI,All Rounder ,6,Marquee
