@@ -7,6 +7,19 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: 'AIzaSyD6jiFzXv1Bhq9gt_6QrNYzN7-cSTdVwZw',
+            authDomain: 'fantasy-league-b5923.firebaseapp.com',
+            databaseURL: 'https://fantasy-league-b5923.firebaseio.com',
+            projectId: 'fantasy-league-b5923',
+            storageBucket: 'gs://fantasy-league-b5923.appspot.com/'
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    </script>
     <style>
         .table-responsive {
             max-height: 300px;
@@ -53,7 +66,23 @@
             allRemainingPlayersCount: 0
         };
 
+        function initEmptyArraysBecauseFirebaseIsABitch() {
+            auctionState.history = auctionState.history || [];
+            auctionState.players = auctionState.players || [];
+            auctionState.allRemainingPlayers = auctionState.allRemainingPlayers || [];
+            auctionState.unsoldPlayersRemaining = auctionState.unsoldPlayersRemaining || [];
+            auctionState.unsoldPlayers = auctionState.unsoldPlayers || [];
+            auctionState.leagueTeams = auctionState.leagueTeams || [];
+            auctionState.categories = auctionState.categories || [];
+            auctionState.soldPlayers = auctionState.soldPlayers || [];
+            auctionState.soldPlayersCount = auctionState.soldPlayersCount || 0;
+            auctionState.unsoldPlayersCount = auctionState.unsoldPlayersCount || 0;
+            auctionState.remainingUnsoldPlayersCount = auctionState.remainingUnsoldPlayersCount || 0;
+            auctionState.allRemainingPlayersCount = auctionState.allRemainingPlayersCount || 0;
+        }
+
         function updateAuctionState() {
+            initEmptyArraysBecauseFirebaseIsABitch();
             resetAllData();
             setRound();
             setHistory();
@@ -85,7 +114,7 @@
 
         function setHistory() {
             $("#historyTable tbody").empty();
-            var history = auctionState.history;
+            var history = auctionState.history;;
             for (var i = history.length - 1; i >= 0; i--) {
                 var action = history[i];
 
@@ -426,6 +455,7 @@
                 var team = auctionState.leagueTeams[i];
                 summary += "<br>";
                 summary += team.name + " (" + team.budgetLeft + "L):";
+                team.actions = team.actions || [];
                 summary += "(Players bought: " + team.actions.length + "):";
                 var actions = team.actions;
                 if (actions == null || actions.length == 0) {
@@ -477,6 +507,7 @@
         }
 
         function setBiddingSummary(status) {
+            return;
             summary.allShouldBid = false;
             summary.playerId = currentPlayer.id;
             status && (summary.status = status);
@@ -532,6 +563,7 @@
         }
 
         function saveSummary(success, fail) {
+            return;
             var round = auctionState.round;
             if (summary.status == "Sold" || summary.status == "Unsold") {
                 round--;
@@ -572,6 +604,7 @@
         }
 
         function resetBids() {
+            return;
             currentBids = {};
             summary = {
                 playerId: null,
@@ -635,27 +668,8 @@
         }
 
         function saveState() {
-            $.ajax
-            ({
-                type: "POST",
-                url: "saveState.php",
-                data: {
-                    round: auctionState.round,
-                    state: JSON.stringify(auctionState)
-                },
-                success: function (data) {
-                    if (data == "0") {
-                        alert("State could not be saved. Trying again");
-                        saveState();
-                    } else {
-                        alert("State saved successfully");
-                    }
-                },
-                error: function () {
-                    alert("State could not be saved. Trying again");
-                    saveState();
-                }
-            });
+            database.ref("auction/states/" + auctionState.round).set(auctionState);
+            database.ref("auction/round").set(auctionState.round);
             downloadState();
         }
 
@@ -755,17 +769,33 @@
         }
 
         function init() {
+            database.ref("auction/states").set([]);
             $.ajax
             ({
                 type: "POST",
                 url: "getState.php",
                 success: function (data) {
                     auctionState = data;
+                    saveState();
                     updateAuctionState();
                 }
             });
         }
-        window.onload = init;
+
+        function resume() {
+            database.ref("auction/round")
+                .once("value")
+                .then(function(data) {
+                    var round = data.val();
+                    database.ref("auction/states/" + round)
+                        .once("value")
+                        .then(function (data2) {
+                            auctionState = data2.val();
+                            updateAuctionState();
+                        });
+                });
+        }
+        window.onload = resume;
     </script>
 </head>
 <body>
