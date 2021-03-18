@@ -875,7 +875,7 @@
                             <select class="form-control" id="slabSelect" onchange="setCurrentCategory()">
                                 <option>Marquee</option>
                                 <option>Star</option>
-                                <option>Others</option>
+                                <option>Draft</option>
                                 <option selected>All</option>
                             </select>
                         </div>
@@ -923,7 +923,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-info">
+            <div class="panel panel-info" style="display: none;">
                 <div class="panel panel-heading">
                     Current bids
                 </div>
