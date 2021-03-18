@@ -923,7 +923,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-info">
+            <div class="panel panel-info" style="display: none;">
                 <div class="panel panel-heading">
                     Current bids
                 </div>
