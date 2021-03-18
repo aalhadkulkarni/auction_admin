@@ -723,6 +723,9 @@
             if (!confirm("Undo the last round? The change will be permanent.")) {
                 return;
             }
+            database.ref("auction/round").set(auctionState.round - 1);
+            database.ref("auction/states/" + auctionState.round).set({});
+            resume(auctionState.round - 1);
             $.ajax
             ({
                 type: "POST",
@@ -756,6 +759,7 @@
         }
 
         function downloadState() {
+            return;
             var str = JSON.stringify(auctionState);
             var uri = 'data:text/plain;charset=utf-8,' + str;
 
@@ -782,17 +786,25 @@
             });
         }
 
-        function resume() {
-            database.ref("auction/round")
+        function resume(round) {
+            if (!isNaN(round)) {
+                getFirebaseState(round);
+            } else {
+                database.ref("auction/round")
+                    .once("value")
+                    .then(function(data) {
+                        var round = data.val();
+                        getFirebaseState(round);
+                    });
+            }
+        }
+
+        function getFirebaseState(round) {
+            database.ref("auction/states/" + round)
                 .once("value")
-                .then(function(data) {
-                    var round = data.val();
-                    database.ref("auction/states/" + round)
-                        .once("value")
-                        .then(function (data2) {
-                            auctionState = data2.val();
-                            updateAuctionState();
-                        });
+                .then(function (data) {
+                    auctionState = data.val();
+                    updateAuctionState();
                 });
         }
         window.onload = resume;
