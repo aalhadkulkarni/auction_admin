@@ -351,7 +351,9 @@
         function startBiddingForPlayer() {
             setRandomPlayer();
             stopBids = false;
-            $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L");
+            var text = "Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L";
+            database.ref("auction/nextPlayerText").set(text);
+            $("#currentPlayerText").html(text);
 
             resetBids();
             setBiddingSummary("Bids");
@@ -471,6 +473,7 @@
                     summary = summary.substr(0, summary.length - 1);
                 }
             }
+            database.ref("auction/summary").set(summary);
             $("#summaryDiv").html(summary);
         }
 
@@ -918,6 +921,7 @@
                                 <option>Marquee</option>
                                 <option>Star</option>
                                 <option>Draft</option>
+                                <option>RTR</option>
                                 <option selected>All</option>
                             </select>
                         </div>
