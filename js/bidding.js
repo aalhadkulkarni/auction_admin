@@ -48,29 +48,31 @@
             })(listener, i);
         }
 
-        database.ref("auction/auctioneer/currentBid").on("value", function (data) {
-            var currentBid = data.val() || {};
+        if (env == "bidder") {
+            database.ref("auction/auctioneer/currentBid").on("value", function (data) {
+                var currentBid = data.val() || {};
 
-            currentLeader = currentBid.team || "";
-            currentBidValue = currentBid.value || "";
-            if (!isNaN(currentBidValue)) {
-                nextBidValue = parseFloat(currentBidValue) + 0.5;
-            }
+                console.log(currentBid);
+                currentLeader = currentBid.team || "";
+                currentBidValue = currentBid.value || "";
+                if (!isNaN(currentBidValue) && currentLeader != "") {
+                    nextBidValue = parseFloat(currentBidValue) + 0.5;
+                } else {
+                    nextBidValue = parseFloat(currentBidValue);
+                    currentBidValue = "No bids yet";
+                }
 
-            var currentBidValueDiv = document.getElementById("currentBidValueDiv");
-            var currentLeaderDiv = document.getElementById("currentLeaderDiv");
-            var nextBidValueDiv = document.getElementById("nextBidValueDiv");
+                var currentBidValueDiv = document.getElementById("currentBidValueDiv");
+                var currentLeaderDiv = document.getElementById("currentLeaderDiv");
+                var nextBidValueDiv = document.getElementById("nextBidValueDiv");
 
-            if (env == "auctioneer") {
-
-            } else {
-                currentLeaderDiv.innerHtml = currentLeader;
+                currentLeaderDiv.innerHTML = currentLeader;
                 currentBidValueDiv.innerHTML = currentBidValue;
                 if (!isNaN(nextBidValue)) {
                     nextBidValueDiv.innerHTML = nextBidValue;
                 }
-            }
-        });
+            });
+        }
 
         var raiseButton = document.getElementById("raiseButton");
         raiseButton.onclick = raise;
