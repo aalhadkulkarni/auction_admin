@@ -840,6 +840,18 @@
         var currentLeader, currentBidValue;
 
         function listen() {
+            database.ref("auction/actioneer/currentLeader")
+                .once("value")
+                .then(function (data) {
+                    var obj = data.val() || {};
+                    currentLeader = obj.team;
+                    currentBidValue = obj.value;
+                    startListeningToBids();
+                });
+            }
+        }
+
+        function startListeningToBids() {
             for (var i in auctionState.leagueTeams) {
                 var leagueTeam = auctionState.leagueTeams[i];
                 (function(leagueTeam) {
@@ -863,7 +875,6 @@
                         }
                     });
                 })(leagueTeam);
-            }
         }
     </script>
 </head>
