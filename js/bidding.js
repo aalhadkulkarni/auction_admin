@@ -54,6 +54,11 @@
 
                 console.log(currentBid);
                 currentLeader = currentBid.team || "";
+                if (currentLeader == userName) {
+                    raiseButton.disabled = true;
+                } else {
+                    raiseButton.disabled = false;
+                }
                 currentBidValue = currentBid.value || "";
                 if (!isNaN(currentBidValue) && currentLeader != "") {
                     nextBidValue = parseFloat(currentBidValue) + 0.5;

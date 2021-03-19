@@ -630,6 +630,8 @@
         }
 
         function playerSold() {
+            currentLeader = null;
+            currentBidValue = null;
             if (currentPlayer == null) {
                 alert("No player selected");
                 return;
@@ -817,10 +819,38 @@
                 .once("value")
                 .then(function (data) {
                     auctionState = data.val();
+                    if (!window.listening) {
+                        window.listening = true;
+                        listen();
+                    }
                     updateAuctionState();
                 });
         }
-        window.onload = resume;
+        window.onload = function () {
+            resume();
+        };
+
+        var currentLeader, currentBidValue;
+
+        function listen() {
+            for (var i in auctionState.leagueTeams) {
+                var leagueTeam = auctionState.leagueTeams[i];
+                (function(leagueTeam) {
+                    database.ref("auction/bids/" + leagueTeam.shortName).on("value", function(data) {
+                        var bid = parseFloat(data.val());
+                        if (currentLeader == null) {
+                            currentLeader = leagueTeam.shortName;
+                            currentBidValue = bid;
+                        } else {
+                            if (bid == currentBidValue + 0.5) {
+                                currentLeader = leagueTeam.shortName;
+                                currentBidValue = bid;
+                            }
+                        }
+                    });
+                })(leagueTeam);
+            }
+        }
     </script>
 </head>
 <body>
