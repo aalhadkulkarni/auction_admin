@@ -357,6 +357,8 @@
                 team: "",
                 value: currentPlayer.basePrice
             });
+            database.ref("auction/auctioneer/currentBid").set({});
+            database.ref("auction/bids").set({});
             database.ref("auction/nextPlayerText").set(text);
             database.ref("auction/lastActionText").set("");
             $("#currentPlayerText").html(text);
