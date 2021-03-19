@@ -856,18 +856,23 @@
                         }
                         if (currentLeader == null || isNaN(currentBidValue)) {
                             console.log("Here1");
-                            currentLeader = bidTeam;
-                            currentBidValue = bid;
+                            setLeader(bidTeam, bid);
                         } else if (bid == currentBidValue + 0.5) {
                             console.log("Here2");
-                            currentLeader = bidTeam;
-                            currentBidValue = bid;
-                        } else {
-                            console.log("Here3");
+                            setLeader(bidTeam, bid);
                         }
                     });
                 })(bidTeam);
             }
+        }
+
+        function setLeader(bidTeam, bid) {
+            currentLeader = bidTeam;
+            currentBidValue = bid;
+            database.ref("auction/auctioneer/currentLeader").set({
+                team: bidTeam,
+                value: bid
+            });
         }
     </script>
 </head>
