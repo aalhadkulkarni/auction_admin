@@ -34,6 +34,8 @@
         }
     };
 
+    var currentLeader, currentBidValue, nextBidValue;
+
     var listenerCustomElements = {};
 
     function init() {
@@ -45,6 +47,31 @@
                 })
             })(listener, i);
         }
+
+        dabatase.ref("auction/" + env + "/currentBid").on("value", function (data) {
+            var currentBid = data.val() || {};
+
+            currentLeader = currentBid.team || "";
+            currentBidValue = currentBid.value || "";
+            if (!isNaN(currentBidValue)) {
+                nextBidValue = parseFloat(currentBidValue) + 0.5;
+            }
+
+            var currentBidValueDiv = document.getElementById("currentBidValue");
+            var currentLeaderDiv = document.getElementById("currentLeader");
+            var nextBidValueDiv = document.getElementById("nextBidValue");
+
+            if (env == "auctioneer") {
+
+            } else {
+                currentLeaderDiv.innerHtml = currentLeader;
+                currentBidValueDiv.innerHTML = currentBidValue;
+                nextBidValueDiv.innerHTML = nextBidValue
+            }
+        });
+
+        var raiseButton = document.getElementById("raiseButton");
+        raiseButton.onclick = raise();
     }
 
     function setData(data, listener, i) {
@@ -70,6 +97,10 @@
 
     function send() {
 
+    }
+
+    function raise() {
+        console.log("Sending " + nextBidValue);
     }
 
 })(document);
