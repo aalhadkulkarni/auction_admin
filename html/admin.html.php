@@ -187,7 +187,7 @@
 
                 $("#leagueTeamsTable tbody").append(teamRow);
 
-                var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.name + "</option>";
+                var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.shortName + "</option>";
                 $("#leagueTeamsSelect").append(option);
             }
         }
@@ -842,8 +842,7 @@
                 .once("value")
                 .then(function (data) {
                     var obj = data.val() || {};
-                    currentLeader = obj.team;
-                    currentBidValue = obj.value;
+                    setLeader(obj.team, obj.value, true);
                     startListeningToBids();
                 });
         }
@@ -872,13 +871,28 @@
             }
         }
 
-        function setLeader(bidTeam, bid) {
+        function setLeader(bidTeam, bid, fromDb) {
+            if (isNaN(bid)) {
+                return;
+            }
             currentLeader = bidTeam;
             currentBidValue = bid;
-            database.ref("auction/auctioneer/currentBid").set({
-                team: bidTeam,
-                value: bid
-            });
+            var options = $("#leagueTeamsSelect")[0].options;
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                if (option.innerText == currentLeader) {
+                    option.selected = true;
+                    break;
+                }
+            }
+            $("#bidText").val(currentBidValue);
+
+            if (!fromDb) {
+                database.ref("auction/auctioneer/currentBid").set({
+                    team: bidTeam,
+                    value: bid
+                });
+            }
         }
     </script>
 </head>
