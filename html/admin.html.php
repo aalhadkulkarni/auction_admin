@@ -801,6 +801,7 @@
                             database.ref("auction/bids/" + leagueTeam.shortName).off();
                         })(leagueTeam);
                     }
+                    window.listening = false;
                     saveState();
                     updateAuctionState();
                 }
