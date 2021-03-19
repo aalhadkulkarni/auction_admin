@@ -48,7 +48,7 @@
             })(listener, i);
         }
 
-        dabatase.ref("auction/" + env + "/currentBid").on("value", function (data) {
+        database.ref("auction/" + env + "/currentBid").on("value", function (data) {
             var currentBid = data.val() || {};
 
             currentLeader = currentBid.team || "";
@@ -66,7 +66,9 @@
             } else {
                 currentLeaderDiv.innerHtml = currentLeader;
                 currentBidValueDiv.innerHTML = currentBidValue;
-                nextBidValueDiv.innerHTML = nextBidValue
+                if (!isNaN(nextBidValue)) {
+                    nextBidValueDiv.innerHTML = nextBidValue;
+                }
             }
         });
 
