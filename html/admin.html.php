@@ -848,7 +848,6 @@
                     currentBidValue = obj.value;
                     startListeningToBids();
                 });
-            }
         }
 
         function startListeningToBids() {
@@ -875,6 +874,7 @@
                         }
                     });
                 })(leagueTeam);
+            }
         }
     </script>
 </head>
