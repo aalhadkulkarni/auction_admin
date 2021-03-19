@@ -780,7 +780,7 @@
         }
 
         function init() {
-            database.ref("auction/states").set([]);
+            database.ref("auction").set([]);
             $.ajax
             ({
                 type: "POST",
