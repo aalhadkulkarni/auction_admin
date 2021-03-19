@@ -104,6 +104,7 @@
 
         function resetAllData() {
             currentPlayer = null;
+            database.ref("auction/nextPlayerText").set(null);
             $("#currentPlayerText").html("No player selected");
             $("#bidText").val("");
         }
@@ -351,7 +352,10 @@
         function startBiddingForPlayer() {
             setRandomPlayer();
             stopBids = false;
-            $("#currentPlayerText").html("Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L");
+            var text = "Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L";
+            database.ref("auction/nextPlayerText").set(text);
+            database.ref("lastActionText").set("");
+            $("#currentPlayerText").html(text);
 
             resetBids();
             setBiddingSummary("Bids");
@@ -446,7 +450,9 @@
             var history = auctionState.history;
             if (history != null && history.length > 0) {
                 var lastAction = history[history.length - 1];
-                summary += getLastActionText(lastAction);
+                var lastActionText = getLastActionText(lastAction);
+                database.ref("lastActionText").set(lastActionText);
+                summary += lastActionText;
             }
             else {
                 summary += "*Auction starts:*";
@@ -471,6 +477,7 @@
                     summary = summary.substr(0, summary.length - 1);
                 }
             }
+            database.ref("auction/summary").set(summary);
             $("#summaryDiv").html(summary);
         }
 
@@ -918,6 +925,7 @@
                                 <option>Marquee</option>
                                 <option>Star</option>
                                 <option>Draft</option>
+                                <option>RTR</option>
                                 <option selected>All</option>
                             </select>
                         </div>

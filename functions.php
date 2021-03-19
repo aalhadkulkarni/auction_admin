@@ -11,7 +11,7 @@ require_once "config.php";
 function echoVariables()
 {
     global $loggedInUser;
-    echo "userName = '$loggedInUser'";
+    echo "userName = '$loggedInUser';";
 }
 
 function getAuctionStateFile($round, $checkIfExists = false)
