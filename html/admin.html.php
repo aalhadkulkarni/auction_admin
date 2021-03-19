@@ -795,6 +795,12 @@
                 url: "getState.php",
                 success: function (data) {
                     auctionState = data;
+                    for (var i in auctionState.leagueTeams) {
+                        var leagueTeam = auctionState.leagueTeams[i];
+                        (function (leagueTeam) {
+                            database.ref("auction/bids/" + leagueTeam).off();
+                        })(leagueTeam);
+                    }
                     saveState();
                     updateAuctionState();
                 }
