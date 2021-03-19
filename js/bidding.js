@@ -20,31 +20,35 @@
     document.body.appendChild(firebaseScript);
 
     var listeners = {
-        "summary": {
-            "element": "summaryDiv",
-            "alert": false
+        summary: {
+            element: "summaryDiv",
+            alert: false
         },
-        "nextPlayerText": {
-            "element": "nextPlayerTextDiv",
-            "alert": true
+        nextPlayerText: {
+            element: "nextPlayerTextDiv",
+            alert: true
         },
-        "lastActionText": {
-            "id": "lastActionTextDiv"
+        lastActionText: {
+            element: "lastActionTextDiv",
+            alert: true
         }
     };
 
     var listenerCustomElements = {};
 
     function init() {
-        for (var i = 0; i < listeners.length; i++) {
+        for (var i in listeners) {
             var listener = listeners[i];
-            database.ref("auction/" + listener).on("value", function (data) {
-                setData(data.val(), listener);
-            })
+            (function (listener, i) {
+                database.ref("auction/" + i).on("value", function (data) {
+                    setData(data.val(), listener, i);
+                })
+            })(listener, i);
         }
     }
 
-    function setData(data, listener) {
+    function setData(data, listener, i) {
+        console.log(i, listener, data);
         if (data == null) {
             data = "";
         }
@@ -52,7 +56,7 @@
             data = data.replaceAll("<br>", "\n");
         }
 
-        var element = listenerCustomElements[listener] || document.getElementById(listener[id]);
+        var element = listenerCustomElements[i] || document.getElementById(listener.element);
         element.innerHTML = data;
 
         if (listener.alert && data != "") {

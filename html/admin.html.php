@@ -354,7 +354,7 @@
             stopBids = false;
             var text = "Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L";
             database.ref("auction/nextPlayerText").set(text);
-            database.ref("lastActionText").set("");
+            database.ref("auction/lastActionText").set("");
             $("#currentPlayerText").html(text);
 
             resetBids();
@@ -451,7 +451,7 @@
             if (history != null && history.length > 0) {
                 var lastAction = history[history.length - 1];
                 var lastActionText = getLastActionText(lastAction);
-                database.ref("lastActionText").set(lastActionText);
+                database.ref("auction/lastActionText").set(lastActionText);
                 summary += lastActionText;
             }
             else {
