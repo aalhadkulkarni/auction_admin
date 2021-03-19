@@ -798,7 +798,7 @@
                     for (var i in auctionState.leagueTeams) {
                         var leagueTeam = auctionState.leagueTeams[i];
                         (function (leagueTeam) {
-                            database.ref("auction/bids/" + leagueTeam).off();
+                            database.ref("auction/bids/" + leagueTeam.shortName).off();
                         })(leagueTeam);
                     }
                     saveState();
