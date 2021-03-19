@@ -740,7 +740,7 @@
             if (!confirm("Undo the last round? The change will be permanent.")) {
                 return;
             }
-            database.ref("auction/auctioneer/currentLeader").set("");
+            database.ref("auction/auctioneer/currentBid").set("");
             currentLeader = null;
             currentBidValue = null;
             database.ref("auction/bids").set({});
@@ -838,7 +838,7 @@
         var currentLeader, currentBidValue;
 
         function listen() {
-            database.ref("auction/actioneer/currentLeader")
+            database.ref("auction/actioneer/currentBid")
                 .once("value")
                 .then(function (data) {
                     var obj = data.val() || {};
@@ -875,7 +875,7 @@
         function setLeader(bidTeam, bid) {
             currentLeader = bidTeam;
             currentBidValue = bid;
-            database.ref("auction/auctioneer/currentLeader").set({
+            database.ref("auction/auctioneer/currentBid").set({
                 team: bidTeam,
                 value: bid
             });
