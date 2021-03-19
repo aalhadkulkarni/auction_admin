@@ -836,15 +836,21 @@
             for (var i in auctionState.leagueTeams) {
                 var leagueTeam = auctionState.leagueTeams[i];
                 (function(leagueTeam) {
+                    console.log(leagueTeam);
                     database.ref("auction/bids/" + leagueTeam.shortName).on("value", function(data) {
                         var bid = parseFloat(data.val());
+                        console.log(bid);
                         if (currentLeader == null) {
+                            console.log("Here1");
                             currentLeader = leagueTeam.shortName;
                             currentBidValue = bid;
                         } else {
                             if (bid == currentBidValue + 0.5) {
+                                console.log("Here2");
                                 currentLeader = leagueTeam.shortName;
                                 currentBidValue = bid;
+                            } else {
+                                console.log("Here3");
                             }
                         }
                     });
