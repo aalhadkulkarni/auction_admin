@@ -675,6 +675,7 @@
             auctionState.soldPlayers.push(currentPlayer);
             auctionState.soldPlayersCount++;
 
+            database.ref("auction/bids").set({});
             saveState();
             setBiddingSummary("Sold");
             saveSummary();
@@ -720,6 +721,7 @@
                 auctionState.unsoldPlayersCount++;
             }
 
+            database.ref("auction/bids").set({});
             saveState();
             setBiddingSummary("Unsold");
             saveSummary();
@@ -795,13 +797,6 @@
                 url: "getState.php",
                 success: function (data) {
                     auctionState = data;
-                    for (var i in auctionState.leagueTeams) {
-                        var leagueTeam = auctionState.leagueTeams[i];
-                        (function (leagueTeam) {
-                            database.ref("auction/bids/" + leagueTeam.shortName).off();
-                        })(leagueTeam);
-                    }
-                    window.listening = false;
                     saveState();
                     updateAuctionState();
                 }
@@ -826,14 +821,11 @@
                 .once("value")
                 .then(function (data) {
                     auctionState = data.val();
-                    if (!window.listening) {
-                        window.listening = true;
-                        listen();
-                    }
                     updateAuctionState();
                 });
         }
         window.onload = function () {
+            listen();
             resume();
         };
 
@@ -851,29 +843,30 @@
         }
 
         function startListeningToBids() {
-            for (var i in auctionState.leagueTeams) {
-                var leagueTeam = auctionState.leagueTeams[i];
-                (function(leagueTeam) {
-                    console.log(leagueTeam);
-                    database.ref("auction/bids/" + leagueTeam.shortName).on("value", function(data) {
+            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+            for (var i = 0; i < bidTeams.length; i++) {
+                var bidTeam = bidTeams[i];
+                (function(bidTeam) {
+                    database.ref("auction/bids/" + bidTeam).on("value", function(data) {
                         var bid = parseFloat(data.val());
                         console.log(bid);
                         console.log(currentLeader);
-                        if (currentLeader == null && !isNaN(bid)) {
+                        if (isNaN(bid)) {
+                            return;
+                        }
+                        if (currentLeader == null || isNaN(currentBidValue)) {
                             console.log("Here1");
-                            currentLeader = leagueTeam.shortName;
+                            currentLeader = bidTeam;
+                            currentBidValue = bid;
+                        } else if (bid == currentBidValue + 0.5) {
+                            console.log("Here2");
+                            currentLeader = bidTeam;
                             currentBidValue = bid;
                         } else {
-                            if (bid == currentBidValue + 0.5) {
-                                console.log("Here2");
-                                currentLeader = leagueTeam.shortName;
-                                currentBidValue = bid;
-                            } else {
-                                console.log("Here3");
-                            }
+                            console.log("Here3");
                         }
                     });
-                })(leagueTeam);
+                })(bidTeam);
             }
         }
     </script>
