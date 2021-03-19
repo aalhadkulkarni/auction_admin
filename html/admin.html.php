@@ -840,6 +840,7 @@
                     database.ref("auction/bids/" + leagueTeam.shortName).on("value", function(data) {
                         var bid = parseFloat(data.val());
                         console.log(bid);
+                        console.log(currentLeader);
                         if (currentLeader == null) {
                             console.log("Here1");
                             currentLeader = leagueTeam.shortName;
