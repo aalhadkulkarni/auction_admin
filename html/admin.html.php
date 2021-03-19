@@ -350,6 +350,8 @@
         }
 
         function startBiddingForPlayer() {
+            database.ref("auction/auctioneer/currentBid").set({});
+            database.ref("auction/bids").set({});
             setRandomPlayer();
             stopBids = false;
             var text = "Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L";
@@ -357,8 +359,6 @@
                 team: "",
                 value: currentPlayer.basePrice
             });
-            database.ref("auction/auctioneer/currentBid").set({});
-            database.ref("auction/bids").set({});
             database.ref("auction/nextPlayerText").set(text);
             database.ref("auction/lastActionText").set("");
             $("#currentPlayerText").html(text);

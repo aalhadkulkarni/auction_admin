@@ -58,7 +58,12 @@
                 if (!isNaN(currentBidValue) && currentLeader != "") {
                     nextBidValue = parseFloat(currentBidValue) + 0.5;
                 } else {
-                    nextBidValue = parseFloat(currentBidValue);
+                    if (!isNaN(currentBidValue)) {
+                        nextBidValue = parseFloat(currentBidValue);
+                        console.log(nextBidValue);
+                    } else {
+                        nextBidValue = 0;
+                    }
                     currentBidValue = "No bids yet";
                 }
 
