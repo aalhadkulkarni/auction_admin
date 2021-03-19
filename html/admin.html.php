@@ -847,7 +847,7 @@
                         var bid = parseFloat(data.val());
                         console.log(bid);
                         console.log(currentLeader);
-                        if (currentLeader == null) {
+                        if (currentLeader == null && !isNaN(bid)) {
                             console.log("Here1");
                             currentLeader = leagueTeam.shortName;
                             currentBidValue = bid;
