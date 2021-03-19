@@ -25,33 +25,27 @@
 
 <body>
 
-<div id ="lastActionTextDiv">
-
-</div>
+<div id ="lastActionTextDiv"></div>
 
 <br>
 
-<div id = "summaryDiv">
-
-</div>
+<div id = "summaryDiv"></div>
 
 <br>
 
-<div id = "nextPlayerTextDiv">
-
-</div>
+<div id = "nextPlayerTextDiv"></div>
 
 <br>
 
-<div id = "currentLeader"></div>
+<div id = "currentLeaderDiv"></div>
 
-<div id = "currentBidValue"></div>
+<div id = "currentBidValueDiv"></div>
 
 <br>
 
 <button id = "raiseButton"">Raise to</button>
 
-<div id = "nextBidValue"></div>
+<div id = "nextBidValueDiv"></div>
 
 <script src="js/bidding.js"></script>
 

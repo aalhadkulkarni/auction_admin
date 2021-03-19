@@ -1,5 +1,5 @@
-Thane Thunders,100
-Magical Miraj,100
-Kadak Karadkars,100
-Kalandar Kolhapur,100
-Pune-Nashik Legends,100
+Thane Thunders,100,Thane
+Magical Miraj,100,Miraj
+Kadak Karadkars,100,Karad
+Kalandar Kolhapur,100,Kolhapur
+Pune-Nashik Legends,100,Pune

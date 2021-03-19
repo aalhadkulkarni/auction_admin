@@ -48,7 +48,7 @@
             })(listener, i);
         }
 
-        database.ref("auction/" + env + "/currentBid").on("value", function (data) {
+        database.ref("auction/auctioneer/currentBid").on("value", function (data) {
             var currentBid = data.val() || {};
 
             currentLeader = currentBid.team || "";
@@ -57,9 +57,9 @@
                 nextBidValue = parseFloat(currentBidValue) + 0.5;
             }
 
-            var currentBidValueDiv = document.getElementById("currentBidValue");
-            var currentLeaderDiv = document.getElementById("currentLeader");
-            var nextBidValueDiv = document.getElementById("nextBidValue");
+            var currentBidValueDiv = document.getElementById("currentBidValueDiv");
+            var currentLeaderDiv = document.getElementById("currentLeaderDiv");
+            var nextBidValueDiv = document.getElementById("nextBidValueDiv");
 
             if (env == "auctioneer") {
 
@@ -73,7 +73,7 @@
         });
 
         var raiseButton = document.getElementById("raiseButton");
-        raiseButton.onclick = raise();
+        raiseButton.onclick = raise;
     }
 
     function setData(data, listener, i) {
@@ -103,6 +103,7 @@
 
     function raise() {
         console.log("Sending " + nextBidValue);
+        database.ref("auction/bids/" + userName).set(nextBidValue);
     }
 
 })(document);
