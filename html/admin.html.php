@@ -740,6 +740,10 @@
             if (!confirm("Undo the last round? The change will be permanent.")) {
                 return;
             }
+            database.ref("auction/auctioneer/currentLeader").set("");
+            currentLeader = null;
+            currentBidValue = null;
+            database.ref("auction/bids").set({});
             database.ref("auction/round").set(auctionState.round - 1);
             database.ref("auction/states/" + auctionState.round).set({});
             resume(auctionState.round - 1);
@@ -790,7 +794,9 @@
         }
 
         function init() {
-            database.ref("auction").set([]);
+            currentLeader = null;
+            currentBidValue = null;
+            database.ref("auction").set("");
             $.ajax
             ({
                 type: "POST",
