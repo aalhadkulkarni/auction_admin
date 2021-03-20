@@ -46,7 +46,7 @@
                 database.ref("auction/bids/" + bidTeam).on("value", function(data) {
                     var bid = data.val();
                     if (bid == "No Bid") {
-                        sendToWhatsapp(bidTeam + " - " + bid);
+                        sendToWhatsapp("*" + bidTeam + " - " + bid + "*");
                     }
                 });
             })(bidTeam);
