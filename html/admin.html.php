@@ -836,6 +836,7 @@
         };
 
         var currentLeader, currentBidValue;
+        var currentOut = {};
 
         function listen() {
             database.ref("auction/actioneer/currentBid")
@@ -847,13 +848,24 @@
                 });
         }
 
+        function isTeamOut(team) {
+            return currentOut[team];
+        }
         function startListeningToBids() {
             var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
             for (var i = 0; i < bidTeams.length; i++) {
                 var bidTeam = bidTeams[i];
                 (function(bidTeam) {
                     database.ref("auction/bids/" + bidTeam).on("value", function(data) {
-                        var bid = parseFloat(data.val());
+                        if (isTeamOut(bidTeam)) {
+                            return;
+                        }
+                        var bid = data.val();
+                        if (bid == "No Bid") {
+                            currentOut[bidTeam] = true;
+                        } else {
+                            bid = parseFloat(bid);
+                        }
                         console.log(bid);
                         console.log(currentLeader);
                         if (isNaN(bid)) {

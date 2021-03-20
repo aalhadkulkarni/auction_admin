@@ -25,11 +25,11 @@
             alert: false
         },
         nextPlayerText: {
-            element: "nextPlayerTextDiv",
+            element: "updatesDiv",
             alert: true
         },
         lastActionText: {
-            element: "lastActionTextDiv",
+            element: "updatesDiv",
             alert: true
         }
     };
@@ -70,22 +70,26 @@
                         nextBidValue = 0;
                     }
                     currentBidValue = "No bids yet";
+                    currentLeader = "No bids yet";
                 }
 
                 var currentBidValueDiv = document.getElementById("currentBidValueDiv");
                 var currentLeaderDiv = document.getElementById("currentLeaderDiv");
                 var nextBidValueDiv = document.getElementById("nextBidValueDiv");
 
-                currentLeaderDiv.innerHTML = currentLeader;
-                currentBidValueDiv.innerHTML = currentBidValue;
+                currentLeaderDiv.innerHTML = "<h4>" + currentLeader + "</h4>";
+                currentBidValueDiv.innerHTML = "<h4>" + currentBidValue + "</h4>";
                 if (!isNaN(nextBidValue)) {
-                    nextBidValueDiv.innerHTML = nextBidValue;
+                    nextBidValueDiv.innerHTML = "<h4>" + nextBidValue + "</h4>";
                 }
             });
         }
 
         var raiseButton = document.getElementById("raiseButton");
         raiseButton.onclick = raise;
+
+        var noBidButton = document.getElementById("noBidButton");
+        noBidButton.onclick = noBid;
     }
 
     function setData(data, listener, i) {
@@ -97,8 +101,10 @@
             data = data.replaceAll("<br>", "\n");
         }
 
-        var element = listenerCustomElements[i] || document.getElementById(listener.element);
-        element.innerHTML = data;
+        if (data != "") {
+            var element = listenerCustomElements[i] || document.getElementById(listener.element);
+            element.innerHTML = "<h4>" + data + "</h4>";
+        }
 
         if (listener.alert && data != "") {
             if (env == "auctioneer") {
@@ -116,6 +122,10 @@
     function raise() {
         console.log("Sending " + nextBidValue);
         database.ref("auction/bids/" + userName).set(nextBidValue);
+    }
+
+    function noBid() {
+        database.ref("auction/bids/" + userName).set("No Bid");
     }
 
 })(document);
