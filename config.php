@@ -84,6 +84,7 @@ class AuctionTeam
 {
     public $id;
     public $name;
+    public $shortName;
     public $budgetLeft;
     public $actions; //Array of Action objects
 }

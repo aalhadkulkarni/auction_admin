@@ -71,16 +71,16 @@ Khaleel Ahmed,SRH,Bowler,3,Star
 T Natarajan,SRH,Bowler,3,Star
 Dinesh Karthik,KKR,Keeper,3,Star
 Wriddhiman Saha,SRH,Keeper,3,Star
-Daniel Sams,RCB,All Rounder,2,Star
-Robin Uthappa,CSK,Batsman,2,Star
-Shimron Hetmyer,DC,Batsman,2,Star
-Nitish Rana,KKR,Batsman,2,Star
-Manan Vohra,RR,Batsman,2,Star
-Yashasvi Jaiswal,RR,Batsman,2,Star
-Imran Tahir,CSK,Bowler,2,Star
-Chris Woakes,DC,Bowler,2,Star
-Chris Jordan,PK,Bowler,2,Star
-Jaydev Unadkat,RR,Bowler,2,Star
+Daniel Sams,RCB,All Rounder,2,Draft
+Robin Uthappa,CSK,Batsman,2,Draft
+Shimron Hetmyer,DC,Batsman,2,Draft
+Nitish Rana,KKR,Batsman,2,Draft
+Manan Vohra,RR,Batsman,2,Draft
+Yashasvi Jaiswal,RR,Batsman,2,Draft
+Imran Tahir,CSK,Bowler,2,Draft
+Chris Woakes,DC,Bowler,2,Draft
+Chris Jordan,PK,Bowler,2,Draft
+Jaydev Unadkat,RR,Bowler,2,Draft
 Km Asif,CSK,All Rounder,2,Draft
 Moeen Ali,CSK,All Rounder,2,Draft
 Lalith Yadav,DC,All Rounder,2,Draft

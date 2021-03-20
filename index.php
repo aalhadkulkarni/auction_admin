@@ -18,5 +18,5 @@ else if ($loggedInUser == "Viewer")
 }
 else
 {
-    include_once "html/auction.html.php";
+    include_once "html/bidding.html.php";
 }

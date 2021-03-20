@@ -11,7 +11,7 @@ require_once "config.php";
 function echoVariables()
 {
     global $loggedInUser;
-    echo "userName = '$loggedInUser'";
+    echo "userName = '$loggedInUser';";
 }
 
 function getAuctionStateFile($round, $checkIfExists = false)
@@ -87,6 +87,7 @@ function getAuctionTeams()
         $leagueTeam->id = $id;
         $leagueTeam->name = $leagueTeamData[0];
         $leagueTeam->budgetLeft = $leagueTeamData[1];
+        $leagueTeam->shortName = $leagueTeamData[2];
         $leagueTeam->actions = array();
 
         $leagueTeams[$id] = $leagueTeam;

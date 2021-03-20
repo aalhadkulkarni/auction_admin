@@ -82,6 +82,7 @@
         }
 
         function updateAuctionState() {
+            currentOut = {};
             initEmptyArraysBecauseFirebaseIsABitch();
             resetAllData();
             setRound();
@@ -104,6 +105,7 @@
 
         function resetAllData() {
             currentPlayer = null;
+            database.ref("auction/nextPlayerText").set(null);
             $("#currentPlayerText").html("No player selected");
             $("#bidText").val("");
         }
@@ -186,7 +188,7 @@
 
                 $("#leagueTeamsTable tbody").append(teamRow);
 
-                var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.name + "</option>";
+                var option = "<option value = '" + leagueTeam.id + "'>" + leagueTeam.shortName + "</option>";
                 $("#leagueTeamsSelect").append(option);
             }
         }
@@ -349,10 +351,18 @@
         }
 
         function startBiddingForPlayer() {
+            biddingStopped = false;
+            database.ref("auction/auctioneer/currentBid").set({});
+            database.ref("auction/bids").set({});
             setRandomPlayer();
             stopBids = false;
             var text = "Next " + currentPlayer.role + " is " + currentPlayer.name + " (" + currentPlayer.team + ") with base price " + currentPlayer.basePrice + "L";
+            database.ref("auction/auctioneer/currentBid").set({
+                team: "",
+                value: currentPlayer.basePrice
+            });
             database.ref("auction/nextPlayerText").set(text);
+            database.ref("auction/lastActionText").set("");
             $("#currentPlayerText").html(text);
 
             resetBids();
@@ -448,7 +458,9 @@
             var history = auctionState.history;
             if (history != null && history.length > 0) {
                 var lastAction = history[history.length - 1];
-                summary += getLastActionText(lastAction);
+                var lastActionText = getLastActionText(lastAction);
+                database.ref("auction/lastActionText").set(lastActionText);
+                summary += lastActionText;
             }
             else {
                 summary += "*Auction starts:*";
@@ -620,6 +632,8 @@
         }
 
         function playerSold() {
+            currentLeader = null;
+            currentBidValue = null;
             if (currentPlayer == null) {
                 alert("No player selected");
                 return;
@@ -635,9 +649,11 @@
                 alert("Winning bid less than base price entered");
                 return;
             }
+            biddingStopped = true;
             var x = confirm("Sell " + currentPlayer.name + " to " + auctionState.leagueTeams[winningLeagueTeamId].name + " at " + winningBid + "L?");
             console.log(x);
             if (!x) {
+                biddingStopped = false;
                 console.log("Returning");
                 return;
             }
@@ -663,6 +679,7 @@
             auctionState.soldPlayers.push(currentPlayer);
             auctionState.soldPlayersCount++;
 
+            database.ref("auction/bids").set({});
             saveState();
             setBiddingSummary("Sold");
             saveSummary();
@@ -708,6 +725,7 @@
                 auctionState.unsoldPlayersCount++;
             }
 
+            database.ref("auction/bids").set({});
             saveState();
             setBiddingSummary("Unsold");
             saveSummary();
@@ -726,6 +744,10 @@
             if (!confirm("Undo the last round? The change will be permanent.")) {
                 return;
             }
+            database.ref("auction/auctioneer/currentBid").set("");
+            currentLeader = null;
+            currentBidValue = null;
+            database.ref("auction/bids").set({});
             database.ref("auction/round").set(auctionState.round - 1);
             database.ref("auction/states/" + auctionState.round).set({});
             resume(auctionState.round - 1);
@@ -776,7 +798,9 @@
         }
 
         function init() {
-            database.ref("auction/states").set([]);
+            currentLeader = null;
+            currentBidValue = null;
+            database.ref("auction").set("");
             $.ajax
             ({
                 type: "POST",
@@ -810,7 +834,82 @@
                     updateAuctionState();
                 });
         }
-        window.onload = resume;
+        window.onload = function () {
+            listen();
+            resume();
+        };
+
+        var currentLeader, currentBidValue;
+        var currentOut = {}, biddingStopped = false;
+
+        function listen() {
+            database.ref("auction/actioneer/currentBid")
+                .once("value")
+                .then(function (data) {
+                    var obj = data.val() || {};
+                    setLeader(obj.team, obj.value, true);
+                    startListeningToBids();
+                });
+        }
+
+        function isTeamOut(team) {
+            return currentOut[team] || biddingStopped;
+        }
+        function startListeningToBids() {
+            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+            for (var i = 0; i < bidTeams.length; i++) {
+                var bidTeam = bidTeams[i];
+                (function(bidTeam) {
+                    database.ref("auction/bids/" + bidTeam).on("value", function(data) {
+                        if (isTeamOut(bidTeam)) {
+                            return;
+                        }
+                        var bid = data.val();
+                        if (bid == "No Bid") {
+                            currentOut[bidTeam] = true;
+                        } else {
+                            bid = parseFloat(bid);
+                        }
+                        console.log(bid);
+                        console.log(currentLeader);
+                        if (isNaN(bid)) {
+                            return;
+                        }
+                        if (currentLeader == null || isNaN(currentBidValue)) {
+                            console.log("Here1");
+                            setLeader(bidTeam, bid);
+                        } else if (bid == currentBidValue + 0.5) {
+                            console.log("Here2");
+                            setLeader(bidTeam, bid);
+                        }
+                    });
+                })(bidTeam);
+            }
+        }
+
+        function setLeader(bidTeam, bid, fromDb) {
+            if (isNaN(bid)) {
+                return;
+            }
+            currentLeader = bidTeam;
+            currentBidValue = bid;
+            var options = $("#leagueTeamsSelect")[0].options;
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                if (option.innerText == currentLeader) {
+                    option.selected = true;
+                    break;
+                }
+            }
+            $("#bidText").val(currentBidValue);
+
+            if (!fromDb) {
+                database.ref("auction/auctioneer/currentBid").set({
+                    team: bidTeam,
+                    value: bid
+                });
+            }
+        }
     </script>
 </head>
 <body>
