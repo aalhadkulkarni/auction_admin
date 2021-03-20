@@ -19,6 +19,7 @@
     };
     document.body.appendChild(firebaseScript);
 
+    var initDone = false;
     function checkDiv() {
         var divs = document.getElementsByClassName("_1JAUF");
         if (divs.length != 2) {
@@ -29,6 +30,10 @@
     }
 
     function init() {
+        if (initDone) {
+            return;
+        }
+        initDone = true;
         database.ref("auction/auctioneer/currentBid").on("value", newBid);
         database.ref("auction/summary").on("value", summaryUpdated);
         database.ref("auction/nextPlayerText").on("value", nextPlayerSelected);
