@@ -363,6 +363,7 @@
             });
             database.ref("auction/nextPlayerText").set(text);
             database.ref("auction/lastActionText").set("");
+            updateTimer(20000);
             $("#currentPlayerText").html(text);
 
             resetBids();
@@ -856,7 +857,8 @@
             return currentOut[team] || biddingStopped;
         }
 
-        function remind() {
+        function remind(attempt) {
+            attempt = attempt || 1;
             var message = "";
             var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
             for (var i = 0; i < bidTeams.length; i++) {
@@ -865,11 +867,26 @@
                     message += bidTeam + " ";
                 }
             }
+
+            var duration = 15000;
             if (message != "") {
                 message += "\n";
-                message += "Bids please";
+                if (attempt == 2) {
+                    message += "Bids please (2nd reminder)";
+                    duration = 10000;
+                } else if (attempt == 3) {
+                    message += "Bids please *(last call - 10 more seconds)*";
+                    duration = 10000;
+                } else {
+                    message += "Timed out";
+                    duration = null;
+                }
                 database.ref("auction/reminder").set(message);
-                window.remindTimer = setTimeout(remind, 30000);
+                if (duration != null) {
+                    window.remindTimer = setTimeout(function () {
+                        remind(attempt + 1);
+                    }, duration);
+                }
             } else {
                 database.ref("auction/reminder").set("");
             }
@@ -888,7 +905,7 @@
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
                             console.log("Setting timer after a no bid from " + bidTeam);
-                            updateTimer();
+                            updateTimer(15000);
                         } else {
                             bid = parseFloat(bid);
                         }
@@ -909,11 +926,11 @@
             }
         }
 
-        function updateTimer() {
+        function updateTimer(duration) {
             if (window.remindTimer) {
                 clearTimeout(window.remindTimer);
             }
-            window.remindTimer = setTimeout(remind, 30000);
+            window.remindTimer = setTimeout(remind, duration);
         }
 
         function setLeader(bidTeam, bid, fromDb) {
@@ -922,8 +939,6 @@
             }
             currentLeader = bidTeam;
             currentBidValue = bid;
-            console.log("Setting timer after a bid from " + bidTeam + " for " + bid);
-            updateTimer();
             var options = $("#leagueTeamsSelect")[0].options;
             for (var i = 0; i < options.length; i++) {
                 var option = options[i];
@@ -934,6 +949,8 @@
             }
             $("#bidText").val(currentBidValue);
 
+            console.log("Setting 15s timer after a bid from " + bidTeam + " for " + bid);
+            updateTimer(15000);
             if (!fromDb) {
                 database.ref("auction/auctioneer/currentBid").set({
                     team: bidTeam,
