@@ -83,7 +83,6 @@
 
         function updateAuctionState() {
             currentOut = {};
-            biddingStopped = false;
             initEmptyArraysBecauseFirebaseIsABitch();
             resetAllData();
             setRound();
@@ -352,6 +351,7 @@
         }
 
         function startBiddingForPlayer() {
+            biddingStopped = false;
             database.ref("auction/auctioneer/currentBid").set({});
             database.ref("auction/bids").set({});
             setRandomPlayer();
