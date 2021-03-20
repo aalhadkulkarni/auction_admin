@@ -82,6 +82,7 @@
         }
 
         function updateAuctionState() {
+            biddingStopped = false;
             initEmptyArraysBecauseFirebaseIsABitch();
             resetAllData();
             setRound();
@@ -647,9 +648,11 @@
                 alert("Winning bid less than base price entered");
                 return;
             }
+            biddingStopped = true;
             var x = confirm("Sell " + currentPlayer.name + " to " + auctionState.leagueTeams[winningLeagueTeamId].name + " at " + winningBid + "L?");
             console.log(x);
             if (!x) {
+                biddingStopped = false;
                 console.log("Returning");
                 return;
             }
@@ -836,7 +839,7 @@
         };
 
         var currentLeader, currentBidValue;
-        var currentOut = {};
+        var currentOut = {}, biddingStopped = false;
 
         function listen() {
             database.ref("auction/actioneer/currentBid")
@@ -849,7 +852,7 @@
         }
 
         function isTeamOut(team) {
-            return currentOut[team];
+            return currentOut[team] || biddingStopped;
         }
         function startListeningToBids() {
             var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
