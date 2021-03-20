@@ -56,8 +56,10 @@
                 currentLeader = currentBid.team || "";
                 if (currentLeader == userName) {
                     raiseButton.disabled = true;
+                    noBidButton.disabled = true;
                 } else {
                     raiseButton.disabled = false;
+                    noBidButton.disabled = false;
                 }
                 currentBidValue = currentBid.value || "";
                 if (!isNaN(currentBidValue) && currentLeader != "") {
@@ -81,6 +83,14 @@
                 currentBidValueDiv.innerHTML = "<h4>" + currentBidValue + "</h4>";
                 if (!isNaN(nextBidValue)) {
                     nextBidValueDiv.innerHTML = "<h4>" + nextBidValue + "</h4>";
+                }
+            });
+
+            database.ref("auction/bids/" + userName).on("value", function (data) {
+                var bid = data.val();
+                if (bid == "No Bid") {
+                    raiseButton.disabled = true;
+                    noBidButton.disabled = true;
                 }
             });
         }
