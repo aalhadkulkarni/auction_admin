@@ -53,7 +53,7 @@
     }
 
     function newBid(data) {
-        var currentBid = data.val();
+        var currentBid = data.val() || {};
         var leader = currentBid.team || "",
             bid = currentBid.value;
         var message = "";
