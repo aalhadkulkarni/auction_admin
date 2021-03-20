@@ -363,7 +363,7 @@
             });
             database.ref("auction/nextPlayerText").set(text);
             database.ref("auction/lastActionText").set("");
-            updateTimer(30000);
+            updateTimer(10000);
             $("#currentPlayerText").html(text);
 
             resetBids();
@@ -990,8 +990,8 @@
             }
             $("#bidText").val(currentBidValue);
 
-            console.log("Setting 30s timer after a bid from " + bidTeam + " for " + bid);
-            updateTimer(30000);
+            console.log("Setting 20s timer after a bid from " + bidTeam + " for " + bid);
+            updateTimer(20000);
             if (!fromDb) {
                 database.ref("auction/auctioneer/currentBid").set({
                     team: bidTeam,
