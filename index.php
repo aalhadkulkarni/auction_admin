@@ -6,6 +6,9 @@
  * Time: 7:28 PM
  */
 
+echo "Please use live link - check on whatsapp";
+die();
+
 require_once "functions.php";
 
 if ($loggedInUser == "admin")
