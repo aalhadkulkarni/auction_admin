@@ -946,7 +946,7 @@
                                 alert("Everyone has given no bid");
                             }
                             console.log("Setting 30s timer after a no bid from " + bidTeam);
-                            updateTimer(30000);
+                            //updateTimer(30000);
                         } else {
                             bid = parseFloat(bid);
                         }
