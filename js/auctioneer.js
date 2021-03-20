@@ -57,9 +57,7 @@
         var leader = currentBid.team || "",
             bid = currentBid.value;
         var message = "";
-        if (leader == "") {
-            message = "Please start bidding from " + getBidText(bid);
-        } else {
+        if (leader != "") {
             message = leader + " - " + getBidText(bid);
         }
         sendToWhatsapp(message);
