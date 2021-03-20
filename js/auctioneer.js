@@ -29,7 +29,6 @@
     }
 
     function init() {
-        sendOldMessages();
         database.ref("auction/auctioneer/currentBid").on("value", newBid);
         database.ref("auction/summary").on("value", summaryUpdated);
         database.ref("auction/nextPlayerText").on("value", nextPlayerSelected);
