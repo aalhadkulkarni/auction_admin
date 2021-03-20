@@ -875,7 +875,7 @@
                     message += "Bids please";
                 } else if (attempt == 2) {
                     message += "Bids please (2nd reminder)";
-                    duration = 20000;
+                    duration = 25000;
                 } else if (attempt == 3) {
                     message += "Bids please *(last call)*";
                     duration = 15000;
