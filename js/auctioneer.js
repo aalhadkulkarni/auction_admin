@@ -29,10 +29,27 @@
     }
 
     function init() {
+        sendOldMessages();
         database.ref("auction/auctioneer/currentBid").on("value", newBid);
         database.ref("auction/summary").on("value", summaryUpdated);
         database.ref("auction/nextPlayerText").on("value", nextPlayerSelected);
         database.ref("auction/lastActionText").on("value", biddingEnded);
+    }
+
+    function sendOldMessages() {
+        var success = -1;
+        try {
+            for (var i = 0; i < messages.length; i++) {
+                sendToWhatsapp(messages[i]);
+                success = i;
+            }
+        } catch (e) {
+            var newMessages = [];
+            for (var i = success + 1; i < messages.length; i++) {
+                newMessages.push(messages[i]);
+            }
+            messages = newMessages;
+        }
     }
 
     function newBid(data) {
