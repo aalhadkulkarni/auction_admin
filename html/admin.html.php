@@ -936,6 +936,13 @@
                         var bid = data.val();
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
+                            var curOutCount = 0;
+                            for (var i in currentOut) {
+                                curOutCount++;
+                            }
+                            if (curOutCount == 4) {
+                                alert("Everyone has given no bid");
+                            }
                             console.log("Setting 30s timer after a no bid from " + bidTeam);
                             updateTimer(30000);
                         } else {
