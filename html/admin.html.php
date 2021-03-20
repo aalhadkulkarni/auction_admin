@@ -942,7 +942,7 @@
                                     curOutCount++;
                                 }
                             }
-                            if (curOutCount == 4) {
+                            if ((curOutCount == 4 && currentLeader != null) || curOutCount == 5) {
                                 alert("Everyone has given no bid");
                             }
                             console.log("Setting 30s timer after a no bid from " + bidTeam);
