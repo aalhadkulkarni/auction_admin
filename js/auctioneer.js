@@ -89,6 +89,7 @@
         if (summary == null || summary == "") {
             return;
         }
+        console.log(summary, typeof summary);
         summary = summary.replaceAll("<br>", "\n");
         sendToWhatsapp(summary);
     }
