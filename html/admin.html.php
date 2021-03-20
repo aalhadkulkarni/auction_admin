@@ -82,6 +82,7 @@
         }
 
         function updateAuctionState() {
+            currentOut = {};
             biddingStopped = false;
             initEmptyArraysBecauseFirebaseIsABitch();
             resetAllData();
