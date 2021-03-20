@@ -33,21 +33,18 @@
         database.ref("auction/summary").on("value", summaryUpdated);
         database.ref("auction/nextPlayerText").on("value", nextPlayerSelected);
         database.ref("auction/lastActionText").on("value", biddingEnded);
-    }
 
-    function sendOldMessages() {
-        var success = -1;
-        try {
-            for (var i = 0; i < messages.length; i++) {
-                sendToWhatsapp(messages[i]);
-                success = i;
-            }
-        } catch (e) {
-            var newMessages = [];
-            for (var i = success + 1; i < messages.length; i++) {
-                newMessages.push(messages[i]);
-            }
-            messages = newMessages;
+        var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+        for (var i = 0; i < bidTeams.length; i++) {
+            var bidTeam = bidTeams[i];
+            (function(bidTeam) {
+                database.ref("auction/bids/" + bidTeam).on("value", function(data) {
+                    var bid = data.val();
+                    if (bid == "No Bid") {
+                        sendToWhatsapp(bidTeam + " - " + bid);
+                    }
+                });
+            })(bidTeam);
         }
     }
 
@@ -59,7 +56,14 @@
         if (leader != "") {
             message = leader + " - " + getBidText(bid);
         }
+        if (message == "") {
+            return;
+        }
         sendToWhatsapp(message);
+    }
+
+    function noBid() {
+
     }
 
     function biddingEnded(data) {
