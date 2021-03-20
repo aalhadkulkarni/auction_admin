@@ -840,7 +840,7 @@
         };
 
         var currentLeader, currentBidValue;
-        var currentOut = {}, biddingStopped = false;
+        var currentOut = {}, biddingStopped = true;
 
         function listen() {
             database.ref("auction/actioneer/currentBid")
@@ -870,6 +870,8 @@
                 message += "Bids please";
                 database.ref("auction/reminder").set(message);
                 window.remindTimer = setTimeout(remind, 30000);
+            } else {
+                database.ref("auction/reminder").set("");
             }
         }
 
@@ -885,6 +887,7 @@
                         var bid = data.val();
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
+                            console.log("Setting timer after a no bid from " + bidTeam);
                             updateTimer();
                         } else {
                             bid = parseFloat(bid);
@@ -919,6 +922,7 @@
             }
             currentLeader = bidTeam;
             currentBidValue = bid;
+            console.log("Setting timer after a bid from " + bidTeam + " for " + bid);
             updateTimer();
             var options = $("#leagueTeamsSelect")[0].options;
             for (var i = 0; i < options.length; i++) {
