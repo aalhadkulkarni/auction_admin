@@ -898,17 +898,17 @@
                 }
             }
 
-            var duration = 30000;
+            var duration = 10000;
             if (message != "") {
                 message += "\n";
                 if (attempt == 1) {
                     message += "Bids please";
                 } else if (attempt == 2) {
                     message += "Bids please (2nd reminder)";
-                    duration = 25000;
+                    duration = 10000;
                 } else if (attempt == 3) {
                     message += "Bids please *(last call)*";
-                    duration = 15000;
+                    duration = 10000;
                 } else if (attempt > 3) {
                     message += "Timed out";
                     duration = null;
@@ -991,7 +991,7 @@
             $("#bidText").val(currentBidValue);
 
             console.log("Setting 20s timer after a bid from " + bidTeam + " for " + bid);
-            updateTimer(20000);
+            updateTimer(10000);
             if (!fromDb) {
                 database.ref("auction/auctioneer/currentBid").set({
                     team: bidTeam,
