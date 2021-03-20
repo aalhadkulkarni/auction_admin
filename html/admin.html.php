@@ -871,11 +871,13 @@
             var duration = 30000;
             if (message != "") {
                 message += "\n";
-                if (attempt == 2) {
+                if (attempt == 1) {
+                    message += "Bids please";
+                } else if (attempt == 2) {
                     message += "Bids please (2nd reminder)";
-                    duration = 30000;
+                    duration = 20000;
                 } else if (attempt == 3) {
-                    message += "Bids please *(last call - 10 more seconds)*";
+                    message += "Bids please *(last call)*";
                     duration = 15000;
                 } else if (attempt > 3) {
                     message += "Timed out";
@@ -904,7 +906,7 @@
                         var bid = data.val();
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
-                            console.log("Setting timer after a no bid from " + bidTeam);
+                            console.log("Setting 30s timer after a no bid from " + bidTeam);
                             updateTimer(30000);
                         } else {
                             bid = parseFloat(bid);
@@ -949,7 +951,7 @@
             }
             $("#bidText").val(currentBidValue);
 
-            console.log("Setting 15s timer after a bid from " + bidTeam + " for " + bid);
+            console.log("Setting 30s timer after a bid from " + bidTeam + " for " + bid);
             updateTimer(30000);
             if (!fromDb) {
                 database.ref("auction/auctioneer/currentBid").set({
