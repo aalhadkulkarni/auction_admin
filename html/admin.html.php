@@ -877,7 +877,7 @@
                 } else if (attempt == 3) {
                     message += "Bids please *(last call - 10 more seconds)*";
                     duration = 10000;
-                } else {
+                } else if (attempt > 3) {
                     message += "Timed out";
                     duration = null;
                 }
