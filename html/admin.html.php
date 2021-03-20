@@ -938,7 +938,9 @@
                             currentOut[bidTeam] = true;
                             var curOutCount = 0;
                             for (var i in currentOut) {
-                                curOutCount++;
+                                if (currentOut[i]) {
+                                    curOutCount++;
+                                }
                             }
                             if (curOutCount == 4) {
                                 alert("Everyone has given no bid");
