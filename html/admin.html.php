@@ -869,6 +869,7 @@
                 message += "\n";
                 message += "Bids please";
                 database.ref("auction/reminder").set(message);
+                window.remindTimer = setTimeout(remind, 30000);
             }
         }
 
