@@ -100,7 +100,7 @@
             document.getElementsByClassName('_1E0Oz')[0].click();
         } catch (e) {
             console.log(e);
-            messages.push(message);
+            console.log(message);
             //alert("Please click on message box");
         }
     }
