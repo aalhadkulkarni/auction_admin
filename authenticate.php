@@ -10,14 +10,25 @@ ini_set("display_errors", "0");
 
 $loggedInUser = null;
 
+//$users = array
+//(
+//    "admin" => "admin123",
+//    "Thane" => "2139",
+//    "Miraj" => "2859",
+//    "Karad" => "2105",
+//    "Kolhapur" => "1401",
+//    "Pune" => "2101",
+//    "Viewer" => ""
+//);
+
 $users = array
 (
     "admin" => "admin123",
-    "Thane" => "2139",
-    "Miraj" => "2859",
-    "Karad" => "2105",
-    "Kolhapur" => "1401",
-    "Pune" => "2101",
+    "Thane" => "Thane",
+    "Miraj" => "Miraj",
+    "Karad" => "Karad",
+    "Kolhapur" => "Kolhapur",
+    "Pune" => "Pune",
     "Viewer" => ""
 );
 $userCookie = $_COOKIE["usercookie"];
