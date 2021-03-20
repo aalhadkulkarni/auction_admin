@@ -90,7 +90,7 @@
             return;
         }
         console.log(summary, typeof summary);
-        summary = summary.replaceAll("<br>", "\n");
+        summary = summary.replace(/<br>/g,"\n");
         sendToWhatsapp(summary);
     }
 
