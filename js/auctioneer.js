@@ -38,6 +38,7 @@
         database.ref("auction/summary").on("value", summaryUpdated);
         database.ref("auction/nextPlayerText").on("value", nextPlayerSelected);
         database.ref("auction/lastActionText").on("value", biddingEnded);
+        database.ref("auction/reminder").on("value", sendReminder);
 
         var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
         for (var i = 0; i < bidTeams.length; i++) {
@@ -46,10 +47,17 @@
                 database.ref("auction/bids/" + bidTeam).on("value", function(data) {
                     var bid = data.val();
                     if (bid == "No Bid") {
-                        sendToWhatsapp(bidTeam + " - " + bid);
+                        sendToWhatsapp("*" + bidTeam + " - " + bid + "*");
                     }
                 });
             })(bidTeam);
+        }
+    }
+
+    function sendReminder(data) {
+        var text = data.val();
+        if (text != null && text != "") {
+            sendToWhatsapp(text);
         }
     }
 

@@ -855,6 +855,23 @@
         function isTeamOut(team) {
             return currentOut[team] || biddingStopped;
         }
+
+        function remind() {
+            var message = "";
+            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+            for (var i = 0; i < bidTeams.length; i++) {
+                var bidTeam = bidTeams[i];
+                if (!isTeamOut(bidTeam) && bidTeam != currentLeader) {
+                    message += bidTeam + " ";
+                }
+            }
+            if (message != "") {
+                message += "\n";
+                message += "Bids please";
+                database.ref("auction/reminder").set(message);
+            }
+        }
+
         function startListeningToBids() {
             var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
             for (var i = 0; i < bidTeams.length; i++) {
@@ -867,6 +884,7 @@
                         var bid = data.val();
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
+                            updateTimer();
                         } else {
                             bid = parseFloat(bid);
                         }
@@ -887,12 +905,20 @@
             }
         }
 
+        function updateTimer() {
+            if (window.remindTimer) {
+                clearTimeout(window.remindTimer);
+            }
+            window.remindTimer = setTimeout(remind, 30000);
+        }
+
         function setLeader(bidTeam, bid, fromDb) {
             if (isNaN(bid)) {
                 return;
             }
             currentLeader = bidTeam;
             currentBidValue = bid;
+            updateTimer();
             var options = $("#leagueTeamsSelect")[0].options;
             for (var i = 0; i < options.length; i++) {
                 var option = options[i];

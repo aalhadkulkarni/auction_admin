@@ -50,7 +50,7 @@ Ishan Kishan,MI,Keeper,4,Star
 Mohammed Siraj,RCB,Bowler,3,Star
 Rahul Tewatia,RR,All Rounder,3,Star
 Lockie Ferguson,KKR,Bowler,3,Star
-Dawid Malan,PK,All Rounder,3,Star
+Dawid Malan,PK,Batsman,3,Star
 Washington Sundar,RCB,All Rounder,3,Star
 Jason Holder,SRH,All Rounder,3,Star
 Prithvi Shaw,DC,Batsman,3,Star
@@ -71,17 +71,17 @@ Khaleel Ahmed,SRH,Bowler,3,Star
 T Natarajan,SRH,Bowler,3,Star
 Dinesh Karthik,KKR,Keeper,3,Star
 Wriddhiman Saha,SRH,Keeper,3,Star
-Daniel Sams,RCB,All Rounder,2,Draft
-Robin Uthappa,CSK,Batsman,2,Draft
-Shimron Hetmyer,DC,Batsman,2,Draft
-Nitish Rana,KKR,Batsman,2,Draft
-Manan Vohra,RR,Batsman,2,Draft
-Yashasvi Jaiswal,RR,Batsman,2,Draft
-Imran Tahir,CSK,Bowler,2,Draft
-Chris Woakes,DC,Bowler,2,Draft
-Chris Jordan,PK,Bowler,2,Draft
-Jaydev Unadkat,RR,Bowler,2,Draft
-Km Asif,CSK,All Rounder,2,Draft
+Daniel Sams,RCB,All Rounder,2,Star
+Robin Uthappa,CSK,Batsman,2,Star
+Shimron Hetmyer,DC,Batsman,2,Star
+Nitish Rana,KKR,Batsman,2,Star
+Manan Vohra,RR,Batsman,2,Star
+Yashasvi Jaiswal,RR,Batsman,2,Star
+Imran Tahir,CSK,Bowler,2,Star
+Chris Woakes,DC,Bowler,2,Star
+Chris Jordan,PK,Bowler,2,Star
+Jaydev Unadkat,RR,Bowler,2,Star
+Km Asif,CSK,Bowler,2,Draft
 Moeen Ali,CSK,All Rounder,2,Draft
 Lalith Yadav,DC,All Rounder,2,Draft
 Tom Curran,DC,All Rounder,2,Draft
@@ -97,43 +97,43 @@ Vijay Shankar,SRH,All Rounder,2,Draft
 Ruturaj Gaikwad,CSK,Batsman,2,Draft
 Cheteshwar Pujara,CSK,Batsman,2,Draft
 Harishankar Reddy,CSK,Bowler,2,Draft
-C Hari Nishaanth,CSK,Bowler,2,Draft
+C Hari Nishaanth,CSK,Batsman,2,Draft
 Bhagath Varma,CSK,Batsman,2,Draft
 Ajinkya Rahane,DC,Batsman,2,Draft
-Avesh Khan,DC,Batsman,2,Draft
-Ripal Patel,DC,Batsman,2,Draft
+Avesh Khan,DC,Bowler,2,Draft
+Ripal Patel,DC,All Rounder,2,Draft
 Vishnu Vinod,DC,Batsman,2,Draft
-Lukman Meriwala,DC,Batsman,2,Draft
-M Siddharth,DC,Batsman,2,Draft
-Darshan Nalkande,PK,Batsman,2,Draft
+Lukman Meriwala,DC,Bowler,2,Draft
+M Siddharth,DC,Bowler,2,Draft
+Darshan Nalkande,PK,Bowler,2,Draft
 Deepak Hooda,PK,Batsman,2,Draft
-Harpreet Brar,PK,Batsman,2,Draft
-Ishan Porel,PK,Batsman,2,Draft
+Harpreet Brar,PK,All Rounder,2,Draft
+Ishan Porel,PK,Bowler,2,Draft
 Mandeep Singh,PK,Batsman,2,Draft
 Sarfaraz Khan,PK,Batsman,2,Draft
 Shahrukh Khan,PK,All Rounder,2,Draft
 Riley Meredith,PK,Bowler,2,Draft
-Jalaj Saxena,PK,Batsman,2,Draft
+Jalaj Saxena,PK,All Rounder,2,Draft
 Utkarsh Singh,PK,Batsman,2,Draft
-Fabian Allen,PK,Batsman,2,Draft
+Fabian Allen,PK,All Rounder,2,Draft
 Saurabh Kumar,PK,Batsman,2,Draft
 Rahul Tripathi,KKR,Batsman,2,Draft
 Sheldon Jackson,KKR,Batsman,2,Draft
 Vaibhav Arora,KKR,Batsman,2,Draft
 Karun Nair,KKR,Batsman,2,Draft
-Venkatesh Iyer,KKR,Batsman,2,Draft
-Anukul Roy,MI,Batsman,2,Draft
+Venkatesh Iyer,KKR,All Rounder,2,Draft
+Anukul Roy,MI,Bowler,2,Draft
 Anmolpreet Singh,MI,Batsman,2,Draft
 Mohsin Khan,MI,Batsman,2,Draft
 Saurabh Tiwary,MI,Batsman,2,Draft
 Yudhvir Charak,MI,Batsman,2,Draft
 Marco Jansen,MI,Batsman,2,Draft
-Arjun Tendulkar,MI,Batsman,2,Draft
-Anuj Rawat,RR,Batsman,2,Draft
+Arjun Tendulkar,MI,Bowler,2,Draft
+Anuj Rawat,RR,Keeper,2,Draft
 David Miller,RR,Batsman,2,Draft
 Riyan Parag,RR,Batsman,2,Draft
-Chetan Sakariya,RR,Batsman,2,Draft
-Kc Cariappa,RR,Batsman,2,Draft
+Chetan Sakariya,RR,Bowler,2,Draft
+Kc Cariappa,RR,Bowler,2,Draft
 Liam Livingstone,RR,Batsman,2,Draft
 Kuldip Yadav,RR,Batsman,2,Draft
 Akash Singh,RR,Batsman,2,Draft
@@ -142,13 +142,13 @@ Sachin Baby,RCB,Batsman,2,Draft
 Rajat Patidar,RCB,Batsman,2,Draft
 Mohammed Azharuddeen,RCB,Keeper,2,Draft
 Suyash Prabhudessai,RCB,Batsman,2,Draft
-K S Bharat,RCB,Batsman,2,Draft
+K S Bharat,RCB,Keeper,2,Draft
 Finn Allen,RCB,Batsman,2,Draft
-Abdul Samad,SRH,Batsman,2,Draft
-Abhishek Sharma,SRH,Batsman,2,Draft
+Abdul Samad,SRH,All Rounder,2,Draft
+Abhishek Sharma,SRH,All Rounder,2,Draft
 Priyam Garg,SRH,Batsman,2,Draft
 Virat Singh,SRH,Batsman,2,Draft
-Jagadeesha Suchith,SRH,Batsman,2,Draft
+Jagadeesha Suchith,SRH,Bowler,2,Draft
 Kedar Jadhav,SRH,Batsman,2,Draft
 Josh Hazlewood,CSK,Bowler,2,Draft
 Karn Sharma,CSK,Bowler,2,Draft
@@ -164,7 +164,7 @@ Jhye Richardson,PK,Bowler,2,Draft
 Kamlesh Nagarkoti,KKR,Bowler,2,Draft
 Prasidh Krishna,KKR,Bowler,2,Draft
 Sandeep Warrier,KKR,Bowler,2,Draft
-Rinku Singh,KKR,Bowler,2,Draft
+Rinku Singh,KKR,Batsman,2,Draft
 Shivam Mavi,KKR,Bowler,2,Draft
 Varun Chakravarthy,KKR,Bowler,2,Draft
 Harbhajan Singh,KKR,Bowler,2,Draft
@@ -183,7 +183,7 @@ Kane Richardson,RCB,Bowler,2,Draft
 Shahbaz Ahmed,RCB,Bowler,2,Draft
 Harshal Patel,RCB,Bowler,2,Draft
 Basil Thampi,SRH,Bowler,2,Draft
-Mohammad Nabi,SRH,Bowler,2,Draft
+Mohammad Nabi,SRH,All Rounder,2,Draft
 Sandeep Sharma,SRH,Bowler,2,Draft
 Shahbaz Nadeem,SRH,Bowler,2,Draft
 Siddarth Kaul,SRH,Bowler,2,Draft
