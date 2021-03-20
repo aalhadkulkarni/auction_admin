@@ -694,6 +694,36 @@
             downloadState();
         }
 
+        function provisionalSold() {
+            biddingStopped = true;
+            currentLeader = null;
+            currentBidValue = null;
+            if (currentPlayer == null) {
+                alert("No player selected");
+                biddingStopped = false;
+                return;
+            }
+            var winningLeagueTeamId = $("#leagueTeamsSelect").val();
+            var winningBid = $("#bidText").val();
+            if (winningBid == null || winningBid == "") {
+                alert("Winning bid not entered");
+                biddingStopped = false;
+                return;
+            }
+            if (parseFloat(winningBid) < parseFloat(currentPlayer.basePrice)) {
+                alert("Winning bid less than base price entered");
+                biddingStopped = false;
+                return;
+            }
+
+            var x = confirm("Sell " + currentPlayer.name + " to " + auctionState.leagueTeams[winningLeagueTeamId].name + " at " + winningBid + "L?");
+            if (!x) {
+                biddingStopped = false;
+                return;
+            }
+            database.ref("auction/lastActionText").set("Sold! 🔨");
+        }
+
         function playerUnsold() {
             if (currentPlayer == null) {
                 alert("No player selected");
@@ -1164,7 +1194,7 @@
                         <tr>
                             <th>Winning team</th>
                             <th>Price</th>
-                            <th colspan="2">Result</th>
+                            <th colspan="3">Result</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -1181,6 +1211,9 @@
                             </td>
                             <td>
                                 <button class="btn btn-info form-control" onclick="playerUnsold()">Unsold!</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info form-control" onclick="provisionalSold()">Provisional sold</button>
                             </td>
                         </tr>
                         </tbody>
