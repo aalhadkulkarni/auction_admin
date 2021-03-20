@@ -721,7 +721,7 @@
                 biddingStopped = false;
                 return;
             }
-            database.ref("auction/lastActionText").set("Sold!");
+            database.ref("auction/lastActionText").set("Sold! Does last year's owner want to use RTM?");
         }
 
         function playerUnsold() {
