@@ -721,7 +721,7 @@
                 biddingStopped = false;
                 return;
             }
-            database.ref("auction/lastActionText").set("Sold! 🔨");
+            database.ref("auction/lastActionText").set("Sold!");
         }
 
         function playerUnsold() {
