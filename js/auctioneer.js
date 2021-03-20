@@ -101,6 +101,7 @@
             document.execCommand("insertText", false, message);
             document.getElementsByClassName('_1E0Oz')[0].click();
         } catch (e) {
+            document.execCommand("insertText", false, "");
             messages.push(message);
             alert("Please click on message box");
         }
