@@ -142,7 +142,7 @@ Sachin Baby,RCB,Batsman,2,Draft
 Rajat Patidar,RCB,Batsman,2,Draft
 Mohammed Azharuddeen,RCB,Keeper,2,Draft
 Suyash Prabhudessai,RCB,Batsman,2,Draft
-K S Bharat,RCB,keeper,2,Draft
+K S Bharat,RCB,Keeper,2,Draft
 Finn Allen,RCB,Batsman,2,Draft
 Abdul Samad,SRH,All Rounder,2,Draft
 Abhishek Sharma,SRH,All Rounder,2,Draft
