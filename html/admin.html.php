@@ -363,7 +363,7 @@
             });
             database.ref("auction/nextPlayerText").set(text);
             database.ref("auction/lastActionText").set("");
-            updateTimer(20000);
+            updateTimer(30000);
             $("#currentPlayerText").html(text);
 
             resetBids();
@@ -868,15 +868,15 @@
                 }
             }
 
-            var duration = 15000;
+            var duration = 30000;
             if (message != "") {
                 message += "\n";
                 if (attempt == 2) {
                     message += "Bids please (2nd reminder)";
-                    duration = 10000;
+                    duration = 30000;
                 } else if (attempt == 3) {
                     message += "Bids please *(last call - 10 more seconds)*";
-                    duration = 10000;
+                    duration = 15000;
                 } else if (attempt > 3) {
                     message += "Timed out";
                     duration = null;
@@ -905,7 +905,7 @@
                         if (bid == "No Bid") {
                             currentOut[bidTeam] = true;
                             console.log("Setting timer after a no bid from " + bidTeam);
-                            updateTimer(15000);
+                            updateTimer(30000);
                         } else {
                             bid = parseFloat(bid);
                         }
@@ -950,7 +950,7 @@
             $("#bidText").val(currentBidValue);
 
             console.log("Setting 15s timer after a bid from " + bidTeam + " for " + bid);
-            updateTimer(15000);
+            updateTimer(30000);
             if (!fromDb) {
                 database.ref("auction/auctioneer/currentBid").set({
                     team: bidTeam,
