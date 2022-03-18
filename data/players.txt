@@ -2,7 +2,7 @@ Ravindra Jadeja,CSK,All Rounder,7,RTR
 Ruturaj Gaikwad,CSK,Batsman,6,Marquee
 Moeen Ali,CSK,All Rounder,4,Star
 Deepak Chahar,CSK,Bowler,4,Star
-Ms Dhoni,CSK,Wicketkeeper,3,Star
+Ms Dhoni,CSK,Keeper,3,Star
 Dwayne Bravo,CSK,All Rounder,3,Star
 Ambati Rayudu,CSK,Keeper,2,Draft
 Devon Conway,CSK,Batsman,2,Draft
@@ -23,7 +23,7 @@ Mukesh Choudhary,CSK,Bowler,2,Draft
 Tushar Deshpande,CSK,Bowler,2,Draft
 Simarjeet Singh,CSK,Bowler,2,Draft
 Prashant Solanki,CSK,Bowler,2,Draft
-Rishabh Pant,DC,Wicketkeeper,12.5,RTR
+Rishabh Pant,DC,Keeper,12.5,RTR
 David Warner,DC,Batsman,6,Marquee
 Axar Patel,DC,All Rounder,4,Star
 Prithvi Shaw,DC,Batsman,3,Star
@@ -95,8 +95,8 @@ Sheldon Jackson,KKR,Keeper,2,Draft
 Baba Indrajith,KKR,Keeper,2,Draft
 Anukul Roy,KKR,All Rounder,2,Draft
 Rasik Dhar,KKR,Bowler,2,Draft
-Kl Rahul,LSG,Wicketkeeper,14,RTR
-Quinton De Kock,LSG,Wicketkeeper,5,Marquee
+Kl Rahul,LSG,Keeper,14,RTR
+Quinton De Kock,LSG,Keeper,5,Marquee
 Manish Pandey,LSG,Batsman,4,Star
 Jason Holder,LSG,All Rounder,4,Star
 Ravi Bishnoi,LSG,Bowler,3,Star
@@ -115,7 +115,7 @@ Shahbaz Nadeem,LSG,Bowler,2,Draft
 Ankit Rajpoot,LSG,bowler,2,Draft
 Mayank Yadav,LSG,Bowler,2,Draft
 Ayush Badoni,LSG,All Rounder,2,Draft
-Ishan Kishan,MI,Wicketkeeper,8,RTR
+Ishan Kishan,MI,Keeper,8,RTR
 Rohit Sharma,MI,Batsman,6,Marquee
 Jasprit Bumrah,MI,Bowler,6,Marquee
 Suryakumar Yadav,MI,Batsman,5,Marquee
@@ -142,7 +142,7 @@ Tilak Verma,MI,All Rounder,2,Draft
 Mayank Markande,MI,Bowler,2,Draft
 Shikhar Dhawan,PBK,Batsman,6,RTR
 Kagiso Rabada,PBK,Bowler,5,Marquee
-Jonny Bairstow,PBK,Wicketkeeper,5,Marquee
+Jonny Bairstow,PBK,Keeper,5,Marquee
 Mayank Agarwal,PBK,Batsman,4,Star
 Liam Livingstone,PBK,All Rounder,3,Star
 Arshdeep Singh,PBK,Bowler,3,Star
@@ -166,8 +166,8 @@ Raj Angad Bawa,PBK,All Rounder,2,Draft
 Writtick Chaterjee,PBK,All Rounder,2,Draft
 Baltej Dhanda,PBK,Bowler,2,Draft
 Yuzvendra Chahal,RR,Bowler,5,Marquee
-Sanju Samson,RR,Wicketkeeper,5,Marquee
-Jos Buttler,RR,Wicketkeeper,5,Marquee
+Sanju Samson,RR,Keeper,5,Marquee
+Jos Buttler,RR,Keeper,5,Marquee
 Trent Boult,RR,Bowler,5,Marquee
 Ravichandran Ashwin,RR,Bowler,4,Star
 Devdutt Padikkal,RR,Batsman,4,Star
