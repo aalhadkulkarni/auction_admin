@@ -54,19 +54,21 @@ function getPlayers()
     $id = 1;
     foreach ($lines as $line)
     {
-        $playerData = explode(",", $line);
-        $player = new Player();
+        if (strlen($line) > 0) {
+            $playerData = explode(",", $line);
+            $player = new Player();
 
-        $player->id = $id;
-        $player->name = $playerData[0];
-        $player->team = $playerData[1];
-        $player->role = $playerData[2];
-        $player->basePrice = $playerData[3];
-        $player->slab = $playerData[4];
+            $player->id = $id;
+            $player->name = $playerData[0];
+            $player->team = $playerData[1];
+            $player->role = $playerData[2];
+            $player->basePrice = $playerData[3];
+            $player->slab = $playerData[4];
 
-        $players[$id] = $player;
+            $players[$id] = $player;
 
-        $id++;
+            $id++;
+        }
     }
 
     return $players;
@@ -81,19 +83,21 @@ function getAuctionTeams()
     $id = 1;
     foreach ($lines as $line)
     {
-        $leagueTeamData = explode(",", $line);
+        if (strlen($line) > 0) {
+            $leagueTeamData = explode(",", $line);
 
-        $leagueTeam = new AuctionTeam();
+            $leagueTeam = new AuctionTeam();
 
-        $leagueTeam->id = $id;
-        $leagueTeam->name = $leagueTeamData[0];
-        $leagueTeam->budgetLeft = $leagueTeamData[1];
-        $leagueTeam->shortName = $leagueTeamData[2];
-        $leagueTeam->actions = array();
+            $leagueTeam->id = $id;
+            $leagueTeam->name = $leagueTeamData[0];
+            $leagueTeam->budgetLeft = $leagueTeamData[1];
+            $leagueTeam->shortName = $leagueTeamData[2];
+            $leagueTeam->actions = array();
 
-        $leagueTeams[$id] = $leagueTeam;
+            $leagueTeams[$id] = $leagueTeam;
 
-        $id++;
+            $id++;
+        }
     }
 
     return $leagueTeams;
