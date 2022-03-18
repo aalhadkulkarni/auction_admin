@@ -412,7 +412,7 @@
                         bidsReceived++;
                     }
                     updateCurrentBids();
-                    if (bidsReceived == 5/* && !summary.allShouldBid*/) {
+                    if (bidsReceived == 6/* && !summary.allShouldBid*/) {
                         alert("All bids are in");
                     } else if (!stopBids) {
                         setTimeout(listenToBids, 5000);
@@ -890,7 +890,7 @@
         function remind(attempt) {
             attempt = attempt || 1;
             var message = "";
-            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune", "USA"];
             for (var i = 0; i < bidTeams.length; i++) {
                 var bidTeam = bidTeams[i];
                 if (!isTeamOut(bidTeam) && bidTeam != currentLeader) {
@@ -925,7 +925,7 @@
         }
 
         function startListeningToBids() {
-            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+            var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune", "USA"];
             for (var i = 0; i < bidTeams.length; i++) {
                 var bidTeam = bidTeams[i];
                 (function(bidTeam) {
@@ -942,7 +942,7 @@
                                     curOutCount++;
                                 }
                             }
-                            if ((curOutCount == 4 && currentLeader != null) || curOutCount == 5) {
+                            if ((curOutCount == 5 && currentLeader != null) || curOutCount == 6) {
                                 alert("Everyone has given no bid");
                             }
                             console.log("Setting 30s timer after a no bid from " + bidTeam);
