@@ -105,7 +105,6 @@ Krunal Pandya,LSG,All Rounder,3,Star
 Avesh Khan,LSG,Bowler,2,Draft
 Manan Vohra,LSG,Batsman,2,Draft
 Dushmantha Chameera,LSG,Bowler,2,Draft
-Mark Wood,LSG,Bowler,2,Draft
 Evin Lewis,LSG,Batsman,2,Draft
 Deepak Hooda,LSG,All Rounder,2,Draft
 Mohsin Khan,LSG,Bowler,2,Draft
