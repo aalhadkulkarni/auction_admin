@@ -13,7 +13,7 @@ header("Content-Type: application/json", true);
 function getUserBids($round)
 {
     $bids = array();
-    for($i=1; $i<=5; $i++)
+    for($i=1; $i<=6; $i++)
     {
         $bid = file_get_contents("bidding/" . $i . $round . ".txt");
         $bids[$i] = $bid;
