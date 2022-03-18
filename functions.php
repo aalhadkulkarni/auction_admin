@@ -82,9 +82,7 @@ function getAuctionTeams()
     foreach ($lines as $line)
     {
         $leagueTeamData = explode(",", $line);
-        if (len($leagueTeamData) != 3) {
-            continue;
-        }
+
         $leagueTeam = new AuctionTeam();
 
         $leagueTeam->id = $id;
