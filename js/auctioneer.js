@@ -21,7 +21,7 @@
 
     var initDone = false;
     function checkDiv() {
-        var divs = document.getElementsByClassName("_1JAUF");
+        var divs = document.getElementsByClassName("_13NKt");
         if (divs.length != 2) {
             setTimeout(checkDiv, 50);
             return;
@@ -114,7 +114,7 @@
     function sendToWhatsapp(message) {
         try {
             document.execCommand("insertText", false, message);
-            document.getElementsByClassName('_1E0Oz')[0].click();
+            document.getElementsByClassName('_4sWnG')[0].click();
         } catch (e) {
             console.log(e);
             console.log(message);
