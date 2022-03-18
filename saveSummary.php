@@ -19,7 +19,7 @@ if ($result === false)
 }
 else
 {
-    for($i=1; $i<=5; $i++)
+    for($i=1; $i<=6; $i++)
     {
         unlink("bidding/" . $i . $round . ".txt");
     }
