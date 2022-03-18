@@ -18,7 +18,7 @@ $users = array
     "Karad" => "2105",
     "Kolhapur" => "1401",
     "Pune" => "2101",
-    "USA" => "6529"
+    "USA" => "6529",
     "Viewer" => ""
 );
 
