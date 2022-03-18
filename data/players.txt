@@ -74,7 +74,7 @@ Shreyas Iyer,KKR,Batsman,6,Marquee
 Andre Russell,KKR,All Rounder,5,Marquee
 Pat Cummins,KKR,All Rounder,4,Star
 Sunil Narine,KKR,All Rounder,4,Star
-Venkatesh Iyer,KKR,Batsman,3,Star
+Venkatesh Iyer,KKR,All Rounder,3,Star
 Nitish Rana,KKR,All Rounder,3,Star
 Aaron Finch,KKR,Batsman,2,Draft
 Chamika Karunaratne,KKR,All Rounder,2,Draft
