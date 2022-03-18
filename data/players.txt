@@ -112,7 +112,7 @@ Karn Sharma,LSG,Bowler,2,Draft
 Krishnappa Gowtham,LSG,All Rounder,2,Draft
 Kyle Mayers,LSG,All Rounder,2,Draft
 Shahbaz Nadeem,LSG,Bowler,2,Draft
-Ankit Rajpoot,LSG,bowler,2,Draft
+Ankit Rajpoot,LSG,Bowler,2,Draft
 Mayank Yadav,LSG,Bowler,2,Draft
 Ayush Badoni,LSG,All Rounder,2,Draft
 Ishan Kishan,MI,Keeper,8,RTR
