@@ -40,7 +40,7 @@
         database.ref("auction/lastActionText").on("value", biddingEnded);
         database.ref("auction/reminder").on("value", sendReminder);
 
-        var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune"];
+        var bidTeams = ["Thane", "Miraj", "Karad", "Kolhapur", "Pune", "USA"];
         for (var i = 0; i < bidTeams.length; i++) {
             var bidTeam = bidTeams[i];
             (function(bidTeam) {
